@@ -1,0 +1,23 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"AAA",
+		"SGS",
+		"AAA"
+	],
+	"key": {
+		"A": {
+			"tag": "forge:stone"
+		},
+		"G": {
+			"tag": "forge:glass"
+		},
+		"S": {
+			"item": "minecraft:iron_ingot"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:key_generator",
+		"count": 1
+	}
+}

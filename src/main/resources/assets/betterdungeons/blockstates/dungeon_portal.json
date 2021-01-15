@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"axis=x": {
+			"model": "betterdungeons:block/dungeon_portal_ns"
+		},
+		"axis=z": {
+			"model": "betterdungeons:block/dungeon_portal_ew"
+		}
+	}
+}

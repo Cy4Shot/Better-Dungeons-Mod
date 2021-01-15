@@ -1,0 +1,23 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"###",
+		"XLX",
+		"###"
+	],
+	"key": {
+		"#": {
+			"tag": "forge:stone"
+		},
+		"X": {
+			"item": "minecraft:diamond"
+		},
+		"L": {
+			"item": "minecraft:lava_bucket"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:dungeon_portal_frame",
+		"count": 5
+	}
+}

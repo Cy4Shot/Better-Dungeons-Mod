@@ -1,0 +1,12 @@
+{
+	"item.betterdungeons.dungeon_key": "Dungeon Key",
+	"item.betterdungeons.empty_key": "Empty Key",
+	"item.betterdungeons.phat_dinner": "Phat Dinner",
+	
+	"block.betterdungeons.dungeon_portal_frame": "Dungeon Portal Frame",
+	"block.betterdungeons.dungeon_portal": "Dungeon Portal",
+	"block.betterdungeons.key_creation_table": "Key Creation Table",
+	"block.betterdungeons.key_generator": "Passive Key Generator",
+	
+	"itemGroup.better_dungeons": "Better Dungeons"
+}

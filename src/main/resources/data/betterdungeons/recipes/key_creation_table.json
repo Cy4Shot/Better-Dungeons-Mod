@@ -1,0 +1,23 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SAS",
+		"SDS",
+		"SDS"
+	],
+	"key": {
+		"A": {
+			"item": "minecraft:anvil"
+		},
+		"D": {
+			"tag": "forge:stone"
+		},
+		"S": {
+			"item": "minecraft:iron_ingot"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:key_creation_table",
+		"count": 1
+	}
+}

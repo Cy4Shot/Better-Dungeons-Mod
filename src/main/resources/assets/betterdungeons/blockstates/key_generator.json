@@ -1,0 +1,34 @@
+{
+	"variants": {
+		"facing=north,ready=false": {
+			"model": "betterdungeons:block/key_generator_l"
+		},
+		"facing=south,ready=false": {
+			"model": "betterdungeons:block/key_generator_l",
+			"y": 180
+		},
+		"facing=east,ready=false": {
+			"model": "betterdungeons:block/key_generator_l",
+			"y": 90
+		},
+		"facing=west,ready=false": {
+			"model": "betterdungeons:block/key_generator_l",
+			"y": 270
+		},
+		"facing=north,ready=true": {
+			"model": "betterdungeons:block/key_generator_r"
+		},
+		"facing=south,ready=true": {
+			"model": "betterdungeons:block/key_generator_r",
+			"y": 180
+		},
+		"facing=east,ready=true": {
+			"model": "betterdungeons:block/key_generator_r",
+			"y": 90
+		},
+		"facing=west,ready=true": {
+			"model": "betterdungeons:block/key_generator_r",
+			"y": 270
+		}
+	}
+}

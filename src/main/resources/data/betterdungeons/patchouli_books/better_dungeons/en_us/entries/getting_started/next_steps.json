@@ -1,0 +1,12 @@
+{
+	"name": "Next Steps",
+	"icon": "minecraft:netherite_boots",
+	"category": "getting_started",
+	"sortnum": 5,
+	"pages": [
+		{
+			"type": "text",
+			"text": "Warrior, your journey has only just begun. There are still more bosses to kill and dungeons to complete. This is only one chapter in the guide, and there are more on $(h)Rewards, Bosses, and more$(). There are also loads of new weapons, systems, and mods to explore.$(br)$(br)Good luck."
+		}
+	]
+}

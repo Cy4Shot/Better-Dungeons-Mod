@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[35,)"
+license="MIT"
+[[mods]]
+modId="betterdungeons"
+version="${file.jarVersion}"
+displayName="Better Dungeons"
+logoFile="examplemod.png"
+credits="Mod by Cy4."
+description='''
+Mod by cy4.
+'''
+
+[[dependencies.betterdungeons]]
+    modId="forge"
+    mandatory=true
+    versionRange="[35,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.betterdungeons]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.17)"
+    ordering="NONE"
+    side="BOTH"
