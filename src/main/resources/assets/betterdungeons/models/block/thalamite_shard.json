@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cross",
+	"textures": {
+		"cross": "betterdungeons:blocks/thalamite_shard"
+	}
+}

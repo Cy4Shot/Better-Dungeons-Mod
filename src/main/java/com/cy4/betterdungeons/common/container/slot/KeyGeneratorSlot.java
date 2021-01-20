@@ -12,7 +12,6 @@ public class KeyGeneratorSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-//		return stack.isEmpty() || stack.getItem() == ItemInit.DUNGEON_KEY.get();
 		return false;
 	}
 }

@@ -57,7 +57,7 @@ public class KeyCreationTable extends Block {
 
 	public KeyCreationTable() {
 		super(Properties.create(Material.ROCK, MaterialColor.DIAMOND).setRequiresTool()
-				.hardnessAndResistance(3f, 3600000.0F).notSolid());
+				.hardnessAndResistance(3f, 3600000.0F).notSolid().setAllowsSpawn(BlockInit::neverAllowSpawn));
 		this.setDefaultState(this.stateContainer.getBaseState().with(POWERED, Boolean.FALSE));
 
 	}

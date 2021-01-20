@@ -15,8 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class KeyGeneratorScreen extends ContainerScreen<KeyGeneratorContainer> {
 
-	private static final ResourceLocation TIME_CAPSULE_GUI = new ResourceLocation(BetterDungeons.MOD_ID,
-			"textures/gui/key_generator.png");
+	private static final ResourceLocation KEY_GENERATOR_GUI = new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/key_generator.png");
 
 	public KeyGeneratorScreen(KeyGeneratorContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
 		super(screenContainer, inv, titleIn);
@@ -37,16 +36,17 @@ public class KeyGeneratorScreen extends ContainerScreen<KeyGeneratorContainer> {
 	@Override
 	protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
 
-		this.font.func_243248_b(matrixStack, this.playerInventory.getDisplayName(), (float)this.playerInventoryTitleX, (float)this.playerInventoryTitleY, 4210752);
+		this.font.func_243248_b(matrixStack, this.playerInventory.getDisplayName(), (float) this.playerInventoryTitleX,
+				(float) this.playerInventoryTitleY, 4210752);
 		this.font.drawString(matrixStack, this.container.tileEntity.time, 8.0f, 6.0f, 0xE3FFFF);
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
-	protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX,
-			int mouseY) {
+	protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
 		RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.minecraft.getTextureManager().bindTexture(TIME_CAPSULE_GUI);
+		this.minecraft.getTextureManager().bindTexture(KEY_GENERATOR_GUI);
 		int x = (this.width - this.xSize) / 2;
 		int y = (this.height - this.ySize) / 2;
 		this.blit(matrixStack, x, y, 0, 0, this.xSize, this.ySize);

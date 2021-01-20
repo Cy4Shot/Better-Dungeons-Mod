@@ -1,8 +1,8 @@
 package com.cy4.betterdungeons.client.overlay;
 
 import com.cy4.betterdungeons.BetterDungeons;
-import com.cy4.betterdungeons.core.util.AnimationTwoPhased;
-import com.cy4.betterdungeons.core.util.FontHelper;
+import com.cy4.betterdungeons.client.helper.AnimationTwoPhased;
+import com.cy4.betterdungeons.client.helper.FontHelper;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;

@@ -8,6 +8,19 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+
+repositories {
+	maven {
+		url "http://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+        url "https://www.cursemaven.com"
+    }
+    maven {
+    	url 'https://maven.blamejared.com'
+    }
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -27,10 +40,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            // property 'forge.logging.markers', 'DEBUG'
-            // property 'forge.logging.console.level', 'debug'
             properties 'mixin.env.disableRefMap': 'true'
-
             mods {
                 betterdungeons {
                     source sourceSets.main
@@ -40,9 +50,6 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            // property 'forge.logging.markers', 'DEBUG'
-            // property 'forge.logging.console.level', 'debug'
-
             mods {
                 betterdungeons {
                     source sourceSets.main
@@ -52,11 +59,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-
-            // property 'forge.logging.markers', 'DEBUG'
-            // property 'forge.logging.console.level', 'debug'
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
             mods {
                 betterdungeons {
                     source sourceSets.main
@@ -68,32 +71,47 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {
-	maven {
-		url "http://dvs1.progwml6.com/files/maven"
-	}
-	maven {
-        url "https://www.cursemaven.com"
-    }
-    maven {
-    	url 'https://maven.blamejared.com'
-    }
-}
-
-
 dependencies {
   minecraft 'net.minecraftforge:forge:1.16.4-35.1.4'
   
+  // There are a lot of dependencies. Its for loot tables, ill delete them later.
+  
   //Other deps
-  compileOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}:api")
-  runtimeOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}")
-  compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48:api")
-  runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48")
+  compileOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}:api") // JEI
+  runtimeOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}") // JEI
+  compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48:api") // Patchouli
+  runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48") // Pathcouli
   
   //Cursemaven
-  runtimeOnly fg.deobf("curse.maven:byg-247560:3159758")
-  runtimeOnly fg.deobf("curse.maven:ev-400514:3167251")
-  runtimeOnly fg.deobf("curse.maven:el-274271:3118552")
+  runtimeOnly fg.deobf("curse.maven:byg-247560:3159758") // Biomes Youll Go
+  runtimeOnly fg.deobf("curse.maven:ev-400514:3167251") // Better Villagers
+  runtimeOnly fg.deobf("curse.maven:el-274271:3118552") // Enchantment Levels
+  runtimeOnly fg.deobf("curse.maven:bg-298187:3144138") // Building Gadgets
+  runtimeOnly fg.deobf("curse.maven:em-278825:3154957") // Environmental Materials
+  runtimeOnly fg.deobf("curse.maven:cp-342929:3105279") // Compressium
+  runtimeOnly fg.deobf("curse.maven:vl-245480:3154961") // Valkarie Lib
+  runtimeOnly fg.deobf("curse.maven:dg-401247:3155534") // Dungeons Gear
+  runtimeOnly fg.deobf("curse.maven:qk-243121:3117057") // Quark 
+  runtimeOnly fg.deobf("curse.maven:arl-250363:3128555") // Auto Reg Lib
+  runtimeOnly fg.deobf("curse.maven:ie-231951:3141693") // Immersive Engineering
+  runtimeOnly fg.deobf("curse.maven:cc-69162:3155824") // CofH Core
+  runtimeOnly fg.deobf("curse.maven:te-69163:3155832") // Thermal Expansion
+  runtimeOnly fg.deobf("curse.maven:tf-222880:3155830") // Thermal Foundation
+  runtimeOnly fg.deobf("curse.maven:ti-291737:3156588") // Thermal Innovation
+  runtimeOnly fg.deobf("curse.maven:td-231951:3141693") // Thermal Dynamics
+  runtimeOnly fg.deobf("curse.maven:mk-268560:3100510") // Mekanism
+  runtimeOnly fg.deobf("curse.maven:mt-268567:3100513") // Mekanism Tools
+  runtimeOnly fg.deobf("curse.maven:mg-268566:3100512") // Mekanism Generators
+  runtimeOnly fg.deobf("curse.maven:bs-228525:3133712") // Bookshelf
+  runtimeOnly fg.deobf("curse.maven:rl-393149:3112989") // Runelic
+  runtimeOnly fg.deobf("curse.maven:du-242195:3165925") // Dark Utilities
+  runtimeOnly fg.deobf("curse.maven:tt-287342:3163247") // Titanium
+  runtimeOnly fg.deobf("curse.maven:if-266515:3167607") // Industrial Forgoing
+  runtimeOnly fg.deobf("curse.maven:tm-254268:3170451") // TorchMaster
+  runtimeOnly fg.deobf("curse.maven:mb-324985:3055811") // Metal Barrels
+  runtimeOnly fg.deobf("curse.maven:sb-311595:3076926") // Simply Backpacks
+  runtimeOnly fg.deobf("curse.maven:ae-223794:3156262") // Applied Energistics
+  
 }
 
 jar {

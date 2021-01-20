@@ -119,5 +119,4 @@ public class KeyGeneratorBlock extends Block {
 		}
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
-
 }

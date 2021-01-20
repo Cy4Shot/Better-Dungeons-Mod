@@ -6,18 +6,13 @@
 		"settings": {
 			"layers": [
 				{
-					"height": 1,
-					"block": "minecraft:stone"
+					"height": 256,
+					"block": "betterdungeons:tough_stone"
 				}
 			],
 			"biome": "minecraft:the_void",
 			"structures": {
 				"structures": {
-					"betterdungeons:dungeon": {
-						"spacing": 10,
-						"separation": 9,
-						"salt": 0
-					}
 				}
 			}
 		}

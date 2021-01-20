@@ -38,9 +38,6 @@ public class DungeonsLevelMessage {
 	public static void handle(DungeonsLevelMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 		NetworkEvent.Context context = contextSupplier.get();
 		context.enqueueWork(() -> {
-			if (message.dungeonLevel != DungeonLevelOverlay.dungeonLevel) {
-				// Levelled up!
-			}
 			DungeonLevelOverlay.dungeonLevel = message.dungeonLevel;
 			DungeonLevelOverlay.dungeonExp = message.dungeonExp;
 			DungeonLevelOverlay.tnl = message.tnl;

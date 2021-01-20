@@ -6,6 +6,7 @@ import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.NetcodeUtils;
 import com.cy4.betterdungeons.core.network.message.DungeonsLevelMessage;
+import com.cy4.betterdungeons.core.network.message.OpenUpgradeMenuMessage;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
@@ -43,15 +44,15 @@ public class PlayerDungeonStats implements INBTSerializable<CompoundNBT> {
 
 		return this;
 	}
-	
+
 	public PlayerDungeonStats reset(MinecraftServer server) {
-        this.dungeonLevel = 0;
-        this.exp = 0;
+		this.dungeonLevel = 0;
+		this.exp = 0;
 
-        sync(server);
+		sync(server);
 
-        return this;
-    }
+		return this;
+	}
 
 	public PlayerDungeonStats addDungeonExp(MinecraftServer server, int exp) {
 		int tnl;
@@ -65,7 +66,9 @@ public class PlayerDungeonStats implements INBTSerializable<CompoundNBT> {
 		}
 
 		if (this.dungeonLevel > initialLevel) {
-//            NetcodeUtils.runIfPresent(server, uuid, this::fancyLevelUpEffects);
+			NetcodeUtils.runIfPresent(server, this.uuid, player -> {
+				DungeonsNetwork.CHANNEL.sendToServer(new OpenUpgradeMenuMessage());
+			});
 		}
 
 		sync(server);
@@ -75,8 +78,7 @@ public class PlayerDungeonStats implements INBTSerializable<CompoundNBT> {
 
 	public void sync(MinecraftServer server) {
 		NetcodeUtils.runIfPresent(server, this.uuid, player -> {
-			DungeonsNetwork.CHANNEL.sendTo(
-					new DungeonsLevelMessage(this.dungeonLevel, this.exp, this.getTnl()),
+			DungeonsNetwork.CHANNEL.sendTo(new DungeonsLevelMessage(this.dungeonLevel, this.exp, this.getTnl()),
 					player.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
 		});
 	}

@@ -25,7 +25,7 @@ public class PhatDinnerItem extends SoupItem {
 			ServerPlayerEntity player = (ServerPlayerEntity)entity;
 			PlayerDungeonData statsData = PlayerDungeonData.get((ServerWorld) world);
 			PlayerDungeonStats stats = statsData.getDungeonStats(player);
-			statsData.addDungeonExp(player, (int)(stats.getTnl() / 10));
+			statsData.addDungeonExp(player, (int)(stats.getTnl() / 2));
 		}
 
 		return super.onItemUseFinish(stack, world, entity);

@@ -1,11 +1,10 @@
 package com.cy4.betterdungeons.core.init;
 
 import com.cy4.betterdungeons.BetterDungeons;
-import com.cy4.betterdungeons.common.world.gen.feature.DungeonStructure;
+import com.cy4.betterdungeons.common.world.gen.DungeonStructure;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
@@ -22,8 +21,8 @@ public class StructureInit {
 	public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister
 			.create(ForgeRegistries.STRUCTURE_FEATURES, BetterDungeons.MOD_ID);
 
-	public static final RegistryObject<Structure<NoFeatureConfig>> DUNGEON = STRUCTURES.register("dungeon",
-			() -> new DungeonStructure(NoFeatureConfig.field_236558_a_));
+	public static final RegistryObject<Structure<DungeonStructure.Config>> DUNGEON = STRUCTURES.register("dungeon",
+			() -> new DungeonStructure(DungeonStructure.Config.CODEC));
 
 	public static void setupStructures() {
 		setupMapSpacingAndLand(DUNGEON.get(), new StructureSeparationSettings(10, 9, 1638), false);
