@@ -110,8 +110,7 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:tm-254268:3170451") // TorchMaster
   runtimeOnly fg.deobf("curse.maven:mb-324985:3055811") // Metal Barrels
   runtimeOnly fg.deobf("curse.maven:sb-311595:3076926") // Simply Backpacks
-  runtimeOnly fg.deobf("curse.maven:ae-223794:3156262") // Applied Energistics
-  
+  runtimeOnly fg.deobf("curse.maven:ae-223794:3106770") // AE2
 }
 
 jar {

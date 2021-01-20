@@ -31,6 +31,7 @@
 	"block.betterdungeons.grindite_block": "Grindite Block",
 	"block.betterdungeons.turnite_block": "Turnite Block",
 	"block.betterdungeons.soulite_block": "Soulite Block",
+	"block.betterdungeons.phat_crystal": "Phat Crystal",
 	"itemGroup.better_dungeons": "Better Dungeons",
 	"command.betterdungeons.tp.success": "Template Summoned"
 }

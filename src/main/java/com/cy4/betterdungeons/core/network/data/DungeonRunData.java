@@ -27,12 +27,7 @@ import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.LogicalSide;
-import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DungeonRunData extends WorldSavedData {
 
 	protected static final String DATA_NAME = BetterDungeons.MOD_ID + "_DungeonRun";
@@ -131,14 +126,6 @@ public class DungeonRunData extends WorldSavedData {
 
 		if (removed || this.activeRuns.size() > 0) {
 			this.markDirty();
-		}
-	}
-
-	@SubscribeEvent
-	public static void onTick(TickEvent.WorldTickEvent event) {
-		if (event.side == LogicalSide.SERVER && event.phase == TickEvent.Phase.START
-				&& event.world.getDimensionKey() == DimensionInit.DUNGEON_WORLD) {
-			get((ServerWorld) event.world).tick((ServerWorld) event.world);
 		}
 	}
 

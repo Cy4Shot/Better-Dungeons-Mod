@@ -45,6 +45,8 @@ public class BlockInit {
 	public static final RegistryObject<Block> TURNITE_SHARD = BLOCKS.register("turnite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> SOULITE_SHARD = BLOCKS.register("soulite_shard", () -> new ShardBlock());
 
+	public static final RegistryObject<Block> PHAT_CRYSTAL = BLOCKS.register("phat_crystal", () -> new ShardBlock());
+
 	public static final RegistryObject<Block> NIAZITE_BLOCK = BLOCKS.register("niazite_block",
 			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
 					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));

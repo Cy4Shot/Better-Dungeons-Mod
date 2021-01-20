@@ -25,15 +25,17 @@ public class ClientEventBusSubscriber {
 
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
+		// Overlays
 		MinecraftForge.EVENT_BUS.register(DungeonLevelOverlay.class);
 
+		// Screens
 		ScreenManager.registerFactory(ContainerTypesInit.KEY_GENERATOR_CONTAINER.get(), KeyGeneratorScreen::new);
 		ScreenManager.registerFactory(ContainerTypesInit.UPGRADE_CONTAINER.get(), PlayerUpgradeScreen::new);
 
+		// Render Layers
 		RenderTypeLookup.setRenderLayer(BlockInit.DUNGEON_PORTAL.get(), RenderType.getTranslucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.KEY_CREATION_TABLE.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.KEY_GENERATOR.get(), RenderType.getCutout());
-
 		RenderTypeLookup.setRenderLayer(BlockInit.NIAZITE_SHARD.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.IDLITE_SHARD.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.THALAMITE_SHARD.get(), RenderType.getCutout());
@@ -42,7 +44,9 @@ public class ClientEventBusSubscriber {
 		RenderTypeLookup.setRenderLayer(BlockInit.GRINDITE_SHARD.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.TURNITE_SHARD.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.SOULITE_SHARD.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.PHAT_CRYSTAL.get(), RenderType.getCutout());
 
+		// TERs
 		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.KEY_CREATION_TABLE_TILE_ENTITY_TYPE.get(), KeyCreationTableRenderer::new);
 	}
 }

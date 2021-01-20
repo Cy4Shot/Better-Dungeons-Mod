@@ -10,7 +10,7 @@
 					"block": "betterdungeons:tough_stone"
 				}
 			],
-			"biome": "minecraft:the_void",
+			"biome": "betterdungeons:dungeon_biome",
 			"structures": {
 				"structures": {
 				}

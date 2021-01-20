@@ -3,11 +3,12 @@ package com.cy4.betterdungeons.common.world.spawner;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
+import com.cy4.betterdungeons.core.config.config.DungeonMobsConfig;
 import com.cy4.betterdungeons.core.init.DimensionInit;
 import com.cy4.betterdungeons.core.network.stats.DungeonRun;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
@@ -22,13 +23,19 @@ public class DungeonSpawner {
 
 	private final DungeonRun raid;
 	private List<LivingEntity> mobs = new ArrayList<>();
+	public int maxMobs;
 
 	public DungeonSpawner(DungeonRun raid) {
 		this.raid = raid;
 	}
 
+	public void init() {
+		DungeonMobsConfig.Level config = DungeonsConfig.DUNGEON_MOBS.getForLevel(this.raid.level);
+		this.maxMobs = config.MOB_MISC.MAX_MOBS;
+	}
+
 	public int getMaxMobs() {
-		return DungeonsConfig.DUNGEON_MOBS.getForLevel(this.raid.level).MAX_MOBS;
+		return this.maxMobs;
 	}
 
 	public void tick(ServerPlayerEntity player) {
@@ -38,7 +45,7 @@ public class DungeonSpawner {
 			return;
 
 		this.mobs.removeIf(entity -> {
-			if (this.raid.won || entity.getDistanceSq(player) > 24 * 24) {
+			if (entity.getDistanceSq(player) > 24 * 24) {
 				entity.remove();
 				return true;
 			}
@@ -46,11 +53,13 @@ public class DungeonSpawner {
 			return false;
 		});
 
+		BetterDungeons.LOGGER.info(this.getMaxMobs());
+
 		if (this.mobs.size() >= this.getMaxMobs())
 			return;
 
 		List<BlockPos> spaces = this.getSpawningSpaces(player);
-
+		
 		while (this.mobs.size() < this.getMaxMobs() && spaces.size() > 0) {
 			BlockPos pos = spaces.remove(player.getServerWorld().getRandom().nextInt(spaces.size()));
 			this.spawn(player.getServerWorld(), pos);
@@ -92,10 +101,10 @@ public class DungeonSpawner {
 	}
 
 	public void spawn(ServerWorld world, BlockPos pos) {
-		Entity e = DungeonsConfig.DUNGEON_MOBS.getForLevel(this.raid.level).getRandomMob(world.rand).create(world);
-
-		if (e instanceof LivingEntity) {
-			LivingEntity entity = (LivingEntity) e;
+		LivingEntity entity = DungeonsConfig.DUNGEON_MOBS.getForLevel(this.raid.level).MOB_POOL.getRandom(world.rand).create(world);
+		BetterDungeons.LOGGER.info("Spawn Entity");
+		if (entity != null) {
+			BetterDungeons.LOGGER.info("Entity Non Null");
 			entity.setLocationAndAngles(pos.getX() + 0.5F, pos.getY() + 0.2F, pos.getZ() + 0.5F, 0.0F, 0.0F);
 			world.summonEntity(entity);
 
@@ -104,7 +113,6 @@ public class DungeonSpawner {
 				((MobEntity) entity).onInitialSpawn(world, new DifficultyInstance(Difficulty.PEACEFUL, 13000L, 0L, 0L),
 						SpawnReason.STRUCTURE, null, null);
 			}
-
 			this.mobs.add(entity);
 		}
 	}

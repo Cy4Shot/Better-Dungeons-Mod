@@ -79,7 +79,7 @@ public class BetterDungeons {
 	}
 
 	public void onBiomeLoad(BiomeLoadingEvent event) {
-		if (event.getName().equals(new ResourceLocation(MOD_ID, "dungeon"))) {
+		if (event.getName().equals(new ResourceLocation(MOD_ID, "dungeon_biome"))) {
 			event.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, FeatureInit.BREADCRUMB_CHEST);
 		}
 	}
