@@ -1,6 +1,6 @@
 {
 	"name": "Better Dungeons",
-	"landing_text": "Hello! Welcome to a guide on the $(#d000ff)Better Dungeons$() Mod / Modpack! Please see $(l:a_journeys_beginning)The Journey's Beginning$() to get started.",
+	"landing_text": "Hello! Welcome to a guide on the $(#d000ff)Better Dungeons$() Mod / Modpack! Please see $(l:getting_started/a_journeys_beginning)The Journey's Beginning$() to get started.",
 	"subtitle": "A Guide To Dungeons",
 	"creative_tab": "better_dungeons",
 	"show_progress": false,
