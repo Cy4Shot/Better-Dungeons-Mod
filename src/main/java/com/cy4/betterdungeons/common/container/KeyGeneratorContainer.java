@@ -2,7 +2,7 @@ package com.cy4.betterdungeons.common.container;
 
 import java.util.Objects;
 
-import com.cy4.betterdungeons.common.container.slot.KeyGeneratorSlot;
+import com.cy4.betterdungeons.common.container.slot.NonValidSlot;
 import com.cy4.betterdungeons.common.te.KeyGeneratorTileEntity;
 import com.cy4.betterdungeons.core.init.BlockInit;
 import com.cy4.betterdungeons.core.init.ContainerTypesInit;
@@ -27,7 +27,7 @@ public class KeyGeneratorContainer extends Container {
 		this.tileEntity = tileEntity;
 		this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
 
-		this.addSlot(new KeyGeneratorSlot((IInventory) tileEntity, 0, 80, 35));
+		this.addSlot(new NonValidSlot((IInventory) tileEntity, 0, 80, 35));
 
 		// Main Player Inventory
 		for (int playerInvRow = 0; playerInvRow < 3; playerInvRow++) {

@@ -2,11 +2,14 @@ package com.cy4.betterdungeons.core.util;
 
 import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.client.overlay.DungeonLevelOverlay;
+import com.cy4.betterdungeons.client.screen.DungeonMerchantScreen;
 import com.cy4.betterdungeons.client.screen.KeyGeneratorScreen;
-import com.cy4.betterdungeons.client.screen.PlayerUpgradeScreen;
+import com.cy4.betterdungeons.client.screen.PlayerRewardScreen;
+import com.cy4.betterdungeons.client.screen.UpgradeTreeScreen;
 import com.cy4.betterdungeons.client.ter.KeyCreationTableRenderer;
 import com.cy4.betterdungeons.core.init.BlockInit;
 import com.cy4.betterdungeons.core.init.ContainerTypesInit;
+import com.cy4.betterdungeons.core.init.KeybindInit;
 import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
 
 import net.minecraft.client.gui.ScreenManager;
@@ -25,12 +28,17 @@ public class ClientEventBusSubscriber {
 
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
+		// Keybindings
+		KeybindInit.register(event);
+
 		// Overlays
 		MinecraftForge.EVENT_BUS.register(DungeonLevelOverlay.class);
 
 		// Screens
 		ScreenManager.registerFactory(ContainerTypesInit.KEY_GENERATOR_CONTAINER.get(), KeyGeneratorScreen::new);
-		ScreenManager.registerFactory(ContainerTypesInit.UPGRADE_CONTAINER.get(), PlayerUpgradeScreen::new);
+		ScreenManager.registerFactory(ContainerTypesInit.UPGRADE_CONTAINER.get(), PlayerRewardScreen::new);
+		ScreenManager.registerFactory(ContainerTypesInit.DUNGEON_MERCHANT_CONTAINER.get(), DungeonMerchantScreen::new);
+		ScreenManager.registerFactory(ContainerTypesInit.UPGRADE_TREE_CONTAINER.get(), UpgradeTreeScreen::new);
 
 		// Render Layers
 		RenderTypeLookup.setRenderLayer(BlockInit.DUNGEON_PORTAL.get(), RenderType.getTranslucent());

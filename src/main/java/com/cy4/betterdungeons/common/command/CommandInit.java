@@ -3,6 +3,7 @@ package com.cy4.betterdungeons.common.command;
 import java.util.ArrayList;
 
 import com.cy4.betterdungeons.common.command.impl.DungeonXpCommand;
+import com.cy4.betterdungeons.common.command.impl.GiveMerchantCommand;
 import com.cy4.betterdungeons.common.command.impl.TemplateCommand;
 import com.mojang.brigadier.CommandDispatcher;
 
@@ -18,6 +19,7 @@ public class CommandInit {
 
         commands.add(new TemplateCommand("template", 4, true));
         commands.add(new DungeonXpCommand("dungeonxp", 4, true));
+        commands.add(new GiveMerchantCommand("givemerchant", 4, true));
 
         commands.forEach((cmd) -> {
             if (cmd.isEnabled() && cmd.setExecution() != null) {

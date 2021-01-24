@@ -1,4 +1,5 @@
 {
+	"type": "minecraft:chest",
 	"pools": [
 		{
 			"rolls": {
@@ -1615,6 +1616,26 @@
 						{
 							"condition": "minecraft:random_chance",
 							"chance": 0.4
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 4,
+					"name": "betterdungeons:dungeon_coin",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1,
+								"max": 2
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.5
 						}
 					]
 				}

@@ -1,11 +1,13 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://dist.creeper.host/Sponge/maven' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+'
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 
@@ -24,6 +26,11 @@ repositories {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+mixin {
+    add sourceSets.main, "betterdungeons.refmap.json"
+}
 
 version = '1.0'
 group = 'com.cy4.betterdungeons'
@@ -41,6 +48,7 @@ minecraft {
         client {
             workingDirectory project.file('run')
             properties 'mixin.env.disableRefMap': 'true'
+            arg "-mixin.config="+archivesBaseName+".mixins.json"
             mods {
                 betterdungeons {
                     source sourceSets.main
@@ -50,16 +58,8 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            mods {
-                betterdungeons {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            properties 'mixin.env.disableRefMap': 'true'
+            arg "-mixin.config="+archivesBaseName+".mixins.json"
             mods {
                 betterdungeons {
                     source sourceSets.main
@@ -73,6 +73,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
   minecraft 'net.minecraftforge:forge:1.16.4-35.1.4'
+  annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
   
   // There are a lot of dependencies. Its for loot tables, ill delete them later.
   
@@ -97,10 +98,7 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:cc-69162:3155824") // CofH Core
   runtimeOnly fg.deobf("curse.maven:te-69163:3155832") // Thermal Expansion
   runtimeOnly fg.deobf("curse.maven:tf-222880:3155830") // Thermal Foundation
-  runtimeOnly fg.deobf("curse.maven:ti-291737:3156588") // Thermal Innovation
-  runtimeOnly fg.deobf("curse.maven:td-231951:3141693") // Thermal Dynamics
   runtimeOnly fg.deobf("curse.maven:mk-268560:3100510") // Mekanism
-  runtimeOnly fg.deobf("curse.maven:mt-268567:3100513") // Mekanism Tools
   runtimeOnly fg.deobf("curse.maven:mg-268566:3100512") // Mekanism Generators
   runtimeOnly fg.deobf("curse.maven:bs-228525:3133712") // Bookshelf
   runtimeOnly fg.deobf("curse.maven:rl-393149:3112989") // Runelic
@@ -110,19 +108,23 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:tm-254268:3170451") // TorchMaster
   runtimeOnly fg.deobf("curse.maven:mb-324985:3055811") // Metal Barrels
   runtimeOnly fg.deobf("curse.maven:sb-311595:3076926") // Simply Backpacks
-  runtimeOnly fg.deobf("curse.maven:ae-223794:3106770") // AE2
+  runtimeOnly fg.deobf("curse.maven:ae-223794:3173512") // AE2
+  runtimeOnly fg.deobf("curse.maven:be-428877:3162743") // Better End
+  runtimeOnly fg.deobf("curse.maven:ms-310494:3055694") // Masonry
+  runtimeOnly fg.deobf("curse.maven:oe-250832:3171469") // Open Blocks: Elevator
 }
 
 jar {
     manifest {
         attributes([
-            "Specification-Title": "betterdungeons",
-            "Specification-Vendor": "betterdungeonsareus",
-            "Specification-Version": "1", // We are version 1 of ourselves
+            "Specification-Title": "BetterDungeons",
+            "Specification-Vendor": "Cy4",
+            "Specification-Version": "1",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"betterdungeonsareus",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Vendor" :"Cy4",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "betterdungeons.mixins.json"
         ])
     }
 }

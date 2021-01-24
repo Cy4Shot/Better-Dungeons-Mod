@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
-import com.cy4.betterdungeons.common.container.UpgradeContainer;
+import com.cy4.betterdungeons.common.container.RewardContainer;
 import com.cy4.betterdungeons.common.upgrade.UpgradeTree;
 import com.cy4.betterdungeons.core.network.data.PlayerUpgradeData;
 
@@ -46,13 +46,13 @@ public class OpenUpgradeMenuMessage {
                     new INamedContainerProvider() {
                         @Override
                         public ITextComponent getDisplayName() {
-                            return new TranslationTextComponent("container.betterdungeons.skill_tree");
+                            return new TranslationTextComponent("container.betterdungeons.reward_tree");
                         }
 
                         @Nullable
                         @Override
                         public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                            return new UpgradeContainer(i, upgradeTree);
+                            return new RewardContainer(i, upgradeTree);
                         }
                     },
                     (buffer) -> {

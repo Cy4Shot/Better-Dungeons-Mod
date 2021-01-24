@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SSS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:niazite_piece"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:niazite_shard",
+		"count": 1
+	}
+}

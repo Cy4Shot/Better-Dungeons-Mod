@@ -11,8 +11,8 @@
     </mapAttribute>
     <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.buildship.core.classpathprovider"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="net.minecraftforge.userdev.LaunchTesting"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value=""/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-mixin.config=betterdungeons.mixins.json"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Better Dungeons Mod"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=""/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dmixin.env.disableRefMap=true"/>
     <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="D:\My-Programs\Minecraft Modding\Better Dungeons\Better Dungeons Mod\run"/>
 </launchConfiguration>

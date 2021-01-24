@@ -1,6 +1,7 @@
 package com.cy4.betterdungeons.core.init;
 
 import com.cy4.betterdungeons.BetterDungeons;
+import com.cy4.betterdungeons.common.te.DungeonMerchantTileEntity;
 import com.cy4.betterdungeons.common.te.KeyCreationTableTileEntity;
 import com.cy4.betterdungeons.common.te.KeyGeneratorTileEntity;
 
@@ -21,4 +22,8 @@ public class TileEntityTypesInit {
 	public static final RegistryObject<TileEntityType<KeyGeneratorTileEntity>> KEY_GENERATOR_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
 			.register("key_generator", () -> TileEntityType.Builder
 					.create(KeyGeneratorTileEntity::new, BlockInit.KEY_GENERATOR.get()).build(null));
+	
+	public static final RegistryObject<TileEntityType<DungeonMerchantTileEntity>> DUNGEON_MERCHANT_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
+			.register("dungeon_merchant", () -> TileEntityType.Builder
+					.create(DungeonMerchantTileEntity::new, BlockInit.DUNGEON_MERCHANT.get()).build(null));
 }

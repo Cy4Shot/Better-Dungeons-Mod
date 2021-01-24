@@ -3,7 +3,10 @@ package com.cy4.betterdungeons.core.network;
 import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.core.network.message.DungeonRunTickMessage;
 import com.cy4.betterdungeons.core.network.message.DungeonsLevelMessage;
+import com.cy4.betterdungeons.core.network.message.MerchantUIMessage;
 import com.cy4.betterdungeons.core.network.message.OpenUpgradeMenuMessage;
+import com.cy4.betterdungeons.core.network.message.OpenUpgradeTreeMessage;
+import com.cy4.betterdungeons.core.network.message.PlayerUpgradeMessage;
 import com.cy4.betterdungeons.core.network.message.RewardMessage;
 
 import net.minecraft.util.ResourceLocation;
@@ -25,12 +28,20 @@ public class DungeonsNetwork {
 
 		CHANNEL.registerMessage(1, OpenUpgradeMenuMessage.class, OpenUpgradeMenuMessage::encode, OpenUpgradeMenuMessage::decode,
 				OpenUpgradeMenuMessage::handle);
-		
-		CHANNEL.registerMessage(2, RewardMessage.class, RewardMessage::encode, RewardMessage::decode,
-				RewardMessage::handle);
-		
+
+		CHANNEL.registerMessage(2, RewardMessage.class, RewardMessage::encode, RewardMessage::decode, RewardMessage::handle);
+
 		CHANNEL.registerMessage(3, DungeonRunTickMessage.class, DungeonRunTickMessage::encode, DungeonRunTickMessage::decode,
 				DungeonRunTickMessage::handle);
+
+		CHANNEL.registerMessage(4, MerchantUIMessage.class, MerchantUIMessage::encode, MerchantUIMessage::decode,
+				MerchantUIMessage::handle);
+
+		CHANNEL.registerMessage(5, PlayerUpgradeMessage.class, PlayerUpgradeMessage::encode, PlayerUpgradeMessage::decode,
+				PlayerUpgradeMessage::handle);
+
+		CHANNEL.registerMessage(6, OpenUpgradeTreeMessage.class, OpenUpgradeTreeMessage::encode, OpenUpgradeTreeMessage::decode,
+				OpenUpgradeTreeMessage::handle);
 	}
 
 }

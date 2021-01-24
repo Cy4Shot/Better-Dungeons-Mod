@@ -1,0 +1,677 @@
+{
+	"TRADES": [
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:enchanted_golden_apple",
+				"amount": 1
+			},
+			"max_trades": 5,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:golden_apple",
+				"amount": 8
+			},
+			"max_trades": 5,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:andesite_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:granite_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:diorite_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:stone_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:netherrack_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:cobblestone_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:soulsand_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:sand_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:gravel_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:obsidian_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:oak_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:birch_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:spruce_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:dark_oak_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:acacia_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:jungle_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:enchanted_golden_apple",
+				"amount": 1
+			},
+			"max_trades": 5,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:golden_apple",
+				"amount": 8
+			},
+			"max_trades": 5,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:andesite_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:granite_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:diorite_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:stone_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:netherrack_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:cobblestone_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:soulsand_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:sand_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:gravel_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "compressium:obsidian_2",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:oak_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:birch_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:spruce_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:dark_oak_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:acacia_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 1
+			},
+			"sell": {
+				"id": "minecraft:jungle_log",
+				"amount": 64
+			},
+			"max_trades": 16,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:niazite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:idlite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:thalamite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:diginite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:blocite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:grindite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:turnite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "betterdungeons:soulite_piece",
+				"amount": 1
+			},
+			"max_trades": 3,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 16
+			},
+			"sell": {
+				"id": "betterdungeons:empty_key",
+				"amount": 1
+			},
+			"max_trades": 1,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 16
+			},
+			"sell": {
+				"id": "betterdungeons:empty_key",
+				"amount": 1
+			},
+			"max_trades": 1,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 16
+			},
+			"sell": {
+				"id": "betterdungeons:empty_key",
+				"amount": 1
+			},
+			"max_trades": 1,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 16
+			},
+			"sell": {
+				"id": "betterdungeons:empty_key",
+				"amount": 1
+			},
+			"max_trades": 1,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 16
+			},
+			"sell": {
+				"id": "betterdungeons:empty_key",
+				"amount": 1
+			},
+			"max_trades": 1,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 16
+			},
+			"sell": {
+				"id": "betterdungeons:empty_key",
+				"amount": 1
+			},
+			"max_trades": 1,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "minecraft:ancient_debris",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "minecraft:ancient_debris",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "minecraft:ancient_debris",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 4
+			},
+			"sell": {
+				"id": "minecraft:ancient_debris",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "betterdungeons:dungeon_coin",
+				"amount": 12
+			},
+			"sell": {
+				"id": "minecraft:netherite_ingot",
+				"amount": 1
+			},
+			"max_trades": 2,
+			"times_traded": 0
+		},
+		{
+			"buy": {
+				"id": "minecraft:enchanted_golden_apple",
+				"amount": 8
+			},
+			"sell": {
+				"id": "minecraft:stick",
+				"nbt": "{ench:[{lvl:10,id:\"minecraft:knockback\"}],Enchantments:[{lvl:10,id:\"minecraft:knockback\"}]}",
+				"amount": 1
+			},
+			"max_trades": 5,
+			"times_traded": 0
+		}
+	]
+}

@@ -3,7 +3,7 @@ package com.cy4.betterdungeons.client.screen.util;
 import java.util.Collections;
 
 import com.cy4.betterdungeons.BetterDungeons;
-import com.cy4.betterdungeons.client.screen.PlayerUpgradeScreen;
+import com.cy4.betterdungeons.client.screen.PlayerRewardScreen;
 import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.message.RewardMessage;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -21,10 +21,10 @@ public class UpgradeButton extends Button {
 	public static final int BUTTON_SIZE = 32;
 	public static final int ICON_SIZE = 16;
 
-	private PlayerUpgradeScreen screen;
+	private PlayerRewardScreen screen;
 	private Block reward;
 
-	public UpgradeButton(int x, int y, PlayerUpgradeScreen screen, Block reward) {
+	public UpgradeButton(int x, int y, PlayerRewardScreen screen, Block reward) {
 		super(x, y, BUTTON_SIZE, BUTTON_SIZE, StringTextComponent.EMPTY, button -> {
 			upgrade(screen, reward);
 		});
@@ -32,7 +32,7 @@ public class UpgradeButton extends Button {
 		this.reward = reward;
 	}
 
-	private static void upgrade(PlayerUpgradeScreen screen2, Block reward) {
+	private static void upgrade(PlayerRewardScreen screen2, Block reward) {
 		DungeonsNetwork.CHANNEL.sendToServer(new RewardMessage(reward));
 		screen2.closeScreen();
 	}

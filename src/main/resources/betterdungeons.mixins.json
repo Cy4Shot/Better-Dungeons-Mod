@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.cy4.betterdungeons.core.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "betterdungeons.refmap.json",
+	"mixins": [
+		"MixinServerWorld",
+		"MixinFallingBlock"
+	],
+	"client": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"minVersion": "0.8"
+}

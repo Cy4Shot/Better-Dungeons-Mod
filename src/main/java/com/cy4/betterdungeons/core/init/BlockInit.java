@@ -2,6 +2,7 @@ package com.cy4.betterdungeons.core.init;
 
 import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.common.block.DropSelfBlock;
+import com.cy4.betterdungeons.common.block.DungeonMerchantBlock;
 import com.cy4.betterdungeons.common.block.DungeonPortalBlock;
 import com.cy4.betterdungeons.common.block.KeyCreationTable;
 import com.cy4.betterdungeons.common.block.KeyGeneratorBlock;
@@ -35,6 +36,7 @@ public class BlockInit {
 	public static final RegistryObject<Block> DUNGEON_PORTAL = BLOCKS.register("dungeon_portal", () -> new DungeonPortalBlock());
 	public static final RegistryObject<Block> KEY_CREATION_TABLE = BLOCKS.register("key_creation_table", () -> new KeyCreationTable());
 	public static final RegistryObject<Block> KEY_GENERATOR = BLOCKS.register("key_generator", () -> new KeyGeneratorBlock());
+	public static final RegistryObject<Block> DUNGEON_MERCHANT = BLOCKS.register("dungeon_merchant", () -> new DungeonMerchantBlock());
 
 	public static final RegistryObject<Block> NIAZITE_SHARD = BLOCKS.register("niazite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> IDLITE_SHARD = BLOCKS.register("idlite_shard", () -> new ShardBlock());

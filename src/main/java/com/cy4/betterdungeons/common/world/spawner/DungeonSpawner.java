@@ -59,7 +59,7 @@ public class DungeonSpawner {
 			return;
 
 		List<BlockPos> spaces = this.getSpawningSpaces(player);
-		
+
 		while (this.mobs.size() < this.getMaxMobs() && spaces.size() > 0) {
 			BlockPos pos = spaces.remove(player.getServerWorld().getRandom().nextInt(spaces.size()));
 			this.spawn(player.getServerWorld(), pos);
