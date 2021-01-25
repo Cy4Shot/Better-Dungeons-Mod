@@ -1,5 +1,5 @@
 {
-  "type": "bonsaitrees2:sapling/quark/lavender_blossom",
+  "type": "betterdungeons:sapling/quark/lavender_blossom",
   "version": 3,
   "ref": {
     "a": {"block":"minecraft:spruce_log","properties":{"axis":"y"}},

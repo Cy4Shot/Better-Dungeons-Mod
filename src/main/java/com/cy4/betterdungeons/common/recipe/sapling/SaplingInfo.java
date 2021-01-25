@@ -84,7 +84,7 @@ public class SaplingInfo extends RecipeData {
 
     public String serializePretty() {
         JsonObject result = new JsonObject();
-        result.addProperty("type", "bonsaitrees2:sapling");
+        result.addProperty("type", "betterdungeons:sapling");
 
         JsonObject saplingObj = new JsonObject();
         saplingObj.addProperty("item", this.sapling.getItem().getRegistryName().toString());

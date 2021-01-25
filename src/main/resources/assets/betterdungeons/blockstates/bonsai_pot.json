@@ -1,5 +1,6 @@
 {
 	"variants": {
-		"": { "model": "betterdungeons:block/bonsai_pot" }
+		"waterlogged=true": { "model": "betterdungeons:block/bonsai_pot" },
+		"waterlogged=false": { "model": "betterdungeons:block/bonsai_pot" }
 	}
 }

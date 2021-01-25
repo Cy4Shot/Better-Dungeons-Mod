@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.cy4.betterdungeons.common.command.CommandInit;
+import com.cy4.betterdungeons.common.event.CompatRegistryEvents;
 import com.cy4.betterdungeons.common.event.InputEvents;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.init.BlockInit;
@@ -56,6 +57,7 @@ public class BetterDungeons {
 
 		// Register to Event Bus
 		MinecraftForge.EVENT_BUS.register(InputEvents.class);
+		MinecraftForge.EVENT_BUS.register(new CompatRegistryEvents());
 		MinecraftForge.EVENT_BUS.register(this);
 
 		// Add listners to event bus

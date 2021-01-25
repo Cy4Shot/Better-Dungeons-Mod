@@ -315,4 +315,6 @@ public class KeyCreationTableTileEntity extends TileEntity implements ITickableT
 	public HashMap<UUID, KeyCreationTableRecipe> getNearbyPlayerRecipes() {
 		return nearbyPlayerRecipes;
 	}
+	
+	
 }

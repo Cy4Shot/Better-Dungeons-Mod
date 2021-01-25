@@ -1,8 +1,7 @@
 {
-	"credit": "Model From Bonsai Trees 2",
 	"textures": {
 		"0": "betterdungeons:blocks/bonsai_pot",
-		"particle": "betterdungeons:blocks:blocks/bonsai_pot"
+		"particle": "betterdungeons:blocks/bonsai_pot"
 	},
 	"elements": [
 		{

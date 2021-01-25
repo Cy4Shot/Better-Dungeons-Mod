@@ -2,6 +2,8 @@ package com.cy4.betterdungeons.common.te;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.cy4.betterdungeons.common.recipe.sapling.SaplingInfo;
 import com.cy4.betterdungeons.common.recipe.soil.SoilInfo;
 import com.cy4.betterdungeons.core.init.RecipesInit;
@@ -11,6 +13,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -158,6 +163,8 @@ public class BonsaiPotTileEntity extends TileEntity implements ITickableTileEnti
 			this.setGrowTicks(0);
 			return;
 		}
+		
+		notifyClients();
 
 		if (canGrowIntoBlockAbove()) {
 			if (getProgress() < 1.0f) {
@@ -273,6 +280,59 @@ public class BonsaiPotTileEntity extends TileEntity implements ITickableTileEnti
 	}
 
 	public void notifyClients() {
-		world.notifyBlockUpdate(this.pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+		this.world.notifyBlockUpdate(pos, getBlockState(), getBlockState(), 3);
+		this.world.notifyNeighborsOfStateChange(pos, this.getBlockState().getBlock());
+		markDirty();
+	}
+
+	@Override
+	public CompoundNBT write(CompoundNBT compound) {
+		compound.putInt("modelRotation", modelRotation);
+		compound.putInt("growTicks", growTicks);
+		compound.putInt("requiredTicks", requiredTicks);
+		compound.putString("treeId", treeId == null ? "" : treeId.toString());
+		compound.put("soilStack", soilStack.serializeNBT());
+		compound.put("saplingStack", saplingStack.serializeNBT());
+		return super.write(compound);
+	}
+
+	@Override
+	public void read(BlockState state, CompoundNBT compound) {
+		modelRotation = compound.getInt("modelRotation");
+		growTicks = compound.getInt("growTicks");
+		requiredTicks = compound.getInt("requiredTicks");
+		treeId = compound.getString("treeId") == "" ? null : new ResourceLocation(compound.getString("treeId"));
+		soilStack = ItemStack.read(compound.getCompound("soilStack"));
+		saplingStack = ItemStack.read(compound.getCompound("saplingStack"));
+		super.read(state, compound);
+	}
+
+	@Override
+	public CompoundNBT getUpdateTag() {
+		CompoundNBT tag = super.getUpdateTag();
+		tag.putInt("modelRotation", modelRotation);
+		tag.putInt("growTicks", growTicks);
+		tag.putInt("requiredTicks", requiredTicks);
+		tag.putString("treeId", treeId == null ? "" : treeId.toString());
+		tag.put("soilStack", soilStack.serializeNBT());
+		tag.put("saplingStack", saplingStack.serializeNBT());
+		return tag;
+	}
+
+	@Override
+	public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+		read(state, tag);
+	}
+
+	@Nullable
+	@Override
+	public SUpdateTileEntityPacket getUpdatePacket() {
+		return new SUpdateTileEntityPacket(pos, 1, getUpdateTag());
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+		CompoundNBT tag = pkt.getNbtCompound();
+		handleUpdateTag(getBlockState(), tag);
 	}
 }

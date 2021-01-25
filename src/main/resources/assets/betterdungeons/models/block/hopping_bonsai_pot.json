@@ -2,7 +2,7 @@
 	"credit": "Taken from Bonsai Trees 2",
 	"textures": {
 		"0": "betterdungeons:blocks/hopping_bonsai_pot",
-		"particle": "betterdungeons:blocks:blocks/hopping_bonsai_pot"
+		"particle": "betterdungeons:blocks/hopping_bonsai_pot"
 	},
 	"elements": [
 		{

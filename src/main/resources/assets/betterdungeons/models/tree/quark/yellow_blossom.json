@@ -1,5 +1,5 @@
 {
-  "type": "bonsaitrees2:sapling/quark/yellow_blossom",
+  "type": "betterdungeons:sapling/quark/yellow_blossom",
   "version": 3,
   "ref": {
     "a": {"block":"quark:yellow_blossom_leaves","properties":{"distance":"2","persistent":"false"}},

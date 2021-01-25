@@ -1,5 +1,5 @@
 {
-  "type": "bonsaitrees2:sapling/quark/pink_blossom",
+  "type": "betterdungeons:sapling/quark/pink_blossom",
   "version": 3,
   "ref": {
     "a": {"block":"minecraft:spruce_log","properties":{"axis":"z"}},

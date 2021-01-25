@@ -29,8 +29,6 @@ public class BonsaiPotTileEntityRenderer extends TileEntityRenderer<BonsaiPotTil
 
 	private void renderShape(BonsaiPotTileEntity tile, float partialTicks, MatrixStack matrix, IRenderTypeBuffer buffer,
 			int combinedLightIn, int combinedOverlayIn) {
-		// TODO: VBOs or DisplayLists
-
 		if (!tile.hasSapling()) {
 			return;
 		}
