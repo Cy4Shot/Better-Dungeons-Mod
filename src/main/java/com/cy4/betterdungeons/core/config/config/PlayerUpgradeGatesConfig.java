@@ -26,33 +26,8 @@ public class PlayerUpgradeGatesConfig extends Config {
 
 		// Talents
 		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setLockedBy(DungeonsConfig.UPGRADES.REGENERATION_1.getParentName());
-		UPGRADE_GATES.addEntry(DungeonsConfig.UPGRADES.HASTE_1.getParentName(), gateEntry);
-
-		// Researches
-		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setDependsOn("Storage Noob");
-		UPGRADE_GATES.addEntry("Storage Master", gateEntry);
-
-		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setDependsOn("Storage Master");
-		UPGRADE_GATES.addEntry("Storage Refined", gateEntry);
-
-		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setDependsOn("Storage Refined");
-		UPGRADE_GATES.addEntry("Storage Energistic", gateEntry);
-
-		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setDependsOn("Storage Energistic");
-		UPGRADE_GATES.addEntry("Storage Enthusiast", gateEntry);
-
-		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setDependsOn("Decorator");
-		UPGRADE_GATES.addEntry("Decorator Pro", gateEntry);
-
-		gateEntry = new UpgradeGates.Entry();
-		gateEntry.setDependsOn("Tech Freak");
-		UPGRADE_GATES.addEntry("Nuclear Power", gateEntry);
+		gateEntry.setDependsOn(DungeonsConfig.UPGRADES.REGENERATION.getParentName());
+		UPGRADE_GATES.addEntry(DungeonsConfig.UPGRADES.HASTE.getParentName(), gateEntry);
 	}
 
 }

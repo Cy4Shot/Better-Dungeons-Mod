@@ -29,16 +29,16 @@ public class UpgradesGuiConfig extends Config {
 
 		style = new UpgradeStyle(70 * 1, 0, 16 * 0, 0);
 		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.HASTE_1.getParentName(), style);
+		styles.put(DungeonsConfig.UPGRADES.HASTE.getParentName(), style);
 		style = new UpgradeStyle(70 * 0, 0, 16 * 1, 0);
 		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.REGENERATION_1.getParentName(), style);
+		styles.put(DungeonsConfig.UPGRADES.REGENERATION.getParentName(), style);
 		style = new UpgradeStyle(70 * 2, 0, 16 * 2, 0);
 		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.RESISTANCE_1.getParentName(), style);
+		styles.put(DungeonsConfig.UPGRADES.RESISTANCE.getParentName(), style);
 		style = new UpgradeStyle(70 * 3, 0, 16 * 3, 0);
 		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.STRENGTH_1.getParentName(), style);
+		styles.put(DungeonsConfig.UPGRADES.STRENGTH.getParentName(), style);
 	}
 
 }

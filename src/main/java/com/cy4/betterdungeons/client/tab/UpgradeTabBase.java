@@ -14,7 +14,7 @@ public abstract class UpgradeTabBase extends Screen {
 
     protected UpgradeTreeScreen parentScreen;
 
-    // HOW TO PATCH SEMI-PERSISTENCY HAXX 101
+    // HOW TO PATCH SEMI-PERSISTENCY HAX 101
     protected static Map<Class<? extends UpgradeTabBase>, Vector2f> persistedTranslations = new HashMap<>();
     protected static Map<Class<? extends UpgradeTabBase>, Float> persistedScales = new HashMap<>();
 

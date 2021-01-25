@@ -35,6 +35,8 @@
 	"block.betterdungeons.turnite_block": "Turnite Block",
 	"block.betterdungeons.soulite_block": "Soulite Block",
 	"block.betterdungeons.phat_crystal": "Phat Crystal",
+	"block.betterdungeons.bonsai_pot": "Bonsai Pot",
+	"block.betterdungeons.hopping_bonsai_pot": "Hopping Bonsai Pot",
 	"itemGroup.better_dungeons": "Better Dungeons",
 	"command.betterdungeons.tp.success": "Template Summoned"
 }

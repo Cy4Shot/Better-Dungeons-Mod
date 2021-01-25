@@ -22,12 +22,12 @@ public class EffectUpgrade extends PlayerUpgrade {
 	private final String type;
 
 	@SuppressWarnings("deprecation")
-	public EffectUpgrade(Effect effect, int amplifier, Type type) {
-		this(Registry.EFFECTS.getKey(effect).toString(), amplifier, type.toString());
+	public EffectUpgrade(int cost, Effect effect, int amplifier, Type type) {
+		this(cost, Registry.EFFECTS.getKey(effect).toString(), amplifier, type.toString());
 	}
 
-	public EffectUpgrade(String effect, int amplifier, String type) {
-		super();
+	public EffectUpgrade(int cost, String effect, int amplifier, String type) {
+		super(cost);
 		this.effect = effect;
 		this.amplifier = amplifier;
 		this.type = type;

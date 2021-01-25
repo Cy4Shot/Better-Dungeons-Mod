@@ -112,6 +112,12 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:be-428877:3162743") // Better End
   runtimeOnly fg.deobf("curse.maven:ms-310494:3055694") // Masonry
   runtimeOnly fg.deobf("curse.maven:oe-250832:3171469") // Open Blocks: Elevator
+  runtimeOnly fg.deobf("curse.maven:pt-238761:3101695") // Pickle Tweaks
+  runtimeOnly fg.deobf("curse.maven:cl-272335:3105891") // Cucumber Library
+  runtimeOnly fg.deobf("curse.maven:sw-413426:3166541") // Subterranean Wilderness
+  runtimeOnly fg.deobf("curse.maven:ybc-340583:3170047") // Yungs Better Caves
+  runtimeOnly fg.deobf("curse.maven:ybm-389665:3175671") // Yungs Better Mineshafts
+  runtimeOnly fg.deobf("curse.maven:ya-421850:3171935") // Yungs API
 }
 
 jar {

@@ -1,6 +1,7 @@
 package com.cy4.betterdungeons.core.init;
 
 import com.cy4.betterdungeons.BetterDungeons;
+import com.cy4.betterdungeons.common.block.BonsaiPotBlock;
 import com.cy4.betterdungeons.common.block.DropSelfBlock;
 import com.cy4.betterdungeons.common.block.DungeonMerchantBlock;
 import com.cy4.betterdungeons.common.block.DungeonPortalBlock;
@@ -46,6 +47,9 @@ public class BlockInit {
 	public static final RegistryObject<Block> GRINDITE_SHARD = BLOCKS.register("grindite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> TURNITE_SHARD = BLOCKS.register("turnite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> SOULITE_SHARD = BLOCKS.register("soulite_shard", () -> new ShardBlock());
+
+	public static final RegistryObject<Block> BONSAI_POT = BLOCKS.register("bonsai_pot", () -> new BonsaiPotBlock(false));
+	public static final RegistryObject<Block> HOPPING_BONSAI_POT = BLOCKS.register("hopping_bonsai_pot", () -> new BonsaiPotBlock(true));
 
 	public static final RegistryObject<Block> PHAT_CRYSTAL = BLOCKS.register("phat_crystal", () -> new ShardBlock());
 

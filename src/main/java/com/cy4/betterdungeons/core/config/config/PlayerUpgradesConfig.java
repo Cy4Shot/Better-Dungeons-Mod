@@ -13,21 +13,21 @@ import net.minecraft.potion.Effects;
 public class PlayerUpgradesConfig extends Config {
 
 	@Expose
-	public UpgradeGroup<EffectUpgrade> HASTE_1;
+	public UpgradeGroup<EffectUpgrade> HASTE;
 	@Expose
-	public UpgradeGroup<EffectUpgrade> REGENERATION_1;
+	public UpgradeGroup<EffectUpgrade> REGENERATION;
 	@Expose
-	public UpgradeGroup<EffectUpgrade> RESISTANCE_1;
+	public UpgradeGroup<EffectUpgrade> RESISTANCE;
 	@Expose
-	public UpgradeGroup<EffectUpgrade> STRENGTH_1;
+	public UpgradeGroup<EffectUpgrade> STRENGTH;
 
 	@Override
 	public String getName() {
-		return "talents";
+		return "upgrades";
 	}
 
 	public List<UpgradeGroup<?>> getAll() {
-		return Arrays.asList(HASTE_1, REGENERATION_1, RESISTANCE_1, STRENGTH_1);
+		return Arrays.asList(HASTE, REGENERATION, RESISTANCE, STRENGTH);
 	}
 
 	public UpgradeGroup<?> getByName(String name) {
@@ -37,10 +37,9 @@ public class PlayerUpgradesConfig extends Config {
 
 	@Override
 	protected void reset() {
-		this.HASTE_1 = UpgradeGroup.ofEffect("Haste", Effects.HASTE, EffectUpgrade.Type.ICON_ONLY, 1);
-		this.REGENERATION_1 = UpgradeGroup.ofEffect("Regeneration", Effects.REGENERATION, EffectUpgrade.Type.ICON_ONLY, 1);
-		this.RESISTANCE_1 = UpgradeGroup.ofEffect("Resistance", Effects.RESISTANCE, EffectUpgrade.Type.ICON_ONLY, 1);
-		this.STRENGTH_1 = UpgradeGroup.ofEffect("Strength", Effects.STRENGTH, EffectUpgrade.Type.ICON_ONLY, 1);
+		this.HASTE = UpgradeGroup.ofEffect("Haste", Effects.HASTE, EffectUpgrade.Type.ICON_ONLY, 6, i -> { if(i < 3)return 2; else if(i == 3)return 3; else return 4; });
+        this.REGENERATION = UpgradeGroup.ofEffect("Regeneration", Effects.REGENERATION, EffectUpgrade.Type.ICON_ONLY, 3, i -> i == 0 ? 10 : 5);
+        this.RESISTANCE = UpgradeGroup.ofEffect("Resistance", Effects.RESISTANCE, EffectUpgrade.Type.ICON_ONLY, 2, i -> 3);
+        this.STRENGTH = UpgradeGroup.ofEffect("Strength", Effects.STRENGTH, EffectUpgrade.Type.ICON_ONLY, 2, i -> 3);
 	}
-
 }

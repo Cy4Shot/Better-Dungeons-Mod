@@ -6,8 +6,8 @@ import net.minecraft.util.ResourceLocation;
 
 public enum UpgradeFrame {
 
-	STAR(new ResourceBoundary(new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/skill-widget.png"), 0, 31, 30, 30)),
-	RECTANGULAR(new ResourceBoundary(new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/skill-widget.png"), 30, 31, 30, 30));
+	STAR(new ResourceBoundary(new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/upgrade_widget.png"), 0, 31, 30, 30)),
+	RECTANGULAR(new ResourceBoundary(new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/upgrade_widget.png"), 30, 31, 30, 30));
 
 	ResourceBoundary resourceBoundary;
 
