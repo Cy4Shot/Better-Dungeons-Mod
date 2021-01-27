@@ -10,7 +10,7 @@ import java.util.HashMap;
 import javax.annotation.Nullable;
 
 import com.cy4.betterdungeons.BetterDungeons;
-import com.cy4.betterdungeons.core.util.GsonHelper;
+import com.cy4.betterdungeons.core.util.json.GsonHelper;
 import com.google.gson.stream.JsonReader;
 
 import net.minecraft.client.Minecraft;

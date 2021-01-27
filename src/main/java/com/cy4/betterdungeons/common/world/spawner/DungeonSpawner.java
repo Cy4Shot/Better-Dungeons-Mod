@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
-import com.cy4.betterdungeons.core.config.config.DungeonMobsConfig;
+import com.cy4.betterdungeons.core.config.type.DungeonMobsConfig;
 import com.cy4.betterdungeons.core.init.DimensionInit;
 import com.cy4.betterdungeons.core.network.stats.DungeonRun;
 

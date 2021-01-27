@@ -30,6 +30,10 @@ public class MerchantWidget extends Widget {
 	public Merchant getTraderCode() {
 		return traderCode;
 	}
+	
+	public void setTraderCode(Merchant m) {
+		this.traderCode = m;
+	}
 
 	public void mouseMoved(double mouseX, double mouseY) {
 

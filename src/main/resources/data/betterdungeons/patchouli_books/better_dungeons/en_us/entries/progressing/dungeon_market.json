@@ -1,0 +1,17 @@
+{
+	"name": "Market and Merchants",
+	"icon": "betterdungeons:merchant",
+	"category": "progressing",
+	"sortnum": 3,
+	"pages": [
+		{
+			"type": "text",
+			"text": "This entry covers the dungeon market and how to use it. Firstly, you will need to obtain $(h)Merchants$() from dungeons and other loot. Merchants sell goods for $(h)Dungeon Coins$(), but they can only be traded with inside of a dungeon market. You can put the merchant into the market by $(h)Shift + Right Clicking$() the dungeon market."
+		},
+		{
+			"type": "crafting",
+			"recipe": "betterdungeons:dungeon_market",
+			"text": "You can also take a merchant out of the dungeon market by shift right clicking the market with an $(h)Empty Hand$(). Happy trading!"
+		}
+	]
+}

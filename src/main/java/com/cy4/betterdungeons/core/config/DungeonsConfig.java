@@ -1,20 +1,20 @@
 package com.cy4.betterdungeons.core.config;
 
-import com.cy4.betterdungeons.core.config.config.BossTreasureCommonConfig;
-import com.cy4.betterdungeons.core.config.config.BossTreasureEpicConfig;
-import com.cy4.betterdungeons.core.config.config.BossTreasureLegendaryConfig;
-import com.cy4.betterdungeons.core.config.config.BossTreasureRareConfig;
-import com.cy4.betterdungeons.core.config.config.DungeonConfig;
-import com.cy4.betterdungeons.core.config.config.DungeonMobsConfig;
-import com.cy4.betterdungeons.core.config.config.KeyCreationTableConfig;
-import com.cy4.betterdungeons.core.config.config.KeyGeneratorConfig;
-import com.cy4.betterdungeons.core.config.config.LevelMetaConfig;
-import com.cy4.betterdungeons.core.config.config.MerchantTradesConfig;
-import com.cy4.betterdungeons.core.config.config.PlayerUpgradeGatesConfig;
-import com.cy4.betterdungeons.core.config.config.PlayerUpgradesConfig;
-import com.cy4.betterdungeons.core.config.config.RarityConfig;
-import com.cy4.betterdungeons.core.config.config.UpgradeDescriptionsConfig;
-import com.cy4.betterdungeons.core.config.config.UpgradesGuiConfig;
+import com.cy4.betterdungeons.core.config.type.BossTreasureCommonConfig;
+import com.cy4.betterdungeons.core.config.type.BossTreasureEpicConfig;
+import com.cy4.betterdungeons.core.config.type.BossTreasureLegendaryConfig;
+import com.cy4.betterdungeons.core.config.type.BossTreasureRareConfig;
+import com.cy4.betterdungeons.core.config.type.DungeonConfig;
+import com.cy4.betterdungeons.core.config.type.DungeonMobsConfig;
+import com.cy4.betterdungeons.core.config.type.KeyCreationTableConfig;
+import com.cy4.betterdungeons.core.config.type.KeyGeneratorConfig;
+import com.cy4.betterdungeons.core.config.type.LevelMetaConfig;
+import com.cy4.betterdungeons.core.config.type.MerchantTradesConfig;
+import com.cy4.betterdungeons.core.config.type.PlayerUpgradeGatesConfig;
+import com.cy4.betterdungeons.core.config.type.PlayerUpgradesConfig;
+import com.cy4.betterdungeons.core.config.type.RarityConfig;
+import com.cy4.betterdungeons.core.config.type.UpgradeDescriptionsConfig;
+import com.cy4.betterdungeons.core.config.type.UpgradesGuiConfig;
 
 public class DungeonsConfig {
 	public static DungeonMobsConfig DUNGEON_MOBS;

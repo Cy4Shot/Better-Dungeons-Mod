@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.cy4.betterdungeons.BetterDungeons;
+import com.cy4.betterdungeons.core.util.json.MCJsonUtils;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;

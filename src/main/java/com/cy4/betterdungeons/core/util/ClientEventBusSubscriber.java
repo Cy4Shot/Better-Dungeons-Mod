@@ -1,6 +1,7 @@
 package com.cy4.betterdungeons.core.util;
 
 import com.cy4.betterdungeons.BetterDungeons;
+import com.cy4.betterdungeons.client.overlay.AbilitiesOverlay;
 import com.cy4.betterdungeons.client.overlay.DungeonLevelOverlay;
 import com.cy4.betterdungeons.client.screen.DungeonMerchantScreen;
 import com.cy4.betterdungeons.client.screen.KeyGeneratorScreen;
@@ -34,6 +35,7 @@ public class ClientEventBusSubscriber {
 
 		// Overlays
 		MinecraftForge.EVENT_BUS.register(DungeonLevelOverlay.class);
+		MinecraftForge.EVENT_BUS.register(AbilitiesOverlay.class);
 
 		// Screens
 		ScreenManager.registerFactory(ContainerTypesInit.KEY_GENERATOR_CONTAINER.get(), KeyGeneratorScreen::new);
@@ -58,6 +60,7 @@ public class ClientEventBusSubscriber {
 		// TERs
 		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.KEY_CREATION_TABLE_TILE_ENTITY_TYPE.get(), KeyCreationTableRenderer::new);
 		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.BONSAI_POT_TILE_ENTITY_TYPE.get(), BonsaiPotTileEntityRenderer::new);
-		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.HOPPING_BONSAI_POT_TILE_ENTITY_TYPE.get(), BonsaiPotTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.HOPPING_BONSAI_POT_TILE_ENTITY_TYPE.get(),
+				BonsaiPotTileEntityRenderer::new);
 	}
 }

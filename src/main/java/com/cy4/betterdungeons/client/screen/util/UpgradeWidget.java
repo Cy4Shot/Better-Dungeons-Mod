@@ -23,7 +23,7 @@ public class UpgradeWidget extends Widget {
 
 	private static final ResourceLocation UPGRADE_WIDGET_RESOURCE = new ResourceLocation(BetterDungeons.MOD_ID,
 			"textures/gui/upgrade_widget.png");
-	private static final ResourceLocation TALENTS_RESOURCE = new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/upgrade_icons.png");
+	private static final ResourceLocation TALENTS_RESOURCE = new ResourceLocation(BetterDungeons.MOD_ID, "textures/gui/upgrade_sprites.png");
 
 	UpgradeGroup<?> talentGroup;
 	UpgradeTree talentTree;

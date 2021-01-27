@@ -8,7 +8,7 @@ import java.util.Set;
 
 import com.cy4.betterdungeons.common.recipe.RecipeData;
 import com.cy4.betterdungeons.core.init.RecipesInit;
-import com.cy4.betterdungeons.core.util.GsonHelper;
+import com.cy4.betterdungeons.core.util.json.GsonHelper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 

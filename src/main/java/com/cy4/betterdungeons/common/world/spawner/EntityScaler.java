@@ -5,7 +5,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
-import com.cy4.betterdungeons.core.config.config.DungeonMobsConfig;
+import com.cy4.betterdungeons.core.config.type.DungeonMobsConfig;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;

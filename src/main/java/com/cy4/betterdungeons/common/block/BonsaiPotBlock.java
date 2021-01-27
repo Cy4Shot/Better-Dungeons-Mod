@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.cy4.betterdungeons.BetterDungeons;
-import com.cy4.betterdungeons.common.compat.SoilCompatibility;
 import com.cy4.betterdungeons.common.recipe.sapling.SaplingInfo;
+import com.cy4.betterdungeons.common.recipe.soil.SoilCompatibility;
 import com.cy4.betterdungeons.common.recipe.soil.SoilInfo;
 import com.cy4.betterdungeons.common.te.BonsaiPotTileEntity;
 import com.cy4.betterdungeons.core.init.RecipesInit;

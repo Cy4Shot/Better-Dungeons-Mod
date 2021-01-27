@@ -1,0 +1,33 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:niazite_shard"
+		},
+		{
+			"item": "betterdungeons:idlite_shard"
+		},
+		{
+			"item": "betterdungeons:thalamite_shard"
+		},
+		{
+			"item": "betterdungeons:diginite_shard"
+		},
+		{
+			"item": "betterdungeons:blocite_shard"
+		},
+		{
+			"item": "betterdungeons:grindite_shard"
+		},
+		{
+			"item": "betterdungeons:turnite_shard"
+		},
+		{
+			"item": "betterdungeons:soulite_shard"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:phat_crystal",
+		"count": 1
+	}
+}

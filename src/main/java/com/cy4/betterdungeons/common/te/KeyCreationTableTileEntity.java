@@ -13,7 +13,7 @@ import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.init.ItemInit;
 import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
 import com.cy4.betterdungeons.core.network.data.PlayerKeyCreationTableData;
-import com.cy4.betterdungeons.core.util.VectorHelper;
+import com.cy4.betterdungeons.core.util.math.VectorHelper;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;

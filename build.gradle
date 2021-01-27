@@ -84,7 +84,7 @@ dependencies {
   runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48") // Pathcouli
   
   //Cursemaven
-  runtimeOnly fg.deobf("curse.maven:byg-247560:3159758") // Biomes Youll Go
+  runtimeOnly fg.deobf("curse.maven:by-247560:3159758") // Biomes Youll Go
   runtimeOnly fg.deobf("curse.maven:ev-400514:3167251") // Better Villagers
   runtimeOnly fg.deobf("curse.maven:el-274271:3118552") // Enchantment Levels
   runtimeOnly fg.deobf("curse.maven:bg-298187:3144138") // Building Gadgets
@@ -93,10 +93,10 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:vl-245480:3154961") // Valkarie Lib
   runtimeOnly fg.deobf("curse.maven:dg-401247:3155534") // Dungeons Gear
   runtimeOnly fg.deobf("curse.maven:qk-243121:3117057") // Quark 
-  runtimeOnly fg.deobf("curse.maven:arl-250363:3128555") // Auto Reg Lib
+  runtimeOnly fg.deobf("curse.maven:al-250363:3128555") // Auto Reg Lib
   runtimeOnly fg.deobf("curse.maven:ie-231951:3141693") // Immersive Engineering
-  runtimeOnly fg.deobf("curse.maven:cc-69162:3155824") // CofH Core
-  runtimeOnly fg.deobf("curse.maven:te-69163:3155832") // Thermal Expansion
+  runtimeOnly fg.deobf("curse.maven:cca-69162:3155824") // CofH Core
+  runtimeOnly fg.deobf("curse.maven:tea-69163:3155832") // Thermal Expansion
   runtimeOnly fg.deobf("curse.maven:tf-222880:3155830") // Thermal Foundation
   runtimeOnly fg.deobf("curse.maven:mk-268560:3100510") // Mekanism
   runtimeOnly fg.deobf("curse.maven:mg-268566:3100512") // Mekanism Generators
@@ -115,9 +115,11 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:pt-238761:3101695") // Pickle Tweaks
   runtimeOnly fg.deobf("curse.maven:cl-272335:3105891") // Cucumber Library
   runtimeOnly fg.deobf("curse.maven:sw-413426:3166541") // Subterranean Wilderness
-  runtimeOnly fg.deobf("curse.maven:ybc-340583:3170047") // Yungs Better Caves
-  runtimeOnly fg.deobf("curse.maven:ybm-389665:3175671") // Yungs Better Mineshafts
+  runtimeOnly fg.deobf("curse.maven:yc-340583:3170047") // Yungs Better Caves
+  runtimeOnly fg.deobf("curse.maven:ym-389665:3175671") // Yungs Better Mineshafts
   runtimeOnly fg.deobf("curse.maven:ya-421850:3171935") // Yungs API
+  runtimeOnly fg.deobf("curse.maven:ds-335673:3161863") // Dank Storage
+  runtimeOnly fg.deobf("curse.maven:rs-243076:3157354") // Refined Storafe
 }
 
 jar {

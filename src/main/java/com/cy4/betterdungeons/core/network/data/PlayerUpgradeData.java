@@ -27,121 +27,124 @@ public class PlayerUpgradeData extends WorldSavedData {
 
 	protected static final String DATA_NAME = BetterDungeons.MOD_ID + "_PlayerUpgrades";
 
-    private Map<UUID, UpgradeTree> playerMap = new HashMap<>();
+	private Map<UUID, UpgradeTree> playerMap = new HashMap<>();
 
-    public PlayerUpgradeData() {
-        this(DATA_NAME);
-    }
+	public PlayerUpgradeData() {
+		this(DATA_NAME);
+	}
 
-    public PlayerUpgradeData(String name) {
-        super(name);
-    }
+	public PlayerUpgradeData(String name) {
+		super(name);
+	}
 
-    public UpgradeTree getUpgrades(PlayerEntity player) {
-        return this.getUpgrades(player.getUniqueID());
-    }
+	public UpgradeTree getUpgrades(PlayerEntity player) {
+		return this.getUpgrades(player.getUniqueID());
+	}
 
-    public UpgradeTree getUpgrades(UUID uuid) {
-        return this.playerMap.computeIfAbsent(uuid, UpgradeTree::new);
-    }
+	public UpgradeTree getUpgrades(UUID uuid) {
+		return this.playerMap.computeIfAbsent(uuid, UpgradeTree::new);
+	}
 
-    /* ------------------------------- */
+	/* ------------------------------- */
 
-    public PlayerUpgradeData add(ServerPlayerEntity player, UpgradeNode<?>... nodes) {
-        this.getUpgrades(player).add(player.getServer(), nodes);
+	public PlayerUpgradeData add(ServerPlayerEntity player, UpgradeNode<?>... nodes) {
+		this.getUpgrades(player).add(player.getServer(), nodes);
 
-        markDirty();
-        return this;
-    }
+		markDirty();
+		return this;
+	}
 
-    public PlayerUpgradeData remove(ServerPlayerEntity player, UpgradeNode<?>... nodes) {
-        this.getUpgrades(player).remove(player.getServer(), nodes);
+	public PlayerUpgradeData remove(ServerPlayerEntity player, UpgradeNode<?>... nodes) {
+		this.getUpgrades(player).remove(player.getServer(), nodes);
 
-        markDirty();
-        return this;
-    }
+		markDirty();
+		return this;
+	}
 
-    public PlayerUpgradeData upgradeUpgrade(ServerPlayerEntity player, UpgradeNode<?> upgradeNode) {
-        this.getUpgrades(player).upgradeUpgrade(player.getServer(), upgradeNode);
+	public PlayerUpgradeData upgradeUpgrade(ServerPlayerEntity player, UpgradeNode<?> upgradeNode) {
+		this.getUpgrades(player).upgradeUpgrade(player.getServer(), upgradeNode);
 
-        markDirty();
-        return this;
-    }
+		this.getUpgrades(player).sync(player.server);
 
-    public PlayerUpgradeData resetUpgradeTree(ServerPlayerEntity player) {
-        UUID uniqueID = player.getUniqueID();
+		markDirty();
+		return this;
+	}
 
-        UpgradeTree oldUpgradeTree = playerMap.get(uniqueID);
-        if (oldUpgradeTree != null) {
-            for (UpgradeNode<?> node : oldUpgradeTree.getNodes()) {
-                if (node.isLearned())
-                    node.getUpgrade().onRemoved(player);
-            }
-        }
+	public PlayerUpgradeData resetUpgradeTree(ServerPlayerEntity player) {
+		UUID uniqueID = player.getUniqueID();
 
-        UpgradeTree upgradeTree = new UpgradeTree(uniqueID);
-        this.playerMap.put(uniqueID, upgradeTree);
+		UpgradeTree oldUpgradeTree = playerMap.get(uniqueID);
+		if (oldUpgradeTree != null) {
+			for (UpgradeNode<?> node : oldUpgradeTree.getNodes()) {
+				if (node.isLearned())
+					node.getUpgrade().onRemoved(player);
+			}
+		}
 
-        markDirty();
-        return this;
-    }
+		UpgradeTree upgradeTree = new UpgradeTree(uniqueID);
+		this.playerMap.put(uniqueID, upgradeTree);
 
-    /* ------------------------------- */
+		this.getUpgrades(player).sync(player.server);
 
-    public PlayerUpgradeData tick(MinecraftServer server) {
-        this.playerMap.values().forEach(abilityTree -> abilityTree.tick(server));
-        return this;
-    }
+		markDirty();
+		return this;
+	}
 
-    @SubscribeEvent
-    public static void onTick(TickEvent.WorldTickEvent event) {
-        if (event.side == LogicalSide.SERVER) {
-            get((ServerWorld) event.world).tick(((ServerWorld) event.world).getServer());
-        }
-    }
+	/* ------------------------------- */
 
-    @SubscribeEvent
-    public static void onTick(TickEvent.PlayerTickEvent event) {
-        if (event.side == LogicalSide.SERVER) {
-            get((ServerWorld) event.player.world).getUpgrades(event.player);
-        }
-    }
+	public PlayerUpgradeData tick(MinecraftServer server) {
+		this.playerMap.values().forEach(abilityTree -> abilityTree.tick(server));
+		return this;
+	}
 
-    /* ------------------------------- */
+	@SubscribeEvent
+	public static void onWorldTick(TickEvent.WorldTickEvent event) {
+		if (event.side == LogicalSide.SERVER) {
+			get((ServerWorld) event.world).tick(((ServerWorld) event.world).getServer());
+		}
+	}
 
-    @Override
-    public void read(CompoundNBT nbt) {
-        ListNBT playerList = nbt.getList("PlayerEntries", Constants.NBT.TAG_STRING);
-        ListNBT upgradeList = nbt.getList("UpgradeEntries", Constants.NBT.TAG_COMPOUND);
+	@SubscribeEvent
+	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		if (event.side == LogicalSide.SERVER) {
+			get((ServerWorld) event.player.world).getUpgrades(event.player).tick(event);
+		}
+	}
 
-        if (playerList.size() != upgradeList.size()) {
-            throw new IllegalStateException("Map doesn't have the same amount of keys as values");
-        }
+	/* ------------------------------- */
 
-        for (int i = 0; i < playerList.size(); i++) {
-            UUID playerUUID = UUID.fromString(playerList.getString(i));
-            this.getUpgrades(playerUUID).deserializeNBT(upgradeList.getCompound(i));
-        }
-    }
+	@Override
+	public void read(CompoundNBT nbt) {
+		ListNBT playerList = nbt.getList("PlayerEntries", Constants.NBT.TAG_STRING);
+		ListNBT upgradeList = nbt.getList("UpgradeEntries", Constants.NBT.TAG_COMPOUND);
 
-    @Override
-    public CompoundNBT write(CompoundNBT nbt) {
-        ListNBT playerList = new ListNBT();
-        ListNBT upgradeList = new ListNBT();
+		if (playerList.size() != upgradeList.size()) {
+			throw new IllegalStateException("Map doesn't have the same amount of keys as values");
+		}
 
-        this.playerMap.forEach((uuid, abilityTree) -> {
-            playerList.add(StringNBT.valueOf(uuid.toString()));
-            upgradeList.add(abilityTree.serializeNBT());
-        });
+		for (int i = 0; i < playerList.size(); i++) {
+			UUID playerUUID = UUID.fromString(playerList.getString(i));
+			this.getUpgrades(playerUUID).deserializeNBT(upgradeList.getCompound(i));
+		}
+	}
 
-        nbt.put("PlayerEntries", playerList);
-        nbt.put("UpgradeEntries", upgradeList);
+	@Override
+	public CompoundNBT write(CompoundNBT nbt) {
+		ListNBT playerList = new ListNBT();
+		ListNBT upgradeList = new ListNBT();
 
-        return nbt;
-    }
+		this.playerMap.forEach((uuid, abilityTree) -> {
+			playerList.add(StringNBT.valueOf(uuid.toString()));
+			upgradeList.add(abilityTree.serializeNBT());
+		});
 
-    public static PlayerUpgradeData get(ServerWorld world) {
-        return world.getServer().func_241755_D_()
-                .getSavedData().getOrCreate(PlayerUpgradeData::new, DATA_NAME);
-    }
+		nbt.put("PlayerEntries", playerList);
+		nbt.put("UpgradeEntries", upgradeList);
+
+		return nbt;
+	}
+
+	public static PlayerUpgradeData get(ServerWorld world) {
+		return world.getServer().func_241755_D_().getSavedData().getOrCreate(PlayerUpgradeData::new, DATA_NAME);
+	}
 }

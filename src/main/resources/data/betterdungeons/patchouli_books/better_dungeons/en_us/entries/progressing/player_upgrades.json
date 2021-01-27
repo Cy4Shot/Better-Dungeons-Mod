@@ -1,0 +1,12 @@
+{
+	"name": "Upgrading Yourself",
+	"icon": "minecraft:iron_sword",
+	"category": "progressing",
+	"sortnum": 1,
+	"pages": [
+		{
+			"type": "text",
+			"text": "There are more ways of getting stronger than just upgrading your tools. One of those ways, is to upgrade the player! You can open the upgrade menu by pressing $(h)H$(), by default. You can select different upgrades and unlock them using a certain amound of $(h)Phat Crystals$(). Some upgrades have more than one level, and some are locked behind others. Have fun!"
+		}
+	]
+}

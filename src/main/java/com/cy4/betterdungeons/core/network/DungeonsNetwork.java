@@ -1,6 +1,9 @@
 package com.cy4.betterdungeons.core.network;
 
 import com.cy4.betterdungeons.BetterDungeons;
+import com.cy4.betterdungeons.core.network.message.AbilityActivityMessage;
+import com.cy4.betterdungeons.core.network.message.AbilityFocusedMessage;
+import com.cy4.betterdungeons.core.network.message.AbilityKnownMessage;
 import com.cy4.betterdungeons.core.network.message.DungeonRunTickMessage;
 import com.cy4.betterdungeons.core.network.message.DungeonsLevelMessage;
 import com.cy4.betterdungeons.core.network.message.MerchantUIMessage;
@@ -8,6 +11,8 @@ import com.cy4.betterdungeons.core.network.message.OpenUpgradeMenuMessage;
 import com.cy4.betterdungeons.core.network.message.OpenUpgradeTreeMessage;
 import com.cy4.betterdungeons.core.network.message.PlayerUpgradeMessage;
 import com.cy4.betterdungeons.core.network.message.RewardMessage;
+import com.cy4.betterdungeons.core.network.message.UpgradeKeyMessage;
+import com.cy4.betterdungeons.core.network.message.UpgradeTreeMessage;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -42,6 +47,21 @@ public class DungeonsNetwork {
 
 		CHANNEL.registerMessage(6, OpenUpgradeTreeMessage.class, OpenUpgradeTreeMessage::encode, OpenUpgradeTreeMessage::decode,
 				OpenUpgradeTreeMessage::handle);
+
+		CHANNEL.registerMessage(7, UpgradeKeyMessage.class, UpgradeKeyMessage::encode, UpgradeKeyMessage::decode,
+				UpgradeKeyMessage::handle);
+
+		CHANNEL.registerMessage(8, AbilityActivityMessage.class, AbilityActivityMessage::encode, AbilityActivityMessage::decode,
+				AbilityActivityMessage::handle);
+
+		CHANNEL.registerMessage(9, AbilityFocusedMessage.class, AbilityFocusedMessage::encode, AbilityFocusedMessage::decode,
+				AbilityFocusedMessage::handle);
+
+		CHANNEL.registerMessage(10, AbilityKnownMessage.class, AbilityKnownMessage::encode, AbilityKnownMessage::decode,
+				AbilityKnownMessage::handle);
+		
+		CHANNEL.registerMessage(11, UpgradeTreeMessage.class, UpgradeTreeMessage::encode, UpgradeTreeMessage::decode,
+				UpgradeTreeMessage::handle);
 	}
 
 }

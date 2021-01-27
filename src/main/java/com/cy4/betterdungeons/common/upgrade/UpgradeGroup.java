@@ -3,9 +3,11 @@ package com.cy4.betterdungeons.common.upgrade;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
 
+import com.cy4.betterdungeons.common.upgrade.type.DashUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.EffectUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.PlayerUpgrade;
-import com.cy4.betterdungeons.core.util.RomanNumber;
+import com.cy4.betterdungeons.common.upgrade.type.VeinMinerUpgrade;
+import com.cy4.betterdungeons.core.util.math.RomanNumber;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.gson.annotations.Expose;
@@ -69,6 +71,18 @@ public class UpgradeGroup<T extends PlayerUpgrade> {
 			IntUnaryOperator cost) {
 		EffectUpgrade[] talents = IntStream.range(0, maxLevel).mapToObj(i -> new EffectUpgrade(cost.applyAsInt(i + 1), effect, i, type))
 				.toArray(EffectUpgrade[]::new);
+		return new UpgradeGroup<>(name, talents);
+	}
+
+	public static UpgradeGroup<VeinMinerUpgrade> ofVeinMiner(String name, int maxLevel, IntUnaryOperator cost) {
+		VeinMinerUpgrade[] talents = IntStream.range(0, maxLevel).mapToObj(i -> new VeinMinerUpgrade(cost.applyAsInt(i + 1), i * 3 + 9))
+				.toArray(VeinMinerUpgrade[]::new);
+		return new UpgradeGroup<>(name, talents);
+	}
+
+	public static UpgradeGroup<DashUpgrade> ofDash(String name, int maxLevel, IntUnaryOperator cost) {
+		DashUpgrade[] talents = IntStream.range(0, maxLevel).mapToObj(i -> new DashUpgrade(cost.applyAsInt(i + 1), i * 3))
+				.toArray(DashUpgrade[]::new);
 		return new UpgradeGroup<>(name, talents);
 	}
 }
