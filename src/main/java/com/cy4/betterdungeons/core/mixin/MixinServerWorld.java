@@ -26,7 +26,7 @@ public abstract class MixinServerWorld extends World {
 		super(worldInfo, dimension, dimensionType, profiler, isRemote, isDebug, seed);
 	}
 
-	@Inject(method = "tickEnvironment", at = @At("HEAD"), cancellable = true, remap = false)
+	@Inject(method = "tickEnvironment", at = @At("HEAD"), cancellable = true)
 	public void tickEnvironment(Chunk chunk, int randomTickSpeed, CallbackInfo ci) {
 		if (this.getDimensionKey() == DimensionInit.DUNGEON_WORLD) {
 			BetterDungeons.LOGGER.info("Server Mixin Tick");

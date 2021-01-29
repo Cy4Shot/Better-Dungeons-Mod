@@ -2,7 +2,6 @@ package com.cy4.betterdungeons.common.event;
 
 import org.lwjgl.glfw.GLFW;
 
-import com.cy4.betterdungeons.client.overlay.AbilitiesOverlay;
 import com.cy4.betterdungeons.core.init.KeybindInit;
 import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.message.OpenUpgradeTreeMessage;
@@ -34,13 +33,7 @@ public class InputEvents {
 	}
 
 	private static void onInput(Minecraft minecraft, int key, int action) {
-		if (minecraft.currentScreen == null && KeybindInit.abilityWheelKey.isKeyDown()) {
-			if (AbilitiesOverlay.learnedAbilities == null || AbilitiesOverlay.learnedAbilities.size() <= 2)
-				return;
-//			minecraft.displayGuiScreen(new AbilitySelectionScreen());
-			DungeonsNetwork.CHANNEL.sendToServer(new UpgradeKeyMessage(true));
-
-		} else if (minecraft.currentScreen == null && KeybindInit.openAbilityTree.isPressed()) {
+		if (minecraft.currentScreen == null && KeybindInit.openAbilityTree.isPressed()) {
 			DungeonsNetwork.CHANNEL.sendToServer(new OpenUpgradeTreeMessage());
 
 		} else if (minecraft.currentScreen == null && KeybindInit.abilityKey.getKey().getKeyCode() == key) {

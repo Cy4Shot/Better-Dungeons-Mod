@@ -1,7 +1,7 @@
 package com.cy4.betterdungeons.common.upgrade;
 
-import com.cy4.betterdungeons.common.upgrade.type.PlayerAbility;
 import com.cy4.betterdungeons.common.upgrade.type.PlayerUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.ability.PlayerAbility;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
 
 import net.minecraft.nbt.CompoundNBT;

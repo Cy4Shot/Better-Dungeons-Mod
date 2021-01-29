@@ -5,11 +5,12 @@ import java.util.List;
 
 import com.cy4.betterdungeons.common.upgrade.UpgradeGroup;
 import com.cy4.betterdungeons.common.upgrade.UpgradeNode;
-import com.cy4.betterdungeons.common.upgrade.type.DashUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.EffectUpgrade;
-import com.cy4.betterdungeons.common.upgrade.type.PlayerAbility;
 import com.cy4.betterdungeons.common.upgrade.type.Research;
-import com.cy4.betterdungeons.common.upgrade.type.VeinMinerUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.ability.DashUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.ability.GroundSlamUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.ability.PlayerAbility;
+import com.cy4.betterdungeons.common.upgrade.type.ability.VeinMinerUpgrade;
 import com.cy4.betterdungeons.core.config.Config;
 import com.google.gson.annotations.Expose;
 
@@ -29,6 +30,8 @@ public class PlayerUpgradesConfig extends Config {
 	public UpgradeGroup<EffectUpgrade> JUMP_BOOST;
 	@Expose
 	public UpgradeGroup<VeinMinerUpgrade> VEIN_MINER;
+	@Expose
+	public UpgradeGroup<GroundSlamUpgrade> GROUND_SLAM;
 	@Expose
 	public UpgradeGroup<DashUpgrade> DASH;
 	@Expose
@@ -58,8 +61,8 @@ public class PlayerUpgradesConfig extends Config {
 	}
 
 	public List<UpgradeGroup<?>> getAll() {
-		return Arrays.asList(HASTE, REGENERATION, RESISTANCE, STRENGTH, JUMP_BOOST, VEIN_MINER, DASH, DARK_UTILITIES, MASTER_BUILDER,
-				ENGINEER, MEKANIC, THERMIC, TORCH_MASTER, BACKPACKS, DANK, STORE_MY_ITEMS, ELEVATED);
+		return Arrays.asList(HASTE, REGENERATION, RESISTANCE, STRENGTH, JUMP_BOOST, VEIN_MINER, GROUND_SLAM, DASH, DARK_UTILITIES,
+				MASTER_BUILDER, ENGINEER, MEKANIC, THERMIC, TORCH_MASTER, BACKPACKS, DANK, STORE_MY_ITEMS, ELEVATED);
 	}
 
 	public List<UpgradeGroup<Research>> getAllResearches() {
@@ -88,6 +91,10 @@ public class PlayerUpgradesConfig extends Config {
 		this.JUMP_BOOST = UpgradeGroup.ofEffect("Jump Boost", Effects.JUMP_BOOST, EffectUpgrade.Type.ICON_ONLY, 2, i -> 2);
 		this.VEIN_MINER = new UpgradeGroup<>("Vein Miner", new VeinMinerUpgrade(1, 4), new VeinMinerUpgrade(1, 8),
 				new VeinMinerUpgrade(1, 16), new VeinMinerUpgrade(2, 32), new VeinMinerUpgrade(2, 64));
+		this.GROUND_SLAM = new UpgradeGroup<>("Ground Slam", new GroundSlamUpgrade(3, 1, 30), new GroundSlamUpgrade(1, 2, 28),
+				new GroundSlamUpgrade(1, 3, 26), new GroundSlamUpgrade(1, 4, 24), new GroundSlamUpgrade(1, 5, 22),
+				new GroundSlamUpgrade(1, 6, 20), new GroundSlamUpgrade(1, 7, 19), new GroundSlamUpgrade(1, 8, 18),
+				new GroundSlamUpgrade(1, 9, 17), new GroundSlamUpgrade(1, 10, 16));
 		this.DASH = new UpgradeGroup<>("Dash", new DashUpgrade(2, 1), new DashUpgrade(1, 2), new DashUpgrade(1, 3), new DashUpgrade(1, 4),
 				new DashUpgrade(1, 5), new DashUpgrade(1, 6), new DashUpgrade(1, 7), new DashUpgrade(1, 8), new DashUpgrade(1, 9),
 				new DashUpgrade(1, 10));
@@ -108,4 +115,4 @@ public class PlayerUpgradesConfig extends Config {
 				new Research(3, "appliedenergistics2", "refinedstorage").withRestrictions(false, false, false, true, true));
 		this.ELEVATED = new UpgradeGroup<>("Elevated", new Research(1, "elevatorid").withRestrictions(false, false, false, false, true));
 	}
-}`
+}

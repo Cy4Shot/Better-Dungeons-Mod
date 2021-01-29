@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import com.cy4.betterdungeons.common.upgrade.type.PlayerAbility;
 import com.cy4.betterdungeons.common.upgrade.type.PlayerUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.Research;
+import com.cy4.betterdungeons.common.upgrade.type.ability.PlayerAbility;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.NetcodeUtils;
@@ -53,6 +53,10 @@ public class UpgradeTree implements INBTSerializable<CompoundNBT> {
 
 	public List<UpgradeNode<?>> getNodes() {
 		return this.nodes;
+	}
+	
+	public UUID getPlayerID() {
+		return this.uuid;
 	}
 
 	public UpgradeNode<?> getFocusedUpgrade() {

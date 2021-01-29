@@ -10,6 +10,7 @@ import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.init.BlockInit;
 import com.cy4.betterdungeons.core.init.ConfiguredStructuresInit;
 import com.cy4.betterdungeons.core.init.ContainerTypesInit;
+import com.cy4.betterdungeons.core.init.EntityTypesInit;
 import com.cy4.betterdungeons.core.init.ItemInit;
 import com.cy4.betterdungeons.core.init.StructureInit;
 import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
@@ -51,6 +52,7 @@ public class BetterDungeons {
 		// Register stuff
 		BlockInit.BLOCKS.register(bus);
 		ItemInit.ITEMS.register(bus);
+		EntityTypesInit.ENTITY_TYPES.register(bus);
 		TileEntityTypesInit.TILE_ENTITY_TYPES.register(bus);
 		ContainerTypesInit.CONTAINER_TYPES.register(bus);
 		StructureInit.STRUCTURES.register(bus);
@@ -83,6 +85,7 @@ public class BetterDungeons {
 	public void commonSetup(FMLCommonSetupEvent event) {
 		DungeonsConfig.register();
 		event.enqueueWork(() -> {
+			EntityTypesInit.attributes();
 			StructureInit.setupStructures();
 			ConfiguredStructuresInit.registerConfiguredStructures();
 		});

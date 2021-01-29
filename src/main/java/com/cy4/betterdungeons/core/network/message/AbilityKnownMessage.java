@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 import com.cy4.betterdungeons.client.overlay.AbilitiesOverlay;
 import com.cy4.betterdungeons.common.upgrade.UpgradeNode;
 import com.cy4.betterdungeons.common.upgrade.UpgradeTree;
-import com.cy4.betterdungeons.common.upgrade.type.PlayerAbility;
+import com.cy4.betterdungeons.common.upgrade.type.ability.PlayerAbility;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;

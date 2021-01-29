@@ -7,7 +7,6 @@ import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.client.overlay.AbilitiesOverlay;
 import com.cy4.betterdungeons.client.screen.util.AbilitySelectionWidget;
 import com.cy4.betterdungeons.common.upgrade.UpgradeNode;
-import com.cy4.betterdungeons.core.init.KeybindInit;
 import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.message.UpgradeKeyMessage;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -73,22 +72,6 @@ public class AbilitySelectionScreen extends Screen {
 
 	@Override
 	public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
-		if (keyCode == KeybindInit.abilityWheelKey.getKey().getKeyCode()) {
-			Minecraft minecraft = Minecraft.getInstance();
-
-			double guiScaleFactor = minecraft.getMainWindow().getGuiScaleFactor();
-			double mouseX = minecraft.mouseHelper.getMouseX() / guiScaleFactor;
-			double mouseY = minecraft.mouseHelper.getMouseY() / guiScaleFactor;
-
-			for (AbilitySelectionWidget widget : getAbilitiesAsWidgets()) {
-				if (widget.isMouseOver(mouseX, mouseY)) {
-					requestSwap(widget.getUpgradeNode());
-				}
-			}
-
-			closeScreen();
-			return true;
-		}
 
 		return super.keyReleased(keyCode, scanCode, modifiers);
 	}

@@ -24,57 +24,29 @@ public class UpgradesGuiConfig extends Config {
 
 	@Override
 	protected void reset() {
-		UpgradeStyle style;
 		this.styles = new HashMap<>();
 
-		style = new UpgradeStyle(70 * 3, 70 * 1, 16 * 4, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.VEIN_MINER.getParentName(), style);
-		style = new UpgradeStyle(70 * 3, 70 * 0, 16 * 0, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.HASTE.getParentName(), style);
-		style = new UpgradeStyle(70 * 2, 70 * 0, 16 * 1, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.REGENERATION.getParentName(), style);
-		style = new UpgradeStyle(70 * 1, 70 * 0, 16 * 2, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.RESISTANCE.getParentName(), style);
-		style = new UpgradeStyle(70 * 0, 70 * 0, 16 * 3, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.STRENGTH.getParentName(), style);
-		style = new UpgradeStyle(70 * 2, 70 * 1, 16 * 5, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.DASH.getParentName(), style);
-		style = new UpgradeStyle(70 * 0, 70 * 2, 16 * 6, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.DARK_UTILITIES.getParentName(), style);
-		style = new UpgradeStyle(70 * 4, 70 * 0, 16 * 7, 0);
-		style.frameType = UpgradeFrame.STAR;
-		styles.put(DungeonsConfig.UPGRADES.JUMP_BOOST.getParentName(), style);
-		style = new UpgradeStyle(70 * 3, 70 * 2, 16 * 8, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.MASTER_BUILDER.getParentName(), style);
-		style = new UpgradeStyle(70 * 4, 70 * 2, 16 * 9, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.ELEVATED.getParentName(), style);
-		style = new UpgradeStyle(70 * 0, 70 * 3, 16 * 10, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.ENGINEER.getParentName(), style);
-		style = new UpgradeStyle(70 * 1, 70 * 3, 16 * 11, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.MEKANIC.getParentName(), style);
-		style = new UpgradeStyle(70 * 2, 70 * 3, 16 * 12, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.THERMIC.getParentName(), style);
-		style = new UpgradeStyle(70 * 0, 70 * 4, 16 * 13, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.DANK.getParentName(), style);
-		style = new UpgradeStyle(70 * 1, 70 * 4, 16 * 14, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.BACKPACKS.getParentName(), style);
-		style = new UpgradeStyle(70 * 2, 70 * 4, 16 * 15, 0);
-		style.frameType = UpgradeFrame.RECTANGULAR;
-		styles.put(DungeonsConfig.UPGRADES.STORE_MY_ITEMS.getParentName(), style);
+		putUpgrade("Vein Miner", UpgradeFrame.STAR, 3, 0, 4, 0);
+		putUpgrade("Haste", UpgradeFrame.STAR, 3, 1, 0, 0);
+		putUpgrade("Regeneration", UpgradeFrame.STAR, 2, 0, 1, 0);
+		putUpgrade("Resistance", UpgradeFrame.STAR, 1, 0, 2, 0);
+		putUpgrade("Strength", UpgradeFrame.STAR, 0, 0, 3, 0);
+		putUpgrade("Dash", UpgradeFrame.STAR, 2, 1, 5, 0);
+		putUpgrade("Dark Utilities", UpgradeFrame.RECTANGULAR, 0, 2, 6, 0);
+		putUpgrade("Jump Boost", UpgradeFrame.STAR, 4, 0, 7, 0);
+		putUpgrade("Master Builder", UpgradeFrame.RECTANGULAR, 3, 2, 8, 0);
+		putUpgrade("Elevated", UpgradeFrame.RECTANGULAR, 4, 2, 9, 0);
+		putUpgrade("Engineer", UpgradeFrame.RECTANGULAR, 0, 3, 10, 0);
+		putUpgrade("Mekanic", UpgradeFrame.RECTANGULAR, 1, 3, 11, 0);
+		putUpgrade("Dank", UpgradeFrame.RECTANGULAR, 0, 4, 13, 0);
+		putUpgrade("Backpacks", UpgradeFrame.RECTANGULAR, 1, 4, 14, 0);
+		putUpgrade("Store My Items", UpgradeFrame.RECTANGULAR, 2, 4, 15, 0);
+		putUpgrade("Vein Miner", UpgradeFrame.STAR, 4, 1, 0, 1);
+	}
+
+	protected void putUpgrade(String name, UpgradeFrame frame, int posX, int posY, int texX, int texY) {
+		styles.put(DungeonsConfig.UPGRADES.getByName(name).getParentName(),
+				new UpgradeStyle(70 * posX, 70 * posY, 16 * texX, 16 * texY, frame));
 	}
 
 }

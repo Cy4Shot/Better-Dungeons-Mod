@@ -1,5 +1,6 @@
-package com.cy4.betterdungeons.common.upgrade.type;
+package com.cy4.betterdungeons.common.upgrade.type.ability;
 
+import com.cy4.betterdungeons.common.upgrade.type.PlayerUpgrade;
 import com.google.gson.annotations.Expose;
 
 import net.minecraft.entity.player.PlayerEntity;

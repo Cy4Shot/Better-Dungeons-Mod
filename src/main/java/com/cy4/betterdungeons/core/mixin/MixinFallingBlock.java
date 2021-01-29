@@ -16,8 +16,7 @@ import net.minecraft.world.server.ServerWorld;
 
 @Mixin(FallingBlock.class)
 public abstract class MixinFallingBlock {
-
-	@Inject(method = "tick", at = @At("HEAD"), cancellable = true, remap = false)
+	@Inject(method = "tick", at = @At("HEAD"), cancellable = true)
 	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand, CallbackInfo ci) {
 		if (worldIn.getDimensionKey() == DimensionInit.DUNGEON_WORLD)
 			ci.cancel();

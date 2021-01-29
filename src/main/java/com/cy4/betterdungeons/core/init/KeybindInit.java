@@ -14,16 +14,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class KeybindInit {
 	public static KeyBinding openAbilityTree;
 	public static KeyBinding abilityKey;
-	public static KeyBinding abilityWheelKey;
 
 	public static void register(final FMLClientSetupEvent event) {
 		openAbilityTree = create("open_ability_tree", KeyEvent.VK_H);
-		abilityKey = create("ability_key", KeyEvent.VK_Z);
-		abilityWheelKey = create("ability_wheel", KeyEvent.VK_X);
+		abilityKey = create("ability_key", KeyEvent.VK_X);
 
 		ClientRegistry.registerKeyBinding(openAbilityTree);
 		ClientRegistry.registerKeyBinding(abilityKey);
-		ClientRegistry.registerKeyBinding(abilityWheelKey);
 	}
 
 	private static KeyBinding create(String name, int key) {

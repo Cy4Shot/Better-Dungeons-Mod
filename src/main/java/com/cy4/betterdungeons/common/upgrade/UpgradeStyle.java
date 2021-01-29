@@ -17,5 +17,13 @@ public class UpgradeStyle {
         this.u = u;
         this.v = v;
     }
+    
+    public UpgradeStyle(int x, int y, int u, int v, UpgradeFrame frame) {
+        this.x = x;
+        this.y = y;
+        this.u = u;
+        this.v = v;
+        this.frameType = frame;
+    }
 
 }

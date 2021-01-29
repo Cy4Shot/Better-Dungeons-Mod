@@ -1,4 +1,4 @@
-package com.cy4.betterdungeons.common.upgrade.type;
+package com.cy4.betterdungeons.common.upgrade.type.ability;
 
 import com.cy4.betterdungeons.core.util.math.MathUtils;
 import com.google.gson.annotations.Expose;
@@ -22,7 +22,6 @@ public class DashUpgrade extends PlayerAbility {
 
 	@Override
 	public void onAction(PlayerEntity player, boolean active) {
-		System.out.println("Dashed: " + player.toString());
 		Vector3d lookVector = player.getLookVec();
 		double magnitude = (10 + extraRadius) * 0.15;
 		double extraPitch = 10;

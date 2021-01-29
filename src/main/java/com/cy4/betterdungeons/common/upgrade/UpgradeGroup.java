@@ -3,10 +3,10 @@ package com.cy4.betterdungeons.common.upgrade;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
 
-import com.cy4.betterdungeons.common.upgrade.type.DashUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.EffectUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.PlayerUpgrade;
-import com.cy4.betterdungeons.common.upgrade.type.VeinMinerUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.ability.DashUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.ability.VeinMinerUpgrade;
 import com.cy4.betterdungeons.core.util.math.RomanNumber;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;

@@ -1,4 +1,4 @@
-package com.cy4.betterdungeons.common.upgrade.type;
+package com.cy4.betterdungeons.common.upgrade.type.ability;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -41,6 +41,8 @@ public class VeinMinerUpgrade extends PlayerAbility {
 		if (!event.getWorld().isRemote()) {
 			ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
 			UpgradeTree abilityTree = PlayerUpgradeData.get((ServerWorld) event.getWorld()).getUpgrades(player);
+
+			System.out.println("YO!!! my ability tree be like " + abilityTree.getPlayerID() + " and my player go " + player.getUniqueID());
 
 			if (!abilityTree.isActive())
 				return;
