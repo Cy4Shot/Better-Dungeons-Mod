@@ -10,6 +10,7 @@ import com.cy4.betterdungeons.client.screen.DungeonMerchantScreen;
 import com.cy4.betterdungeons.client.screen.KeyGeneratorScreen;
 import com.cy4.betterdungeons.client.screen.UpgradeTreeScreen;
 import com.cy4.betterdungeons.client.ter.BonsaiPotTileEntityRenderer;
+import com.cy4.betterdungeons.client.ter.BossBlockTileEntityRenderer;
 import com.cy4.betterdungeons.client.ter.KeyCreationTableRenderer;
 import com.cy4.betterdungeons.core.init.BlockInit;
 import com.cy4.betterdungeons.core.init.ContainerTypesInit;
@@ -67,6 +68,7 @@ public class ClientEventBusSubscriber {
 
 		// TERs
 		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.KEY_CREATION_TABLE_TILE_ENTITY_TYPE.get(), KeyCreationTableRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.BOSS_BLOCK_TILE_ENTITY_TYPE.get(), BossBlockTileEntityRenderer::new);
 		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.BONSAI_POT_TILE_ENTITY_TYPE.get(), BonsaiPotTileEntityRenderer::new);
 		ClientRegistry.bindTileEntityRenderer(TileEntityTypesInit.HOPPING_BONSAI_POT_TILE_ENTITY_TYPE.get(),
 				BonsaiPotTileEntityRenderer::new);

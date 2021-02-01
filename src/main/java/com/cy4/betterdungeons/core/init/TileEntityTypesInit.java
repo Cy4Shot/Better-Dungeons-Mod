@@ -2,6 +2,7 @@ package com.cy4.betterdungeons.core.init;
 
 import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.common.te.BonsaiPotTileEntity;
+import com.cy4.betterdungeons.common.te.BossBlockTileEntity;
 import com.cy4.betterdungeons.common.te.DungeonCrateTileEntity;
 import com.cy4.betterdungeons.common.te.DungeonMerchantTileEntity;
 import com.cy4.betterdungeons.common.te.HoppingBonsaiPotTileEntity;
@@ -35,6 +36,9 @@ public class TileEntityTypesInit {
 
 	public static final RegistryObject<TileEntityType<BonsaiPotTileEntity>> BONSAI_POT_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
 			.register("bonsai_pot", () -> TileEntityType.Builder.create(BonsaiPotTileEntity::new, BlockInit.BONSAI_POT.get()).build(null));
+	
+	public static final RegistryObject<TileEntityType<BossBlockTileEntity>> BOSS_BLOCK_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
+			.register("boss_block", () -> TileEntityType.Builder.create(BossBlockTileEntity::new, BlockInit.BOSS_BLOCK.get()).build(null));
 
 	public static final RegistryObject<TileEntityType<HoppingBonsaiPotTileEntity>> HOPPING_BONSAI_POT_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
 			.register("hopping_bonsai_pot",

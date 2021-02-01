@@ -4,8 +4,10 @@ import java.util.Random;
 
 import com.cy4.betterdungeons.common.entity.IBoss;
 import com.cy4.betterdungeons.common.item.BossKeyItem;
+import com.cy4.betterdungeons.common.te.BossBlockTileEntity;
 import com.cy4.betterdungeons.common.world.spawner.EntityScaler;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
+import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
 import com.cy4.betterdungeons.core.network.data.DungeonRunData;
 import com.cy4.betterdungeons.core.network.stats.DungeonRun;
 
@@ -18,17 +20,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -36,17 +34,8 @@ import net.minecraft.world.server.ServerWorld;
 
 public class BossBlock extends Block {
 
-	public static final IntegerProperty COMPLETION = IntegerProperty.create("completion", 0, 4);
-
 	public BossBlock() {
 		super(Properties.create(Material.ROCK).sound(SoundType.METAL).hardnessAndResistance(-1.0F, 3600000.0F).noDrops());
-		this.setDefaultState(this.stateContainer.getBaseState().with(COMPLETION, 0));
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return Block.makeCuboidShape(4f, 0f, 4f, 12f, 32f, 12f);
-//        return super.getShape(state, worldIn, pos, context);
 	}
 
 	@Override
@@ -61,9 +50,8 @@ public class BossBlock extends Block {
 		} else {
 			return ActionResultType.PASS;
 		}
-
-		BlockState newState = state.with(COMPLETION, MathHelper.clamp(state.get(COMPLETION) + 1, 0, 4));
-		world.setBlockState(pos, newState);
+		BossBlockTileEntity te = ((BossBlockTileEntity) world.getTileEntity(pos));
+		te.addKey();
 
 		if (world.isRemote) {
 			return ActionResultType.SUCCESS;
@@ -71,7 +59,7 @@ public class BossBlock extends Block {
 
 		this.spawnParticles(world, pos);
 
-		if (newState.get(COMPLETION) == 4) {
+		if (te.getKeys() == 4) {
 			DungeonRun raid = DungeonRunData.get((ServerWorld) world).getAt(pos);
 
 			if (raid != null) {
@@ -117,9 +105,14 @@ public class BossBlock extends Block {
 		world.playSound(null, pos, SoundEvents.BLOCK_END_PORTAL_FRAME_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 	}
 
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-		super.fillStateContainer(builder);
-		builder.add(COMPLETION);
+	@Override
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		return TileEntityTypesInit.BOSS_BLOCK_TILE_ENTITY_TYPE.get().create();
 	}
 
 }
