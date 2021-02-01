@@ -56,8 +56,8 @@ public class KeyCreationTable extends Block {
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
 	public KeyCreationTable() {
-		super(Properties.create(Material.ROCK, MaterialColor.DIAMOND).setRequiresTool()
-				.hardnessAndResistance(3f, 3600000.0F).notSolid().setAllowsSpawn(BlockInit::neverAllowSpawn));
+		super(Properties.create(Material.ROCK, MaterialColor.DIAMOND).setRequiresTool().hardnessAndResistance(3f, 3600000.0F).notSolid()
+				.setAllowsSpawn(BlockInit::neverAllowSpawn));
 		this.setDefaultState(this.stateContainer.getBaseState().with(POWERED, Boolean.FALSE));
 
 	}
@@ -89,8 +89,8 @@ public class KeyCreationTable extends Block {
 	}
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn,
+			BlockRayTraceResult hit) {
 		if (worldIn.isRemote)
 			return ActionResultType.SUCCESS;
 		if (handIn != Hand.MAIN_HAND)
@@ -121,8 +121,7 @@ public class KeyCreationTable extends Block {
 
 		// player has no recipe, give them one.
 		if (!data.getRecipes().containsKey(player.getUniqueID())) {
-			List<RequiredItem> items = DungeonsConfig.KEY_CREATION_TABLE
-					.getRequiredItemsFromConfig((ServerWorld) worldIn, player);
+			List<RequiredItem> items = DungeonsConfig.KEY_CREATION_TABLE.getRequiredItemsFromConfig((ServerWorld) worldIn, player);
 			data.add(player.getUniqueID(), new KeyCreationTableRecipe(player.getUniqueID(), items));
 		}
 
@@ -149,8 +148,7 @@ public class KeyCreationTable extends Block {
 	}
 
 	@Override
-	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos,
-			boolean isMoving) {
+	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
 		if (worldIn.isRemote)
 			return;
 		boolean powered = worldIn.isBlockPowered(pos);
@@ -160,8 +158,8 @@ public class KeyCreationTable extends Block {
 				if (table != null && table.containsKey()) {
 					if (table.getInfusionTimer() != -1)
 						return;
-					PlayerEntity player = worldIn.getClosestPlayer(table.getPos().getX(), table.getPos().getY(),
-							table.getPos().getZ(), DungeonsConfig.KEY_CREATION_TABLE.PLAYER_RANGE_CHECK, null);
+					PlayerEntity player = worldIn.getClosestPlayer(table.getPos().getX(), table.getPos().getY(), table.getPos().getZ(),
+							DungeonsConfig.KEY_CREATION_TABLE.PLAYER_RANGE_CHECK, null);
 					if (player != null) {
 						PlayerKeyCreationTableData data = PlayerKeyCreationTableData.get((ServerWorld) worldIn);
 						KeyCreationTableRecipe recipe = data.getRecipe(player);
@@ -195,28 +193,20 @@ public class KeyCreationTable extends Block {
 			PlayerKeyCreationTablePlacingData data = PlayerKeyCreationTablePlacingData.get((ServerWorld) worldIn);
 			data.setCanPlace(player, true);
 		}
-		super.onBlockHarvested(worldIn, pos, state, player);
-	}
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
-		KeyCreationTableTileEntity table = getAltarTileEntity(world, pos);
-		if (table == null)
+		KeyCreationTableTileEntity table = getAltarTileEntity(worldIn, pos);
+		if (table == null || player.isCreative()) {
+			super.onBlockHarvested(worldIn, pos, state, player);
 			return;
-
-		if (newState.getBlock() != Blocks.AIR)
-			return;
+		}
 
 		if (table.containsKey()) {
-			ItemEntity entity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(),
-					new ItemStack(ItemInit.EMPTY_KEY.get()));
-			world.addEntity(entity);
+			ItemEntity entity = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemInit.EMPTY_KEY.get()));
+			worldIn.addEntity(entity);
 		}
-		ItemEntity entity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(),
-				new ItemStack(BlockInit.KEY_CREATION_TABLE.get()));
-		world.addEntity(entity);
+		ItemEntity entity = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(BlockInit.KEY_CREATION_TABLE.get()));
+		worldIn.addEntity(entity);
 
-		super.onReplaced(state, world, pos, newState, isMoving);
+		super.onBlockHarvested(worldIn, pos, state, player);
 	}
 }

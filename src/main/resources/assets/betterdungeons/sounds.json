@@ -1,0 +1,12 @@
+{
+	"level_up": {
+		"categotry": "music",
+		"subtitle": "level_up",
+		"sounds": [
+			{
+				"name": "betterdungeons:level_up",
+				"stream": true
+			}
+		]
+	}
+}

@@ -18,15 +18,14 @@ public class EntityScaler {
 	public static void scaleVault(LivingEntity entity, int level, Random random, Type type) {
 		DungeonMobsConfig.Level overrides = DungeonsConfig.DUNGEON_MOBS.getForLevel(level);
 
-		for (EquipmentSlotType slot : EquipmentSlotType.values()) {
-			if (slot.getSlotType() == EquipmentSlotType.Group.HAND) {
-				if (!entity.getItemStackFromSlot(slot).isEmpty())
-					continue;
+		for(EquipmentSlotType slot: EquipmentSlotType.values()) {
+			if(slot.getSlotType() == EquipmentSlotType.Group.HAND) {
+				if(!entity.getItemStackFromSlot(slot).isEmpty())continue;
 			}
 
 			ItemStack loot = new ItemStack(type.loot.apply(overrides, slot));
 
-			for (int i = 0; i < type.trials.apply(overrides); i++) {
+			for(int i = 0; i < type.trials.apply(overrides); i++) {
 				EnchantmentHelper.addRandomEnchantment(random, loot,
 						EnchantmentHelper.calcItemStackEnchantability(random, type.level.apply(overrides), 15, loot), true);
 			}
@@ -43,8 +42,9 @@ public class EntityScaler {
 		private final Function<DungeonMobsConfig.Level, Integer> trials;
 		private final Function<DungeonMobsConfig.Level, Integer> level;
 
-		Type(BiFunction<DungeonMobsConfig.Level, EquipmentSlotType, Item> loot, Function<DungeonMobsConfig.Level, Integer> trials,
-				Function<DungeonMobsConfig.Level, Integer> level) {
+		Type(BiFunction<DungeonMobsConfig.Level, EquipmentSlotType, Item> loot,
+		     Function<DungeonMobsConfig.Level, Integer> trials,
+		     Function<DungeonMobsConfig.Level, Integer> level) {
 			this.loot = loot;
 			this.trials = trials;
 			this.level = level;

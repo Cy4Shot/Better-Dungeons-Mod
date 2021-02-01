@@ -1,17 +1,20 @@
 package com.cy4.betterdungeons.common.upgrade;
 
+import java.util.function.IntFunction;
+import java.util.function.IntToDoubleFunction;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
 
+import com.cy4.betterdungeons.common.upgrade.type.AttributeUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.EffectUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.PlayerUpgrade;
-import com.cy4.betterdungeons.common.upgrade.type.ability.DashUpgrade;
-import com.cy4.betterdungeons.common.upgrade.type.ability.VeinMinerUpgrade;
 import com.cy4.betterdungeons.core.util.math.RomanNumber;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.gson.annotations.Expose;
 
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.potion.Effect;
 
 public class UpgradeGroup<T extends PlayerUpgrade> {
@@ -69,20 +72,23 @@ public class UpgradeGroup<T extends PlayerUpgrade> {
 
 	public static UpgradeGroup<EffectUpgrade> ofEffect(String name, Effect effect, EffectUpgrade.Type type, int maxLevel,
 			IntUnaryOperator cost) {
-		EffectUpgrade[] talents = IntStream.range(0, maxLevel).mapToObj(i -> new EffectUpgrade(cost.applyAsInt(i + 1), effect, i, type))
+		EffectUpgrade[] Upgrades = IntStream.range(0, maxLevel).mapToObj(i -> new EffectUpgrade(cost.applyAsInt(i + 1), effect, i, type))
 				.toArray(EffectUpgrade[]::new);
-		return new UpgradeGroup<>(name, talents);
+		return new UpgradeGroup<>(name, Upgrades);
 	}
 
-	public static UpgradeGroup<VeinMinerUpgrade> ofVeinMiner(String name, int maxLevel, IntUnaryOperator cost) {
-		VeinMinerUpgrade[] talents = IntStream.range(0, maxLevel).mapToObj(i -> new VeinMinerUpgrade(cost.applyAsInt(i + 1), i * 3 + 9))
-				.toArray(VeinMinerUpgrade[]::new);
-		return new UpgradeGroup<>(name, talents);
+	public static UpgradeGroup<AttributeUpgrade> ofAttribute(String name, Attribute attribute, String modifierName, int maxLevel,
+			IntUnaryOperator cost, IntToDoubleFunction amount, IntFunction<AttributeModifier.Operation> operation) {
+		AttributeUpgrade[] Upgrades = IntStream.range(0, maxLevel)
+				.mapToObj(i -> new AttributeUpgrade(cost.applyAsInt(i + 1), attribute, new AttributeUpgrade.Modifier(
+						modifierName + " " + RomanNumber.toRoman(i + 1), amount.applyAsDouble(i + 1), operation.apply(i + 1))))
+				.toArray(AttributeUpgrade[]::new);
+		return new UpgradeGroup<>(name, Upgrades);
 	}
 
-	public static UpgradeGroup<DashUpgrade> ofDash(String name, int maxLevel, IntUnaryOperator cost) {
-		DashUpgrade[] talents = IntStream.range(0, maxLevel).mapToObj(i -> new DashUpgrade(cost.applyAsInt(i + 1), i * 3))
-				.toArray(DashUpgrade[]::new);
-		return new UpgradeGroup<>(name, talents);
+	@SuppressWarnings("unchecked")
+	public static <T extends PlayerUpgrade> UpgradeGroup<T> of(String name, int maxLevel, IntFunction<T> supplier) {
+		PlayerUpgrade[] Upgrades = IntStream.range(0, maxLevel).mapToObj(supplier).toArray(PlayerUpgrade[]::new);
+		return new UpgradeGroup<>(name, (T[]) Upgrades);
 	}
 }

@@ -1,0 +1,12 @@
+{
+	"music.menu": {
+		"category": "music",
+		"sounds": [
+			{
+				"name": "cy4_dungeons_menu",
+				"stream": true
+			}
+		],
+		"replace": true
+	}
+}

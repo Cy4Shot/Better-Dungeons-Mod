@@ -45,8 +45,8 @@ public class GroundSlamUpgrade extends PlayerAbility {
 
 					System.out.println("YO!!! my ability tree be like " + abilityTree.getPlayerID() + " and my player go " + player.getUniqueID()); 
 
-					if (!abilityTree.isActive())
-						return;
+//					if (!abilityTree.isActive())
+//						return;
 
 					System.out.println("YO!!! my ability tree do be kinda active.  thats pretty cool i guess.");
 
@@ -60,6 +60,7 @@ public class GroundSlamUpgrade extends PlayerAbility {
 						System.out.println("YO!!! my ability be like costing" + focusedAbility.getCost());
 
 						if (focusedAbility instanceof GroundSlamUpgrade) {
+							System.out.println("YO!!! my ability be an instance of GROUND SLAM YOOOOOOOOOOOoo");
 							Explosion e = new Explosion(player.getEntityWorld(), player, new DamageSource("ground_slam").setExplosion(),
 									null, event.getEntityLiving().getPosition().getX(), event.getEntityLiving().getPosition().getY(),
 									event.getEntityLiving().getPosition().getZ(), 5 + ((GroundSlamUpgrade) focusedAbility).getStrength(),

@@ -31,17 +31,21 @@ public class UpgradesGuiConfig extends Config {
 		putUpgrade("Regeneration", UpgradeFrame.STAR, 2, 0, 1, 0);
 		putUpgrade("Resistance", UpgradeFrame.STAR, 1, 0, 2, 0);
 		putUpgrade("Strength", UpgradeFrame.STAR, 0, 0, 3, 0);
-		putUpgrade("Dash", UpgradeFrame.STAR, 2, 1, 5, 0);
-		putUpgrade("Dark Utilities", UpgradeFrame.RECTANGULAR, 0, 2, 6, 0);
+		putUpgrade("Dash", UpgradeFrame.STAR, 1, 1, 5, 0);
+		putUpgrade("Dark Utilities", UpgradeFrame.RECTANGULAR, 2, 3, 6, 0);
 		putUpgrade("Jump Boost", UpgradeFrame.STAR, 4, 0, 7, 0);
-		putUpgrade("Master Builder", UpgradeFrame.RECTANGULAR, 3, 2, 8, 0);
-		putUpgrade("Elevated", UpgradeFrame.RECTANGULAR, 4, 2, 9, 0);
+		putUpgrade("Master Builder", UpgradeFrame.RECTANGULAR, 3, 3, 8, 0);
+		putUpgrade("Elevated", UpgradeFrame.RECTANGULAR, 4, 3, 9, 0);
 		putUpgrade("Engineer", UpgradeFrame.RECTANGULAR, 0, 3, 10, 0);
 		putUpgrade("Mekanic", UpgradeFrame.RECTANGULAR, 1, 3, 11, 0);
 		putUpgrade("Dank", UpgradeFrame.RECTANGULAR, 0, 4, 13, 0);
 		putUpgrade("Backpacks", UpgradeFrame.RECTANGULAR, 1, 4, 14, 0);
 		putUpgrade("Store My Items", UpgradeFrame.RECTANGULAR, 2, 4, 15, 0);
-		putUpgrade("Vein Miner", UpgradeFrame.STAR, 4, 1, 0, 1);
+		putUpgrade("Ground Slam", UpgradeFrame.STAR, 4, 1, 0, 1);
+		putUpgrade("Extra Hearts", UpgradeFrame.STAR, 2, 1, 1, 1);
+		putUpgrade("Stone Skin", UpgradeFrame.STAR, 0, 1, 2, 1);
+		putUpgrade("Long Shot", UpgradeFrame.STAR, 1, 2, 3, 1);
+		putUpgrade("Step", UpgradeFrame.STAR, 2, 2, 4, 1);
 	}
 
 	protected void putUpgrade(String name, UpgradeFrame frame, int posX, int posY, int texX, int texY) {

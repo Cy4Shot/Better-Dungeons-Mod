@@ -3,7 +3,6 @@ package com.cy4.betterdungeons.common.world.spawner;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.config.type.DungeonMobsConfig;
 import com.cy4.betterdungeons.core.init.DimensionInit;
@@ -53,7 +52,7 @@ public class DungeonSpawner {
 			return false;
 		});
 
-		BetterDungeons.LOGGER.info(this.getMaxMobs());
+		System.out.println("HALLO there sir, your max mobs limit is " + this.getMaxMobs() + " for some reason.");
 
 		if (this.mobs.size() >= this.getMaxMobs())
 			return;
@@ -101,10 +100,12 @@ public class DungeonSpawner {
 	}
 
 	public void spawn(ServerWorld world, BlockPos pos) {
-		LivingEntity entity = DungeonsConfig.DUNGEON_MOBS.getForLevel(this.raid.level).MOB_POOL.getRandom(world.rand).create(world);
-		BetterDungeons.LOGGER.info("Spawn Entity");
+		DungeonMobsConfig.Mob mob = DungeonsConfig.DUNGEON_MOBS.getForLevel(this.raid.level).MOB_POOL.getRandom(world.rand);
+		if (mob == null)
+			return;
+		LivingEntity entity = mob.create(world);
+
 		if (entity != null) {
-			BetterDungeons.LOGGER.info("Entity Non Null");
 			entity.setLocationAndAngles(pos.getX() + 0.5F, pos.getY() + 0.2F, pos.getZ() + 0.5F, 0.0F, 0.0F);
 			world.summonEntity(entity);
 
@@ -113,6 +114,7 @@ public class DungeonSpawner {
 				((MobEntity) entity).onInitialSpawn(world, new DifficultyInstance(Difficulty.PEACEFUL, 13000L, 0L, 0L),
 						SpawnReason.STRUCTURE, null, null);
 			}
+
 			this.mobs.add(entity);
 		}
 	}

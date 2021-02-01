@@ -1,5 +1,6 @@
 package com.cy4.betterdungeons.core.config.type;
 
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Random;
 import java.util.function.Consumer;
 
 import com.cy4.betterdungeons.core.config.Config;
+import com.cy4.betterdungeons.core.init.EntityTypesInit;
 import com.cy4.betterdungeons.core.util.list.WeightedList;
 import com.google.gson.annotations.Expose;
 
@@ -23,6 +25,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+
 
 public class DungeonMobsConfig extends Config {
 
@@ -54,7 +57,7 @@ public class DungeonMobsConfig extends Config {
 
 	public Level getForLevel(int level) {
 		for (int i = 0; i < this.LEVEL_OVERRIDES.size(); i++) {
-			if (this.LEVEL_OVERRIDES.get(i).MIN_LEVEL > level) {
+			if (level < this.LEVEL_OVERRIDES.get(i).MIN_LEVEL) {
 				if (i == 0)
 					break;
 				return this.LEVEL_OVERRIDES.get(i - 1);
@@ -75,7 +78,8 @@ public class DungeonMobsConfig extends Config {
 	protected void reset() {
 		this.LEVEL_OVERRIDES.add(new Level(5).mobAdd(Items.WOODEN_SWORD, 1).mobAdd(Items.STONE_SWORD, 2).bossAdd(Items.STONE_SWORD, 1)
 				.bossAdd(Items.GOLDEN_SWORD, 2).mob(EntityType.ZOMBIE, 1, mob -> mob.attribute(Attributes.MAX_HEALTH, 20.0D))
-				.mobMisc(3, 1, 3).bossMisc(3, 1));
+				.boss(EntityTypesInit.ENDER_SLIME.get(), 1, mob -> mob.attribute(Attributes.MAX_HEALTH, 100.0D)).mobMisc(3, 1, 3)
+				.bossMisc(3, 1));
 	}
 
 	public static class Level {
@@ -210,13 +214,13 @@ public class DungeonMobsConfig extends Config {
 			return Registry.ENTITY_TYPE.getOptional(new ResourceLocation(this.NAME)).orElse(EntityType.BAT);
 		}
 
-		@SuppressWarnings("deprecation")
 		public LivingEntity create(World world) {
 			LivingEntity entity = (LivingEntity) this.getType().create(world);
 
 			for (AttributeOverride override : ATTRIBUTES) {
 				if (world.rand.nextDouble() >= override.ROLL_CHANCE)
 					continue;
+				@SuppressWarnings("deprecation")
 				Attribute attribute = Registry.ATTRIBUTE.getOptional(new ResourceLocation(override.NAME)).orElse(null);
 				if (attribute == null)
 					continue;
@@ -232,15 +236,15 @@ public class DungeonMobsConfig extends Config {
 
 		public static class AttributeOverride {
 			@Expose
-			private String NAME;
+			public String NAME;
 			@Expose
-			private double MIN;
+			public double MIN;
 			@Expose
-			private double MAX;
+			public double MAX;
 			@Expose
-			private String OPERATOR;
+			public String OPERATOR;
 			@Expose
-			private double ROLL_CHANCE;
+			public double ROLL_CHANCE;
 
 			public AttributeOverride(Attribute attribute, double defaultValue) {
 				this.NAME = attribute.getRegistryName().toString();

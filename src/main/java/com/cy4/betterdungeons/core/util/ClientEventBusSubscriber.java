@@ -1,12 +1,13 @@
 package com.cy4.betterdungeons.core.util;
 
 import com.cy4.betterdungeons.BetterDungeons;
-import com.cy4.betterdungeons.client.entity.PhatSlimeRenderer;
+import com.cy4.betterdungeons.client.entity.EnderSlimeRenderer;
+import com.cy4.betterdungeons.client.entity.SlimeSpikesRenderer;
 import com.cy4.betterdungeons.client.overlay.AbilitiesOverlay;
 import com.cy4.betterdungeons.client.overlay.DungeonLevelOverlay;
+import com.cy4.betterdungeons.client.screen.DungeonCrateScreen;
 import com.cy4.betterdungeons.client.screen.DungeonMerchantScreen;
 import com.cy4.betterdungeons.client.screen.KeyGeneratorScreen;
-import com.cy4.betterdungeons.client.screen.PlayerRewardScreen;
 import com.cy4.betterdungeons.client.screen.UpgradeTreeScreen;
 import com.cy4.betterdungeons.client.ter.BonsaiPotTileEntityRenderer;
 import com.cy4.betterdungeons.client.ter.KeyCreationTableRenderer;
@@ -42,12 +43,13 @@ public class ClientEventBusSubscriber {
 
 		// Screens
 		ScreenManager.registerFactory(ContainerTypesInit.KEY_GENERATOR_CONTAINER.get(), KeyGeneratorScreen::new);
-		ScreenManager.registerFactory(ContainerTypesInit.UPGRADE_CONTAINER.get(), PlayerRewardScreen::new);
 		ScreenManager.registerFactory(ContainerTypesInit.DUNGEON_MERCHANT_CONTAINER.get(), DungeonMerchantScreen::new);
 		ScreenManager.registerFactory(ContainerTypesInit.UPGRADE_TREE_CONTAINER.get(), UpgradeTreeScreen::new);
-		
-		//Entities
-		RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.PHAT_SLIME.get(), PhatSlimeRenderer::new);
+		ScreenManager.registerFactory(ContainerTypesInit.DUNGEON_CRATE_CONTAINER.get(), DungeonCrateScreen::new);
+
+		// Entities
+		RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.ENDER_SLIME.get(), EnderSlimeRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.SLIME_SPIKES.get(), SlimeSpikesRenderer::new);
 
 		// Render Layers
 		RenderTypeLookup.setRenderLayer(BlockInit.DUNGEON_PORTAL.get(), RenderType.getTranslucent());

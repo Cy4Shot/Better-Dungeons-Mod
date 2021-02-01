@@ -37,7 +37,8 @@
 	"block.betterdungeons.phat_crystal": "Phat Crystal",
 	"block.betterdungeons.bonsai_pot": "Bonsai Pot",
 	"block.betterdungeons.hopping_bonsai_pot": "Hopping Bonsai Pot",
-	"entity.betterdungeons.phat_slime": "Phat Slime",
+	"block.betterdungeons.dungeon_crate": "Dungeon Crate",
+	"entity.betterdungeons.ender_slime": "Ender Slime",
 	"key.category.betterdungeons": "Better Dungeons",
 	"key.betterdungeons.open_ability_tree": "Open Upgrade Tree",
 	"key.betterdungeons.ability_key": "Activate Ability",
@@ -47,5 +48,6 @@
 	"overlay.requires_research.hit": "Requires Research To Interact",
 	"overlay.requires_research.interact_entity": "Requires Research To Interact",
 	"itemGroup.better_dungeons": "Better Dungeons",
+	"container.Dungeon.Dungeon_crate": "Dungeon Crate",
 	"command.betterdungeons.tp.success": "Template Summoned"
 }

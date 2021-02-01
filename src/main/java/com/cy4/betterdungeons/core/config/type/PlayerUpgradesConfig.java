@@ -5,16 +5,21 @@ import java.util.List;
 
 import com.cy4.betterdungeons.common.upgrade.UpgradeGroup;
 import com.cy4.betterdungeons.common.upgrade.UpgradeNode;
+import com.cy4.betterdungeons.common.upgrade.type.AttributeUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.EffectUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.Research;
 import com.cy4.betterdungeons.common.upgrade.type.ability.DashUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.ability.GroundSlamUpgrade;
 import com.cy4.betterdungeons.common.upgrade.type.ability.PlayerAbility;
 import com.cy4.betterdungeons.common.upgrade.type.ability.VeinMinerUpgrade;
+import com.cy4.betterdungeons.common.upgrade.type.special.StepUpgrade;
 import com.cy4.betterdungeons.core.config.Config;
 import com.google.gson.annotations.Expose;
 
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.potion.Effects;
+import net.minecraftforge.common.ForgeMod;
 
 public class PlayerUpgradesConfig extends Config {
 
@@ -28,6 +33,14 @@ public class PlayerUpgradesConfig extends Config {
 	public UpgradeGroup<EffectUpgrade> STRENGTH;
 	@Expose
 	public UpgradeGroup<EffectUpgrade> JUMP_BOOST;
+	@Expose
+	public UpgradeGroup<AttributeUpgrade> EXTRA_HEARTS;
+	@Expose
+	public UpgradeGroup<AttributeUpgrade> STONE_SKIN;
+	@Expose
+	public UpgradeGroup<AttributeUpgrade> LONG_SHOT;
+	@Expose
+	public UpgradeGroup<StepUpgrade> STEP;
 	@Expose
 	public UpgradeGroup<VeinMinerUpgrade> VEIN_MINER;
 	@Expose
@@ -61,8 +74,9 @@ public class PlayerUpgradesConfig extends Config {
 	}
 
 	public List<UpgradeGroup<?>> getAll() {
-		return Arrays.asList(HASTE, REGENERATION, RESISTANCE, STRENGTH, JUMP_BOOST, VEIN_MINER, GROUND_SLAM, DASH, DARK_UTILITIES,
-				MASTER_BUILDER, ENGINEER, MEKANIC, THERMIC, TORCH_MASTER, BACKPACKS, DANK, STORE_MY_ITEMS, ELEVATED);
+		return Arrays.asList(HASTE, REGENERATION, RESISTANCE, STRENGTH, JUMP_BOOST, EXTRA_HEARTS, STONE_SKIN, LONG_SHOT, STEP, VEIN_MINER,
+				GROUND_SLAM, DASH, DARK_UTILITIES, MASTER_BUILDER, ENGINEER, MEKANIC, THERMIC, TORCH_MASTER, BACKPACKS, DANK,
+				STORE_MY_ITEMS, ELEVATED);
 	}
 
 	public List<UpgradeGroup<Research>> getAllResearches() {
@@ -89,6 +103,13 @@ public class PlayerUpgradesConfig extends Config {
 				i -> i == 2 ? i == 3 ? 10 : 5 : 3);
 		this.STRENGTH = UpgradeGroup.ofEffect("Strength", Effects.STRENGTH, EffectUpgrade.Type.ICON_ONLY, 10, i -> i <= 3 ? 2 : 3);
 		this.JUMP_BOOST = UpgradeGroup.ofEffect("Jump Boost", Effects.JUMP_BOOST, EffectUpgrade.Type.ICON_ONLY, 2, i -> 2);
+		this.STONE_SKIN = UpgradeGroup.ofAttribute("Stone Skin", Attributes.KNOCKBACK_RESISTANCE, "Extra Knockback Resistance", 10, i -> 2,
+				i -> i * 0.1F, i -> AttributeModifier.Operation.ADDITION);
+		this.EXTRA_HEARTS = UpgradeGroup.ofAttribute("Extra Hearts", Attributes.MAX_HEALTH, "Extra Health", 10, i -> 1, i -> i * 2.0D,
+				i -> AttributeModifier.Operation.ADDITION);
+		this.LONG_SHOT = UpgradeGroup.ofAttribute("Long Shot", ForgeMod.REACH_DISTANCE.get(), "Maximum Reach", 10, i -> 1, i -> i * 1.0D,
+				i -> AttributeModifier.Operation.ADDITION);
+		this.STEP = UpgradeGroup.of("Step", 1, i -> new StepUpgrade(4, 1.0F));
 		this.VEIN_MINER = new UpgradeGroup<>("Vein Miner", new VeinMinerUpgrade(1, 4), new VeinMinerUpgrade(1, 8),
 				new VeinMinerUpgrade(1, 16), new VeinMinerUpgrade(2, 32), new VeinMinerUpgrade(2, 64));
 		this.GROUND_SLAM = new UpgradeGroup<>("Ground Slam", new GroundSlamUpgrade(3, 1, 30), new GroundSlamUpgrade(1, 2, 28),

@@ -12,6 +12,7 @@ import com.cy4.betterdungeons.core.init.ConfiguredStructuresInit;
 import com.cy4.betterdungeons.core.init.ContainerTypesInit;
 import com.cy4.betterdungeons.core.init.EntityTypesInit;
 import com.cy4.betterdungeons.core.init.ItemInit;
+import com.cy4.betterdungeons.core.init.SoundInit;
 import com.cy4.betterdungeons.core.init.StructureInit;
 import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
 import com.cy4.betterdungeons.core.itemgroup.BetterDungeonsItemGroup;
@@ -50,6 +51,7 @@ public class BetterDungeons {
 		bus.addListener(this::commonSetup);
 
 		// Register stuff
+		SoundInit.SOUNDS.register(bus);
 		BlockInit.BLOCKS.register(bus);
 		ItemInit.ITEMS.register(bus);
 		EntityTypesInit.ENTITY_TYPES.register(bus);

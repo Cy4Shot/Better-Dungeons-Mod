@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.cy4.betterdungeons.BetterDungeons;
 import com.cy4.betterdungeons.core.init.DimensionInit;
 
 import net.minecraft.profiler.IProfiler;
@@ -29,7 +28,6 @@ public abstract class MixinServerWorld extends World {
 	@Inject(method = "tickEnvironment", at = @At("HEAD"), cancellable = true)
 	public void tickEnvironment(Chunk chunk, int randomTickSpeed, CallbackInfo ci) {
 		if (this.getDimensionKey() == DimensionInit.DUNGEON_WORLD) {
-			BetterDungeons.LOGGER.info("Server Mixin Tick");
 			ci.cancel();
 		}
 	}

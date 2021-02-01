@@ -1,26 +1,23 @@
 package com.cy4.betterdungeons.core.network.message;
 
+import java.util.Random;
 import java.util.function.Supplier;
 
-import javax.annotation.Nullable;
+import com.cy4.betterdungeons.core.init.BlockInit;
+import com.cy4.betterdungeons.core.init.SoundInit;
 
-import com.cy4.betterdungeons.common.container.RewardContainer;
-import com.cy4.betterdungeons.common.upgrade.UpgradeTree;
-import com.cy4.betterdungeons.core.network.data.PlayerUpgradeData;
-
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.fml.network.NetworkEvent;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 public class OpenUpgradeMenuMessage {
+	
+	public static final Block[] REWARDS = new Block[] { BlockInit.NIAZITE_SHARD.get(), BlockInit.IDLITE_SHARD.get(),
+			BlockInit.THALAMITE_SHARD.get(), BlockInit.BLOCITE_SHARD.get(), BlockInit.GRINDITE_SHARD.get(), BlockInit.DIGINITE_SHARD.get(),
+			BlockInit.TURNITE_SHARD.get(), BlockInit.SOULITE_SHARD.get() };
 
 	public OpenUpgradeMenuMessage() {
 	}
@@ -34,32 +31,18 @@ public class OpenUpgradeMenuMessage {
 
 	public static void handle(OpenUpgradeMenuMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 		NetworkEvent.Context context = contextSupplier.get();
-        context.enqueueWork(() -> {
-            ServerPlayerEntity sender = context.getSender();
+		context.enqueueWork(() -> {
+			ServerPlayerEntity sender = context.getSender();
 
-            if (sender == null) return;
-            PlayerUpgradeData playerUpgradeData = PlayerUpgradeData.get((ServerWorld) sender.world);
-            UpgradeTree upgradeTree = playerUpgradeData.getUpgrades(sender);
+			if (sender == null)
+				return;
+			sender.getEntityWorld().playSound(null, sender.getPositionVec().x, sender.getPositionVec().y, sender.getPositionVec().z,
+					SoundInit.LEVEL_UP.get(), SoundCategory.PLAYERS, 1f, 1f);
+			
+			sender.addItemStackToInventory(new ItemStack(REWARDS[new Random().nextInt(REWARDS.length)]));
 
-            NetworkHooks.openGui(
-                    sender,
-                    new INamedContainerProvider() {
-                        @Override
-                        public ITextComponent getDisplayName() {
-                            return new TranslationTextComponent("container.betterdungeons.reward_tree");
-                        }
-
-                        @Nullable
-                        @Override
-                        public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                            return new RewardContainer(i, upgradeTree);
-                        }
-                    },
-                    (buffer) -> {
-                        buffer.writeCompoundTag(upgradeTree.serializeNBT());
-                    }
-            );
-        });
-        context.setPacketHandled(true);
+			
+		});
+		context.setPacketHandled(true);
 	}
 }

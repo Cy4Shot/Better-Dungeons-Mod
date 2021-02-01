@@ -37,6 +37,15 @@
 				"projection": "rigid",
 				"element_type": "minecraft:single_pool_element"
 			}
+		},
+		{
+			"weight": 1,
+			"element": {
+				"location": "betterdungeons:dungeon/rooms/room5",
+				"processors": "betterdungeons:dungeon/random_chests",
+				"projection": "rigid",
+				"element_type": "minecraft:single_pool_element"
+			}
 		}
 	]
 }

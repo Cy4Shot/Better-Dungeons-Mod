@@ -11,6 +11,7 @@ import com.cy4.betterdungeons.core.network.message.OpenUpgradeMenuMessage;
 import com.cy4.betterdungeons.core.network.message.OpenUpgradeTreeMessage;
 import com.cy4.betterdungeons.core.network.message.PlayerUpgradeMessage;
 import com.cy4.betterdungeons.core.network.message.RewardMessage;
+import com.cy4.betterdungeons.core.network.message.StepHeightMessage;
 import com.cy4.betterdungeons.core.network.message.UpgradeKeyMessage;
 import com.cy4.betterdungeons.core.network.message.UpgradeTreeMessage;
 
@@ -62,6 +63,9 @@ public class DungeonsNetwork {
 		
 		CHANNEL.registerMessage(11, UpgradeTreeMessage.class, UpgradeTreeMessage::encode, UpgradeTreeMessage::decode,
 				UpgradeTreeMessage::handle);
+		
+		CHANNEL.registerMessage(12, StepHeightMessage.class, StepHeightMessage::encode, StepHeightMessage::decode,
+				StepHeightMessage::handle);
 	}
 
 }
