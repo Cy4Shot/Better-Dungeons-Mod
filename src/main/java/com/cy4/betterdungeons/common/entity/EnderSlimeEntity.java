@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.cy4.betterdungeons.common.entity.ai.AOEGoal;
 import com.cy4.betterdungeons.common.entity.ai.RegenAI;
 import com.cy4.betterdungeons.common.entity.ai.TeleportGoal;
 import com.cy4.betterdungeons.common.entity.ai.TeleportRandomly;
@@ -62,6 +63,11 @@ public class EnderSlimeEntity extends SlimeEntity implements IBoss {
 	}
 
 	@Override
+	public boolean isInvulnerableTo(DamageSource source) {
+		return super.isInvulnerableTo(source) || source.isProjectile();
+	}
+
+	@Override
 	protected void dropLoot(DamageSource damageSource, boolean attackedRecently) {
 	}
 
@@ -85,8 +91,7 @@ public class EnderSlimeEntity extends SlimeEntity implements IBoss {
 					(entity.rand.nextDouble() - 0.5D) * 8.0D);
 		}).build());
 
-//		this.goalSelector.addGoal(1, new SnowStormGoal<>(this, 96, 10));
-//		this.goalSelector.addGoal(1, new AOEGoal<>(this, e -> !(e instanceof VaultBoss)));
+		this.goalSelector.addGoal(1, new AOEGoal<>(this, e -> !(e instanceof IBoss)));
 		this.goalSelector.addGoal(1, new EnderSlimeEntity.AttackSpellGoal());
 
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));

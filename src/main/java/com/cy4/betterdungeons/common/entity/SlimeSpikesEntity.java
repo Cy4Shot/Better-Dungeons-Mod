@@ -11,7 +11,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.play.server.SSpawnObjectPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvents;
@@ -19,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class SlimeSpikesEntity extends Entity {
 	private int warmupDelayTicks;
@@ -59,10 +59,7 @@ public class SlimeSpikesEntity extends Entity {
 
 		return this.caster;
 	}
-
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
+	
 	protected void readAdditional(CompoundNBT compound) {
 		this.warmupDelayTicks = compound.getInt("Warmup");
 		if (compound.hasUniqueId("Owner")) {
@@ -78,10 +75,7 @@ public class SlimeSpikesEntity extends Entity {
 		}
 
 	}
-
-	/**
-	 * Called to update the entity's position/logic.
-	 */
+	
 	public void tick() {
 		super.tick();
 		if (this.world.isRemote) {
@@ -135,10 +129,7 @@ public class SlimeSpikesEntity extends Entity {
 
 		}
 	}
-
-	/**
-	 * Handler for {@link World#setEntityState}
-	 */
+	
 	@OnlyIn(Dist.CLIENT)
 	public void handleStatusUpdate(byte id) {
 		super.handleStatusUpdate(id);
@@ -162,7 +153,8 @@ public class SlimeSpikesEntity extends Entity {
 		}
 	}
 
+	@Override
 	public IPacket<?> createSpawnPacket() {
-		return new SSpawnObjectPacket(this);
+		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

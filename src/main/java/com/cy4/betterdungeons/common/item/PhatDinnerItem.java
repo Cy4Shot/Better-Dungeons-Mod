@@ -1,5 +1,6 @@
 package com.cy4.betterdungeons.common.item;
 
+import com.cy4.betterdungeons.core.init.ItemInit;
 import com.cy4.betterdungeons.core.network.data.PlayerDungeonData;
 import com.cy4.betterdungeons.core.network.stats.PlayerDungeonStats;
 
@@ -15,8 +16,8 @@ public class PhatDinnerItem extends SoupItem {
 
 	public static Food FOOD = new Food.Builder().saturation(0).hunger(0).fastToEat().setAlwaysEdible().build();
 
-	public PhatDinnerItem(Properties builder) {
-		super(builder);
+	public PhatDinnerItem() {
+		super(ItemInit.BASIC_ITEM.maxStackSize(16).food(FOOD));
 	}
 
 	@Override

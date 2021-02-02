@@ -8,14 +8,16 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.model.EvokerFangsModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class SlimeSpikesRenderer extends EntityRenderer<SlimeSpikesEntity> {
 	private static final ResourceLocation SLIME_SPIKES = new ResourceLocation(BetterDungeons.MOD_ID, "textures/entity/slime_spikes.png");
-	private final EvokerFangsModel<SlimeSpikesEntity> model = new EvokerFangsModel<>();
+	private final SlimeSpikesModel<SlimeSpikesEntity> model = new SlimeSpikesModel<>();
 
 	public SlimeSpikesRenderer(EntityRendererManager renderManagerIn) {
 		super(renderManagerIn);

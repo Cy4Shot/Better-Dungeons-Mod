@@ -29,20 +29,22 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BlockInit {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BetterDungeons.MOD_ID);
 
+	// Dungeon Portal
 	public static final RegistryObject<Block> DUNGEON_PORTAL_FRAME = BLOCKS.register("dungeon_portal_frame",
 			() -> new Block(AbstractBlock.Properties.create(Material.IRON, MaterialColor.GRAY).hardnessAndResistance(5f, 10f)
 					.harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
-
+	public static final RegistryObject<Block> DUNGEON_PORTAL = BLOCKS.register("dungeon_portal", () -> new DungeonPortalBlock());
 	public static final RegistryObject<Block> TOUGH_STONE = BLOCKS.register("tough_stone",
 			() -> new Block(AbstractBlock.Properties.from(Blocks.BEDROCK)));
-
-	public static final RegistryObject<Block> DUNGEON_PORTAL = BLOCKS.register("dungeon_portal", () -> new DungeonPortalBlock());
+	
+	// Dungeon TEs.
 	public static final RegistryObject<Block> KEY_CREATION_TABLE = BLOCKS.register("key_creation_table", () -> new KeyCreationTable());
 	public static final RegistryObject<Block> KEY_GENERATOR = BLOCKS.register("key_generator", () -> new KeyGeneratorBlock());
 	public static final RegistryObject<Block> DUNGEON_MERCHANT = BLOCKS.register("dungeon_merchant", () -> new DungeonMerchantBlock());
 	public static final RegistryObject<Block> DUNGEON_CRATE = BLOCKS.register("dungeon_crate", () -> new DungeonCrateBlock());
 	public static final RegistryObject<Block> BOSS_BLOCK = BLOCKS.register("boss_block", () -> new BossBlock());
 
+	// Dungeon Shards
 	public static final RegistryObject<Block> NIAZITE_SHARD = BLOCKS.register("niazite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> IDLITE_SHARD = BLOCKS.register("idlite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> THALAMITE_SHARD = BLOCKS.register("thalamite_shard", () -> new ShardBlock());
@@ -51,12 +53,13 @@ public class BlockInit {
 	public static final RegistryObject<Block> GRINDITE_SHARD = BLOCKS.register("grindite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> TURNITE_SHARD = BLOCKS.register("turnite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> SOULITE_SHARD = BLOCKS.register("soulite_shard", () -> new ShardBlock());
+	public static final RegistryObject<Block> PHAT_CRYSTAL = BLOCKS.register("phat_crystal", () -> new ShardBlock());
 
+	// Bonsai
 	public static final RegistryObject<Block> BONSAI_POT = BLOCKS.register("bonsai_pot", () -> new BonsaiPotBlock(false));
 	public static final RegistryObject<Block> HOPPING_BONSAI_POT = BLOCKS.register("hopping_bonsai_pot", () -> new BonsaiPotBlock(true));
 
-	public static final RegistryObject<Block> PHAT_CRYSTAL = BLOCKS.register("phat_crystal", () -> new ShardBlock());
-
+	// Dungeon Ite Blocks
 	public static final RegistryObject<Block> NIAZITE_BLOCK = BLOCKS.register("niazite_block",
 			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
 					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
@@ -82,6 +85,7 @@ public class BlockInit {
 			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
 					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
 
+	// Utils
 	public static Boolean neverAllowSpawn(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) {
 		return (boolean) false;
 	}

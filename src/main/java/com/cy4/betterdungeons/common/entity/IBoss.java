@@ -8,5 +8,6 @@ import net.minecraft.world.server.ServerWorld;
 
 public interface IBoss {
 	void spawnInTheWorld(DungeonRun run, ServerWorld world, BlockPos pos);
-    ServerBossInfo getServerBossInfo();
+
+	ServerBossInfo getServerBossInfo();
 }

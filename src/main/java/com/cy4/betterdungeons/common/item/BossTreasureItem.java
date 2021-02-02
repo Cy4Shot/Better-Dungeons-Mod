@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
-import com.cy4.betterdungeons.core.itemgroup.BetterDungeonsItemGroup;
+import com.cy4.betterdungeons.core.init.ItemInit;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +24,7 @@ public class BossTreasureItem extends Item {
 	TreasureRarity rarity;
 
 	public BossTreasureItem(TreasureRarity rarity) {
-		super(new Item.Properties().maxStackSize(1).group(BetterDungeonsItemGroup.BETTER_DUNGEONS));
+		super(ItemInit.BASIC_ITEM.maxStackSize(1));
 		this.rarity = rarity;
 	}
 

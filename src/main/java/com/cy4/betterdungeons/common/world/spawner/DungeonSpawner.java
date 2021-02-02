@@ -52,8 +52,6 @@ public class DungeonSpawner {
 			return false;
 		});
 
-		System.out.println("HALLO there sir, your max mobs limit is " + this.getMaxMobs() + " for some reason.");
-
 		if (this.mobs.size() >= this.getMaxMobs())
 			return;
 

@@ -21,6 +21,7 @@ public class EntityTypesInit {
 	public static final RegistryObject<EntityType<EnderSlimeEntity>> ENDER_SLIME = ENTITY_TYPES.register("ender_slime",
 			() -> EntityType.Builder.<EnderSlimeEntity>create(EnderSlimeEntity::new, EntityClassification.MONSTER).size(6.25f, 6.25f)
 					.build(new ResourceLocation(BetterDungeons.MOD_ID, "ender_slime").toString()));
+	
 	public static final RegistryObject<EntityType<SlimeSpikesEntity>> SLIME_SPIKES = ENTITY_TYPES.register("slime_spikes",
 			() -> EntityType.Builder.<SlimeSpikesEntity>create(SlimeSpikesEntity::new, EntityClassification.MISC).size(1f, 1f)
 					.build(new ResourceLocation(BetterDungeons.MOD_ID, "slime_spikes").toString()));
