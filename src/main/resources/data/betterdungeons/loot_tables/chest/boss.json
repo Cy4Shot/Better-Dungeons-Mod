@@ -1,0 +1,30 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"weight": 20,
+					"name": "betterdungeons:chest/boss1"
+				},
+				{
+					"type": "minecraft:loot_table",
+					"weight": 10,
+					"name": "betterdungeons:chest/boss2"
+				},
+				{
+					"type": "minecraft:loot_table",
+					"weight": 5,
+					"name": "betterdungeons:chest/boss3"
+				},
+				{
+					"type": "minecraft:loot_table",
+					"weight": 1,
+					"name": "betterdungeons:chest/boss4"
+				}
+			]
+		}
+	]
+}

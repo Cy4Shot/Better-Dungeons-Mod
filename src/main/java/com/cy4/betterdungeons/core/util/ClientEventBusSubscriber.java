@@ -5,6 +5,7 @@ import com.cy4.betterdungeons.client.entity.EnderSlimeRenderer;
 import com.cy4.betterdungeons.client.entity.SlimeSpikesRenderer;
 import com.cy4.betterdungeons.client.overlay.AbilitiesOverlay;
 import com.cy4.betterdungeons.client.overlay.DungeonLevelOverlay;
+import com.cy4.betterdungeons.client.overlay.DungeonRunOverlay;
 import com.cy4.betterdungeons.client.screen.DungeonCrateScreen;
 import com.cy4.betterdungeons.client.screen.DungeonMerchantScreen;
 import com.cy4.betterdungeons.client.screen.KeyGeneratorScreen;
@@ -41,6 +42,7 @@ public class ClientEventBusSubscriber {
 		// Overlays
 		MinecraftForge.EVENT_BUS.register(DungeonLevelOverlay.class);
 		MinecraftForge.EVENT_BUS.register(AbilitiesOverlay.class);
+		MinecraftForge.EVENT_BUS.register(DungeonRunOverlay.class);
 
 		// Screens
 		ScreenManager.registerFactory(ContainerTypesInit.KEY_GENERATOR_CONTAINER.get(), KeyGeneratorScreen::new);

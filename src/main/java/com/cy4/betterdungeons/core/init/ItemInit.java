@@ -29,7 +29,14 @@ public class ItemInit {
 
 	// Dungeon Foods
 	public static final RegistryObject<Item> PHAT_DINNER = ITEMS.register("phat_dinner", () -> new PhatDinnerItem());
-	public static final RegistryObject<Item> EXAMPLE_FOOD = ITEMS.register("example_food", () -> new DungeonFoodItem(10));
+	public static final RegistryObject<Item> DUNGEON_CABBAGE = ITEMS.register("dungeon_cabbage",
+			() -> new DungeonFoodItem(10, DungeonFoodItem.REDUCE_HEARTS));
+	public static final RegistryObject<Item> DUNGEON_BURGER = ITEMS.register("dungeon_burger",
+			() -> new DungeonFoodItem(30, DungeonFoodItem.MINING_FATIGUE));
+	public static final RegistryObject<Item> DUNGEON_BACON = ITEMS.register("dungeon_bacon",
+			() -> new DungeonFoodItem(5, DungeonFoodItem.NONE));
+	public static final RegistryObject<Item> DUNGEON_PIZZA = ITEMS.register("dungeon_pizza",
+			() -> new DungeonFoodItem(120, DungeonFoodItem.WEAKNESS));
 
 	// Dungeon Treasures
 	public static final RegistryObject<Item> COMMON_TREASURE = ITEMS.register("common_treasure",

@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 
 public class EntityScaler {
 
-	public static void scaleVault(LivingEntity entity, int level, Random random, Type type) {
+	public static void scaleDungeon(LivingEntity entity, int level, Random random, Type type) {
 		DungeonMobsConfig.Level overrides = DungeonsConfig.DUNGEON_MOBS.getForLevel(level);
 
 		for(EquipmentSlotType slot: EquipmentSlotType.values()) {

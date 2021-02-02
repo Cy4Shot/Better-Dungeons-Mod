@@ -112,7 +112,7 @@ public class EnderSlimeEntity extends SlimeEntity implements IBoss {
 		this.bossInfo.setVisible(true);
 
 		if (raid != null) {
-			EntityScaler.scaleVault(this, raid.level, new Random(), EntityScaler.Type.BOSS);
+			EntityScaler.scaleDungeon(this, raid.level, new Random(), EntityScaler.Type.BOSS);
 		}
 	}
 

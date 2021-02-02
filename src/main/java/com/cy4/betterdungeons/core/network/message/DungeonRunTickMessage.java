@@ -2,6 +2,8 @@ package com.cy4.betterdungeons.core.network.message;
 
 import java.util.function.Supplier;
 
+import com.cy4.betterdungeons.client.overlay.DungeonRunOverlay;
+
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -28,7 +30,7 @@ public class DungeonRunTickMessage {
 	    public static void handle(DungeonRunTickMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 	        NetworkEvent.Context context = contextSupplier.get();
 	        context.enqueueWork(() -> {
-	            // Display time remaining here
+	        	DungeonRunOverlay.remainingTicks = message.remainingTicks;
 	        });
 	        context.setPacketHandled(true);
 	    }

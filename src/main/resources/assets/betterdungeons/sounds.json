@@ -8,5 +8,36 @@
 				"stream": true
 			}
 		]
+	},
+	"timer_panic": {
+		"category": "master",
+		"sounds": [
+			"betterdungeons:timer_panic"
+		]
+	},
+	"boss": {
+		"category": "music",
+		"sounds": [
+			{
+				"name": "betterdungeons:boss",
+				"stream": true
+			}
+		]
+	},
+	"ambient": {
+		"category": "ambient",
+		"sounds": [
+			"betterdungeons:ambient_1",
+			"betterdungeons:ambient_2"
+		]
+	},
+	"ambient_loop": {
+		"category": "music",
+		"sounds": [
+			{
+				"name": "betterdungeons:ambient",
+				"stream": true
+			}
+		]
 	}
 }

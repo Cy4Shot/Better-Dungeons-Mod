@@ -2,6 +2,7 @@ package com.cy4.betterdungeons.common.block;
 
 import java.util.Random;
 
+import com.cy4.betterdungeons.client.overlay.DungeonRunOverlay;
 import com.cy4.betterdungeons.common.entity.IBoss;
 import com.cy4.betterdungeons.common.item.BossKeyItem;
 import com.cy4.betterdungeons.common.te.BossBlockTileEntity;
@@ -31,6 +32,8 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BossBlock extends Block {
 
@@ -54,6 +57,9 @@ public class BossBlock extends Block {
 		te.addKey();
 
 		if (world.isRemote) {
+			if (te.getKeys() == 4)
+				startBossLoop();
+
 			return ActionResultType.SUCCESS;
 		}
 
@@ -88,8 +94,8 @@ public class BossBlock extends Block {
 			((IBoss) boss).getServerBossInfo().setVisible(true);
 		}
 
-		EntityScaler.scaleVault(boss, raid.level, new Random(), EntityScaler.Type.BOSS);
-		boss.setCustomName(new StringTextComponent("Boss"));
+		EntityScaler.scaleDungeon(boss, raid.level, new Random(), EntityScaler.Type.BOSS);
+		boss.setCustomName(new StringTextComponent(boss.getName().toString()));
 	}
 
 	private void spawnParticles(World world, BlockPos pos) {
@@ -113,6 +119,11 @@ public class BossBlock extends Block {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return TileEntityTypesInit.BOSS_BLOCK_TILE_ENTITY_TYPE.get().create();
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	private void startBossLoop() {
+		DungeonRunOverlay.bossSummoned = true;
 	}
 
 }
