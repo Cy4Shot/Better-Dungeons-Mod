@@ -1,0 +1,32 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"OLO",
+		"TDT",
+		"SPS"
+	],
+	"key": {
+		"P": {
+			"item": "betterdungeons:phat_crystal"
+		},
+		"D": {
+			"item": "betterdungeons:diginite_shard"
+		},
+		"S": {
+			"item": "betterdungeons:diginite_piece"
+		},
+		"T": {
+			"item": "minecraft:terracotta"
+		},
+		"L": {
+			"tag": "minecraft:logs"
+		},
+		"O": {
+			"tag": "minecraft:leaves"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:bonsai_pot",
+		"count": 1
+	}
+}

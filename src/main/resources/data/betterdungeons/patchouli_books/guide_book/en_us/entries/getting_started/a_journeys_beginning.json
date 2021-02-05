@@ -1,0 +1,17 @@
+{
+	"name": "A Journey's Beginning",
+	"icon": "betterdungeons:dungeon_key",
+	"category": "getting_started",
+	"read_by_default": true,
+	"sortnum": 0,
+	"pages": [
+		{
+			"type": "text",
+			"text": "Welcome to the $(#d000ff)Better Dungeons$() Mod! This is a mod about... dungeons, what you can find in them, and who you can fight in them. The purpose of this chapter is to get you acquainted with the mod, as well as run your first dungeon. However, before we start, we need to understand what dungeons really are."
+		},
+		{
+			"type": "text",
+			"text": "Dungeons are procedurally generated maps you can explore with strong mobs, bosses, and loads of loot! In order to enter a dungeon, you will need a $(#d000ff)Dungeon Key$() and a portal. Once you are in the dungeon, you will have a certain amount of time to kill the boss, or perish trying. The dungeon's difficulty and loot will scale with your $(#d000ff)Dungeon Level$(), which you can upgrade by completing dungeons. So, in order to start, you will need a $(#d000ff)Dungeon Key$()."
+		}
+	]
+}

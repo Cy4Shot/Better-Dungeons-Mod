@@ -49,7 +49,7 @@ public class DungeonFoodItem extends Item {
 	protected Debuff debuff;
 
 	public DungeonFoodItem(int extraSeconds, Debuff debuff) {
-		super(ItemInit.BASIC_ITEM.food(DUNGEON_FOOD));
+		super(ItemInit.basicItem().food(DUNGEON_FOOD));
 		this.extraDungeonTicks = extraSeconds * 20;
 		this.debuff = debuff;
 	}

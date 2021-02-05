@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:turnite_shard"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:turnite_piece",
+		"count": 9
+	}
+}

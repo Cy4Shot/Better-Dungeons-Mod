@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:thalamite_block"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:thalamite_shard",
+		"count": 9
+	}
+}
+

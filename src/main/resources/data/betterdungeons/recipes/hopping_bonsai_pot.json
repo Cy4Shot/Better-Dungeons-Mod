@@ -1,0 +1,19 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"B",
+		"S"
+	],
+	"key": {
+		"S": {
+			"item": "minecraft:hopper"
+		},
+		"B": {
+			"item": "betterdungeons:bonsai_pot"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:hopping_bonsai_pot",
+		"count": 1
+	}
+}

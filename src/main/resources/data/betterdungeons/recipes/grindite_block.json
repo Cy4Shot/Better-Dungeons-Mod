@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SSS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:grindite_shard"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:grindite_block",
+		"count": 1
+	}
+}

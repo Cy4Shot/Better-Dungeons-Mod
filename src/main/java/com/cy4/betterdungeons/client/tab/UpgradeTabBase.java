@@ -85,7 +85,6 @@ public abstract class UpgradeTabBase extends Screen {
 
     @Override
     public void onClose() {
-        System.out.println(getClass().getSimpleName() + " closed.");
         persistedTranslations.put(getClass(), viewportTranslation);
         persistedScales.put(getClass(), viewportScale);
     }

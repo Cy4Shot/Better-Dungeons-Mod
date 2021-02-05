@@ -14,7 +14,6 @@ import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.NetcodeUtils;
 import com.cy4.betterdungeons.core.network.message.DungeonRunTickMessage;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -40,12 +39,10 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.network.NetworkDirection;
 
 public class DungeonRun implements INBTSerializable<CompoundNBT> {
-	public static final PortalPlacer PORTAL_PLACER = new PortalPlacer((pos, random, facing) -> {
-		return BlockInit.DUNGEON_PORTAL.get().getDefaultState().with(DungeonPortalBlock.AXIS, facing.getAxis());
-	}, (pos, random, facing) -> {
-		Block[] blocks = { BlockInit.DUNGEON_PORTAL_FRAME.get() };
-
-		return blocks[random.nextInt(blocks.length)].getDefaultState();
+	public static final PortalPlacer PORTAL_PLACER = new PortalPlacer((pos, facing) -> {
+		return BlockInit.DUNGEON_PORTAL.get().getDefaultState().with(DungeonPortalBlock.AXIS, facing.getAxis()).getBlockState();
+	}, (pos, facing) -> {
+		return BlockInit.DUNGEON_PORTAL_FRAME.get().getDefaultState();
 	});
 
 	public static final int REGION_SIZE = 1 << 11;
@@ -234,6 +231,7 @@ public class DungeonRun implements INBTSerializable<CompoundNBT> {
 
 						if (count != 1) {
 							PORTAL_PLACER.place(world, pos, this.facing = direction, count, count + 1);
+							System.out.println("Ayoo placing Portal right 'ere " + pos);
 							break loop;
 						}
 					}

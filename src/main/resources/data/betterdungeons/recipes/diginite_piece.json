@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:diginite_shard"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:diginite_piece",
+		"count": 9
+	}
+}

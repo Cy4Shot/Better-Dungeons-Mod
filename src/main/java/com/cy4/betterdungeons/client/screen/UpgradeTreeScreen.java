@@ -28,13 +28,15 @@ public class UpgradeTreeScreen extends ContainerScreen<UpgradeTreeContainer> {
 
 	protected UpgradeTabBase activeTab;
 	protected UpgradeDialog upgradeDialog;
+	private PlayerInventory inv;
 
 	public UpgradeTreeScreen(UpgradeTreeContainer container, PlayerInventory inventory, ITextComponent title) {
 		super(container, inventory, new StringTextComponent("Upgrade Tree Screen!"));
 
 		this.activeTab = new UpgradeTab(this);
 		UpgradeTree upgradeTree = getContainer().getUpgradeTree();
-		this.upgradeDialog = new UpgradeDialog(upgradeTree);
+		this.upgradeDialog = new UpgradeDialog(upgradeTree, this);
+		this.inv = inventory;
 
 		refreshWidgets();
 
@@ -43,8 +45,13 @@ public class UpgradeTreeScreen extends ContainerScreen<UpgradeTreeContainer> {
 	}
 
 	@Override
+	public boolean isPauseScreen() {
+		return false;
+	}
+
+	@Override
 	protected void init() {
-		xSize = width; // <-- Be goneee, JEI!
+		xSize = width; // f in the chat for jei. you will be missed.
 		super.init();
 	}
 
@@ -59,7 +66,7 @@ public class UpgradeTreeScreen extends ContainerScreen<UpgradeTreeContainer> {
 		Rectangle bounds = new Rectangle();
 		bounds.x0 = 30; // px
 		bounds.y0 = 60; // px
-		bounds.x1 = (int) (width * 0.55); // Responsiveness ayyyyy
+		bounds.x1 = (int) (width * 0.55);
 		bounds.y1 = height - 30;
 		return bounds;
 	}
@@ -171,17 +178,8 @@ public class UpgradeTreeScreen extends ContainerScreen<UpgradeTreeContainer> {
 	private void renderContainerTabs(MatrixStack matrixStack) {
 		Rectangle containerBounds = getContainerBounds();
 
-		// Upgrades
-//		Rectangle upgradesTabBounds = getTabBounds(1, activeTab instanceof UpgradeTab);
-//		blit(matrixStack, upgradesTabBounds.x0, upgradesTabBounds.y0, 63, (activeTab instanceof UpgradeTab) ? 28 : 0,
-//				upgradesTabBounds.getWidth(), upgradesTabBounds.getHeight());
-//		blit(matrixStack, upgradesTabBounds.x0 + 6, containerBounds.y0 - 25 - 11, 16, 60, 16, 16);
-//		Minecraft minecraft = getMinecraft();
-
-		if (activeTab instanceof UpgradeTab) {
+		if (activeTab instanceof UpgradeTab)
 			minecraft.fontRenderer.drawString(matrixStack, "Upgrades", containerBounds.x0, containerBounds.y0 - 12, 0xFF_3f3f3f);
-
-		}
 
 		minecraft.getProfiler().endSection();
 
@@ -246,6 +244,10 @@ public class UpgradeTreeScreen extends ContainerScreen<UpgradeTreeContainer> {
 			uncoveredHeight = containerBounds.getHeight();
 			currentY = containerBounds.y0;
 		}
+	}
+
+	public PlayerInventory getInv() {
+		return inv;
 	}
 
 }

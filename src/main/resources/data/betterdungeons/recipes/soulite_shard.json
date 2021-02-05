@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SSS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:soulite_piece"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:soulite_shard",
+		"count": 1
+	}
+}

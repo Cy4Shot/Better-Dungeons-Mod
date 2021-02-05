@@ -106,18 +106,27 @@ public class DungeonPortalBlock extends DropSelfBlock {
 			return DungeonPortalBlock$size1.isValid() && DungeonPortalBlock$size1.portalBlockCount == 0 ? DungeonPortalBlock$size1 : null;
 		}
 	}
-
+	
 	@SuppressWarnings("deprecation")
 	@Override
-	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos,
-			BlockPos facingPos) {
-		Direction.Axis direction$axis = facing.getAxis();
-		Direction.Axis direction$axis1 = stateIn.get(AXIS);
-		boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-		return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).validatePortal()
-				? Blocks.AIR.getDefaultState()
-				: super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-	}
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        World world = null;
+        if (worldIn instanceof World)
+            world = (World) worldIn;
+        if (world != null) {
+            if (world.getDimensionKey() == World.OVERWORLD) {
+            	Direction.Axis direction$axis = facing.getAxis();
+        		Direction.Axis direction$axis1 = stateIn.get(AXIS);
+        		boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
+        		return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).validatePortal()
+        				? Blocks.AIR.getDefaultState()
+        				: super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+
+            }
+        }
+        return stateIn;
+
+    }
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {

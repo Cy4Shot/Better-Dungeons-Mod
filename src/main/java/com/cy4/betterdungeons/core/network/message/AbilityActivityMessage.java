@@ -15,11 +15,7 @@ public class AbilityActivityMessage {
 
 	public AbilityActivityMessage() {
 	}
-
-	// Don't mind Goodie being lazy...
-	// Active flag:
-	// 0 - ignore me
-	// 1 - current ability deactivated
+	
 	public AbilityActivityMessage(int abilityIndex, int cooldownTicks, int activeFlag) {
 		this.cooldownTicks = cooldownTicks;
 		this.activeFlag = activeFlag;

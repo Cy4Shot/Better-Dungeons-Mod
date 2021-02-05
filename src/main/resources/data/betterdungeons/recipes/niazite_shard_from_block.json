@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:niazite_block"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:niazite_shard",
+		"count": 9
+	}
+}
+

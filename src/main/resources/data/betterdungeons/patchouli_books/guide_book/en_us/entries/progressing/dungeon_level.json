@@ -1,0 +1,23 @@
+{
+	"name": "Dungeon Level",
+	"icon": "betterdungeons:phat_dinner",
+	"category": "progressing",
+	"read_by_default": true,
+	"sortnum": 0,
+	"pages": [
+		{
+			"type": "text",
+			"text": "Welcome to the progression chapter! You may have noticed the second experience bar above your hunger bar, and that is for your $(h)Dungeon Level$()! Your dungeon level determines the difficulty of the dungeon, as well as the loot that you get. There are many different ways in which you can increase your dungeon levels, which will be shown in this entry."
+		},
+		{
+			"type": "text",
+			"title": "1. Dungeon Runs",
+			"text": "If you successfully complete a dungeon run, you will earn some experience. However, it is important to note that you will get more experience from killing the dungeon boss, rather than escaping back through the portal. This will make you level up passively, but will not be the main source of income for your dungeon experience."
+		},
+		{
+			"type": "text",
+			"title": "2. Phat Dinner",
+			"text": "Another way in which you can get dungeon experience, perhaps even a better way, is to consume some $(h)Phat Dinner$(). The dinner is so phat, it physically moves the experience bar on your screen, forcing the game to level you up. Eat at your own risk. Only the most brave and herioc dungeoners can handle the magnitude of the $(h)Phat Dinner.$()"
+		}
+	]
+}

@@ -91,4 +91,13 @@ public class UpgradeGroup<T extends PlayerUpgrade> {
 		PlayerUpgrade[] Upgrades = IntStream.range(0, maxLevel).mapToObj(supplier).toArray(PlayerUpgrade[]::new);
 		return new UpgradeGroup<>(name, (T[]) Upgrades);
 	}
+
+	public int learningCost() {
+        return this.levels[0].getCost();
+    }
+
+	public int cost(int level) {
+        if (level > getMaxLevel()) return -1;
+        return this.levels[level - 1].getCost();
+    }
 }

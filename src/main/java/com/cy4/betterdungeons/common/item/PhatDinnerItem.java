@@ -17,7 +17,7 @@ public class PhatDinnerItem extends SoupItem {
 	public static Food FOOD = new Food.Builder().saturation(0).hunger(0).fastToEat().setAlwaysEdible().build();
 
 	public PhatDinnerItem() {
-		super(ItemInit.BASIC_ITEM.maxStackSize(16).food(FOOD));
+		super(ItemInit.basicItem().maxStackSize(16).food(FOOD));
 	}
 
 	@Override

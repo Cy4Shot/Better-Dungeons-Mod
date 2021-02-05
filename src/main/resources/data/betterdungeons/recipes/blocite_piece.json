@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:blocite_shard"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:blocite_piece",
+		"count": 9
+	}
+}

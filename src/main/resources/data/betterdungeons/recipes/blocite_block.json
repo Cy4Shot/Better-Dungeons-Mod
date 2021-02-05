@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SSS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:blocite_shard"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:blocite_block",
+		"count": 1
+	}
+}

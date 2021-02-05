@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:idlite_shard"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:idlite_piece",
+		"count": 9
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:grindite_block"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:grindite_shard",
+		"count": 9
+	}
+}
+

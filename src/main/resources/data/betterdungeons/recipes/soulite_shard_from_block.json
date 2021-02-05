@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "betterdungeons:soulite_block"
+		}
+	],
+	"result": {
+		"item": "betterdungeons:soulite_shard",
+		"count": 9
+	}
+}
+

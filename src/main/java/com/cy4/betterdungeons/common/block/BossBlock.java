@@ -92,10 +92,11 @@ public class BossBlock extends Block {
 		boss.getTags().add("IBoss");
 		if (boss instanceof IBoss) {
 			((IBoss) boss).getServerBossInfo().setVisible(true);
+			((IBoss) boss).spawnInTheWorld(raid, world, pos);
 		}
 
 		EntityScaler.scaleDungeon(boss, raid.level, new Random(), EntityScaler.Type.BOSS);
-		boss.setCustomName(new StringTextComponent(boss.getName().toString()));
+		boss.setCustomName(new StringTextComponent("Dungeon Boss"));
 	}
 
 	private void spawnParticles(World world, BlockPos pos) {

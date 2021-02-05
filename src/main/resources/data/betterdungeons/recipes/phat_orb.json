@@ -1,0 +1,20 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SOS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:phat_piece"
+		},
+		"O": {
+			"item": "betterdungeons:empty_orb"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:phat_orb",
+		"count": 1
+	}
+}

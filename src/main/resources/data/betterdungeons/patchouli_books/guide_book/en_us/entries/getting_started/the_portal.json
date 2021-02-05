@@ -1,0 +1,56 @@
+{
+	"name": "The Portal",
+	"icon": "minecraft:netherite_sword",
+	"category": "getting_started",
+	"read_by_default": true,
+	"sortnum": 2,
+	"pages": [
+		{
+			"type": "crafting",
+			"recipe": "betterdungeons:dungeon_portal_frame",
+			"text": "Once you have created the $(h)Dungeon Key$(), you will need to create a portal. To do so, you will need to craft 10 $(h)Dungeon Portal Frames$(). Finally, light the portal with the key and you are ready to go... almost."
+		},
+		{
+			"type": "multiblock",
+			"name": "The Portal Structure",
+			"text": "The layout of the portal can be seen here.",
+			"enable_visualize": false,
+			"multiblock": {
+				"pattern": [
+					[
+						" OO "
+					],
+					[
+						"OPPO"
+					],
+					[
+						"OPPO"
+					],
+					[
+						"OPPO"
+					],
+					[
+						" O0 "
+					]
+				],
+				"mapping": {
+					" ": "ANY",
+					"0": "betterdungeons:dungeon_portal_frame",
+					"O": "betterdungeons:dungeon_portal_frame",
+					"P": "betterdungeons:dungeon_portal[axis=z]"
+				},
+				"symmetrical": true,
+				"offset": [
+					0,
+					0,
+					0
+				],
+				"view_offset": [
+					0,
+					0,
+					0
+				]
+			}
+		}
+	]
+}

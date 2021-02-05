@@ -42,8 +42,6 @@ public class VeinMinerUpgrade extends PlayerAbility {
 			ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
 			UpgradeTree abilityTree = PlayerUpgradeData.get((ServerWorld) event.getWorld()).getUpgrades(player);
 
-			System.out.println("YO!!! my ability tree be like " + abilityTree.getPlayerID() + " and my player go " + player.getUniqueID());
-
 			if (!abilityTree.isActive())
 				return;
 

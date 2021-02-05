@@ -1,0 +1,18 @@
+{
+	"name": "Getting A Key",
+	"icon": "betterdungeons:key_generator",
+	"category": "getting_started",
+	"read_by_default": true,
+	"sortnum": 1,
+	"pages": [
+		{
+			"type": "text",
+			"text": "In this chapter, we will learn how to create a dungeon key in order to run a dungeon. You will first need to craft a $(h)Key Generator$(). Once you have crafted the $(h)Key Generator$() you can plonk it down, and right click on it to open its GUI. The machine produces a key every 8 real life hours, but you get 1 for $(h)free$(). $(br)$(o)NOTE: You can only place 1 key generator.$()"
+		},
+		{
+			"type": "crafting",
+			"recipe": "betterdungeons:key_generator",
+			"text": "$(o)Dont worry, there are other ways to make $(h)Dungeon Keys$(), but you will need to run your first dungeon first."
+		}
+	]
+}

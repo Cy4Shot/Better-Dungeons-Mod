@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SSS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:phat_dust"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:phat_piece",
+		"count": 1
+	}
+}

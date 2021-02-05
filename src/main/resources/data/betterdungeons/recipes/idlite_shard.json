@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"SSS",
+		"SSS",
+		"SSS"
+	],
+	"key": {
+		"S": {
+			"item": "betterdungeons:idlite_piece"
+		}
+	},
+	"result": {
+		"item": "betterdungeons:idlite_shard",
+		"count": 1
+	}
+}

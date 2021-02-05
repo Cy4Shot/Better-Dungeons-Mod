@@ -10,6 +10,7 @@ import com.cy4.betterdungeons.common.upgrade.UpgradeNode;
 import com.cy4.betterdungeons.common.upgrade.UpgradeStyle;
 import com.cy4.betterdungeons.common.upgrade.UpgradeTree;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
+import com.cy4.betterdungeons.core.init.ItemInit;
 import com.cy4.betterdungeons.core.network.DungeonsNetwork;
 import com.cy4.betterdungeons.core.network.message.PlayerUpgradeMessage;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -18,6 +19,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.StringTextComponent;
 
@@ -27,13 +29,15 @@ public class UpgradeDialog extends AbstractGui {
 	private UpgradeGroup<?> talentGroup;
 	private UpgradeTree talentTree;
 
+	private UpgradeTreeScreen screen;
 	private UpgradeWidget abilityWidget;
 	private ScrollableContainer descriptionComponent;
 	private Button abilityUpgradeButton;
 
-	public UpgradeDialog(UpgradeTree talentTree) {
+	public UpgradeDialog(UpgradeTree talentTree, UpgradeTreeScreen sc) {
 		this.talentGroup = null;
 		this.talentTree = talentTree;
+		this.screen = sc;
 		refreshWidgets();
 	}
 
@@ -44,8 +48,9 @@ public class UpgradeDialog extends AbstractGui {
 
 			UpgradeNode<?> talentNode = talentTree.getNodeOf(talentGroup);
 
-			String buttonText = !talentNode.isLearned() ? "Learn"
-					: talentNode.getLevel() >= talentGroup.getMaxLevel() ? "Fully Learned" : "Upgrade";
+			String buttonText = !talentNode.isLearned() ? "Learn (" + talentGroup.learningCost() + ")"
+					: talentNode.getLevel() >= talentGroup.getMaxLevel() ? "Fully Learned"
+							: "Upgrade (" + talentGroup.cost(talentNode.getLevel() + 1) + ")";
 
 			this.abilityUpgradeButton = new Button(10, bounds.getHeight() - 40, bounds.getWidth() - 30, 20,
 					new StringTextComponent(buttonText), (button) -> {
@@ -54,9 +59,20 @@ public class UpgradeDialog extends AbstractGui {
 					});
 
 			this.descriptionComponent = new ScrollableContainer(this::renderDescriptions);
-
-			this.abilityUpgradeButton.active = talentNode.getLevel() < talentGroup.getMaxLevel();
+			int cost = talentNode.getUpgrade() == null ? talentGroup.learningCost() : talentGroup.cost(talentNode.getLevel() + 1);
+			this.abilityUpgradeButton.active = talentNode.getLevel() < talentGroup.getMaxLevel() && cost <= numOrbs();
 		}
+	}
+
+	public int numOrbs() {
+		int a = 0;
+		for (ItemStack stack : this.screen.getInv().mainInventory) {
+			if (stack.getItem() == ItemInit.PHAT_ORB.get()) {
+				a += stack.getCount();
+			}
+		}
+
+		return a;
 	}
 
 	public void setUpgradeGroup(UpgradeGroup<?> talentGroup) {
@@ -122,10 +138,12 @@ public class UpgradeDialog extends AbstractGui {
 		if (talentNode.getLevel() >= talentGroup.getMaxLevel())
 			return;
 
-		talentTree.upgradeUpgrade(null, talentNode);
-		refreshWidgets();
+		int cost = talentNode.getUpgrade() == null ? talentGroup.learningCost() : talentGroup.cost(talentNode.getLevel() + 1);
 
-		DungeonsNetwork.CHANNEL.sendToServer(new PlayerUpgradeMessage(this.talentGroup.getParentName()));
+		talentTree.upgradeUpgrade(null, talentNode);
+
+		DungeonsNetwork.CHANNEL.sendToServer(new PlayerUpgradeMessage(this.talentGroup.getParentName(), cost));
+		refreshWidgets();
 	}
 
 	public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
@@ -225,8 +243,8 @@ public class UpgradeDialog extends AbstractGui {
 
 		UpgradeNode<?> talentNode = talentTree.getNodeOf(talentGroup);
 
-		if (talentNode.isLearned() && talentNode.getLevel() < talentGroup.getMaxLevel()) {
-			blit(matrixStack, 13, bounds.getHeight() - 40 - 2, 121, 0, 15, 23);
+		if (!talentNode.isLearned()) {
+			blit(matrixStack, 13, bounds.getHeight() - 40 - 2, 121 + 30, 0, 15, 23);
 		}
 	}
 

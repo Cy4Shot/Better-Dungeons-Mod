@@ -52,7 +52,6 @@ public class AbilityKnownMessage {
 	public static void handle(AbilityKnownMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 		NetworkEvent.Context context = contextSupplier.get();
 		context.enqueueWork(() -> {
-			System.out.println("Received tree! " + message.learnedAbilities.size());
 			AbilitiesOverlay.learnedAbilities = message.learnedAbilities;
 		});
 		context.setPacketHandled(true);

@@ -29,13 +29,14 @@ public class PortalPlacer {
 	}
 
 	protected void place(IWorld world, BlockPos pos, BlockState state) {
+		System.out.println(state);
 		if (state != null) {
 			world.setBlockState(pos, state, 1);
 		}
 	}
 
 	protected void place(IWorld world, BlockPos pos, Direction direction, BlockPlacer provider) {
-		this.place(world, pos, provider.getState(pos, world.getRandom(), direction));
+		this.place(world, pos, provider.getState(pos, direction));
 	}
 
 }

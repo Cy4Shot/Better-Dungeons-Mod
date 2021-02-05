@@ -24,7 +24,7 @@ public class BossTreasureItem extends Item {
 	TreasureRarity rarity;
 
 	public BossTreasureItem(TreasureRarity rarity) {
-		super(ItemInit.BASIC_ITEM.maxStackSize(1));
+		super(ItemInit.basicItem().maxStackSize(1));
 		this.rarity = rarity;
 	}
 

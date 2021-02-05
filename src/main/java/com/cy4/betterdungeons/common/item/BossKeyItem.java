@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 public class BossKeyItem extends Item {
 
 	public BossKeyItem() {
-		super(ItemInit.BASIC_ITEM);
+		super(ItemInit.basicItem());
 	}
 
 }

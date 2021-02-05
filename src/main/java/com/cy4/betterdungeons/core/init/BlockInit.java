@@ -27,6 +27,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlockInit {
+	public static final AbstractBlock.Properties ITE_BLOCK = AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON)
+			.setRequiresTool().hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL);
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BetterDungeons.MOD_ID);
 
 	// Dungeon Portal
@@ -36,7 +38,7 @@ public class BlockInit {
 	public static final RegistryObject<Block> DUNGEON_PORTAL = BLOCKS.register("dungeon_portal", () -> new DungeonPortalBlock());
 	public static final RegistryObject<Block> TOUGH_STONE = BLOCKS.register("tough_stone",
 			() -> new Block(AbstractBlock.Properties.from(Blocks.BEDROCK)));
-	
+
 	// Dungeon TEs.
 	public static final RegistryObject<Block> KEY_CREATION_TABLE = BLOCKS.register("key_creation_table", () -> new KeyCreationTable());
 	public static final RegistryObject<Block> KEY_GENERATOR = BLOCKS.register("key_generator", () -> new KeyGeneratorBlock());
@@ -44,7 +46,7 @@ public class BlockInit {
 	public static final RegistryObject<Block> DUNGEON_CRATE = BLOCKS.register("dungeon_crate", () -> new DungeonCrateBlock());
 	public static final RegistryObject<Block> BOSS_BLOCK = BLOCKS.register("boss_block", () -> new BossBlock());
 
-	// Dungeon Shards
+	// Dungeon Shards + Blocks
 	public static final RegistryObject<Block> NIAZITE_SHARD = BLOCKS.register("niazite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> IDLITE_SHARD = BLOCKS.register("idlite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> THALAMITE_SHARD = BLOCKS.register("thalamite_shard", () -> new ShardBlock());
@@ -54,36 +56,18 @@ public class BlockInit {
 	public static final RegistryObject<Block> TURNITE_SHARD = BLOCKS.register("turnite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> SOULITE_SHARD = BLOCKS.register("soulite_shard", () -> new ShardBlock());
 	public static final RegistryObject<Block> PHAT_CRYSTAL = BLOCKS.register("phat_crystal", () -> new ShardBlock());
+	public static final RegistryObject<Block> NIAZITE_BLOCK = BLOCKS.register("niazite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> IDLITE_BLOCK = BLOCKS.register("idlite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> THALAMITE_BLOCK = BLOCKS.register("thalamite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> DIGINITE_BLOCK = BLOCKS.register("diginite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> BLOCITE_BLOCK = BLOCKS.register("blocite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> GRINDITE_BLOCK = BLOCKS.register("grindite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> TURNITE_BLOCK = BLOCKS.register("turnite_block", () -> new DropSelfBlock(ITE_BLOCK));
+	public static final RegistryObject<Block> SOULITE_BLOCK = BLOCKS.register("soulite_block", () -> new DropSelfBlock(ITE_BLOCK));
 
 	// Bonsai
 	public static final RegistryObject<Block> BONSAI_POT = BLOCKS.register("bonsai_pot", () -> new BonsaiPotBlock(false));
 	public static final RegistryObject<Block> HOPPING_BONSAI_POT = BLOCKS.register("hopping_bonsai_pot", () -> new BonsaiPotBlock(true));
-
-	// Dungeon Ite Blocks
-	public static final RegistryObject<Block> NIAZITE_BLOCK = BLOCKS.register("niazite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> IDLITE_BLOCK = BLOCKS.register("idlite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> THALAMITE_BLOCK = BLOCKS.register("thalamite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> DIGINITE_BLOCK = BLOCKS.register("diginite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> BLOCITE_BLOCK = BLOCKS.register("blocite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> GRINDITE_BLOCK = BLOCKS.register("grindite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> TURNITE_BLOCK = BLOCKS.register("turnite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> SOULITE_BLOCK = BLOCKS.register("soulite_block",
-			() -> new DropSelfBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.IRON).setRequiresTool()
-					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)));
 
 	// Utils
 	public static Boolean neverAllowSpawn(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) {

@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public class DungeonKeyItem extends Item {
 
 	public DungeonKeyItem() {
-		super(ItemInit.BASIC_ITEM.maxStackSize(1));
+		super(ItemInit.basicItem().maxStackSize(1));
 	}
 
 	@Override
