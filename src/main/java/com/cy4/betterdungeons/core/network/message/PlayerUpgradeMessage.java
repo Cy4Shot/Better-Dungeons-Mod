@@ -7,6 +7,8 @@ import com.cy4.betterdungeons.common.upgrade.UpgradeNode;
 import com.cy4.betterdungeons.common.upgrade.UpgradeTree;
 import com.cy4.betterdungeons.core.config.DungeonsConfig;
 import com.cy4.betterdungeons.core.init.ItemInit;
+import com.cy4.betterdungeons.core.network.DungeonsNetwork;
+import com.cy4.betterdungeons.core.network.NetcodeUtils;
 import com.cy4.betterdungeons.core.network.data.PlayerUpgradeData;
 
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -14,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.server.SSetSlotPacket;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 public class PlayerUpgradeMessage {
@@ -68,7 +71,12 @@ public class PlayerUpgradeMessage {
 			sender.container.detectAndSendChanges();
 			sender.sendContainerToPlayer(sender.container);
 			sender.sendContainerToPlayer(sender.openContainer);
+
+			NetcodeUtils.runIfPresent(sender.server, sender.getUniqueID(), player -> {
+				DungeonsNetwork.CHANNEL.sendTo(new SyncTreeMessage(), player.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
+			});
 		});
+
 		context.setPacketHandled(true);
 	}
 

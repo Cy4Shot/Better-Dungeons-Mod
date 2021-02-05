@@ -12,6 +12,7 @@ import com.cy4.betterdungeons.core.network.message.OpenUpgradeTreeMessage;
 import com.cy4.betterdungeons.core.network.message.PlayerUpgradeMessage;
 import com.cy4.betterdungeons.core.network.message.RewardMessage;
 import com.cy4.betterdungeons.core.network.message.StepHeightMessage;
+import com.cy4.betterdungeons.core.network.message.SyncTreeMessage;
 import com.cy4.betterdungeons.core.network.message.UpgradeKeyMessage;
 import com.cy4.betterdungeons.core.network.message.UpgradeTreeMessage;
 
@@ -66,6 +67,9 @@ public class DungeonsNetwork {
 		
 		CHANNEL.registerMessage(12, StepHeightMessage.class, StepHeightMessage::encode, StepHeightMessage::decode,
 				StepHeightMessage::handle);
+		
+		CHANNEL.registerMessage(13, SyncTreeMessage.class, SyncTreeMessage::encode, SyncTreeMessage::decode,
+				SyncTreeMessage::handle);
 	}
 
 }
