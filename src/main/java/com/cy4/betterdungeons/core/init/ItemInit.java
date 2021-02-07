@@ -25,6 +25,7 @@ public class ItemInit {
 	public static final RegistryObject<Item> BOSS_KEY = ITEMS.register("boss_key", () -> new BossKeyItem());
 	public static final RegistryObject<Item> MERCHANT = ITEMS.register("merchant", () -> new MerchantItem());
 	public static final RegistryObject<Item> DUNGEON_COIN = ITEMS.register("dungeon_coin", () -> new Item(basicItem()));
+	public static final RegistryObject<Item> DUNGEON_STAR = ITEMS.register("dungeon_star", () -> new Item(basicItem()));
 	public static final RegistryObject<Item> PHAT_DUST = ITEMS.register("phat_dust", () -> new Item(basicItem()));
 	public static final RegistryObject<Item> PHAT_PIECE = ITEMS.register("phat_piece", () -> new Item(basicItem()));
 	public static final RegistryObject<Item> PHAT_ORB = ITEMS.register("phat_orb", () -> new Item(basicItem()));

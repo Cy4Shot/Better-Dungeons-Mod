@@ -1,6 +1,7 @@
 package com.cy4.betterdungeons.common.block;
 
 import java.util.Random;
+import java.util.stream.Stream;
 
 import com.cy4.betterdungeons.client.overlay.DungeonRunOverlay;
 import com.cy4.betterdungeons.common.entity.IBoss;
@@ -28,6 +29,10 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.IBooleanFunction;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -37,8 +42,20 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BossBlock extends Block {
 
+	public static final VoxelShape shape = Stream
+			.of(Block.makeCuboidShape(1, 10, 1, 15, 12, 15), Block.makeCuboidShape(4, 8, 4, 12, 10, 12),
+					Block.makeCuboidShape(6, 2, 6, 10, 8, 10), Block.makeCuboidShape(4, 0, 4, 12, 2, 12))
+			.reduce((v1, v2) -> {
+				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
+			}).get();
+
 	public BossBlock() {
-		super(Properties.create(Material.ROCK).sound(SoundType.METAL).hardnessAndResistance(-1.0F, 3600000.0F).noDrops());
+		super(Properties.create(Material.ROCK).sound(SoundType.METAL).hardnessAndResistance(-1.0F, 3600000.0F).noDrops().notSolid());
+	}
+	
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+		return shape;
 	}
 
 	@Override

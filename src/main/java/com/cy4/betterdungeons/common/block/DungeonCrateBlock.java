@@ -89,8 +89,13 @@ public class DungeonCrateBlock extends Block {
 	}
 
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-		if (worldIn.isRemote|| player.isCreative())
+		if (worldIn.isRemote)
 			super.onBlockHarvested(worldIn, pos, state, player);
+		
+		if (player.isCreative()) {
+			super.onBlockHarvested(worldIn, pos, state, player);
+			return;
+		}
 
 		DungeonCrateBlock block = (DungeonCrateBlock) state.getBlock();
 		TileEntity tileentity = worldIn.getTileEntity(pos);

@@ -19,6 +19,7 @@ public class TemplateCommand extends BaseCommand {
 	private static final ResourceLocation ROOM_TEMPLATE = new ResourceLocation("betterdungeons:template/room_template");
 	private static final ResourceLocation TUNNEL_TEMPLATE = new ResourceLocation("betterdungeons:template/tunnel_template");
 	private static final ResourceLocation START_TEMPLATE = new ResourceLocation("betterdungeons:template/start_template");
+	private static final ResourceLocation BOSS_TEMPLATE = new ResourceLocation("betterdungeons:template/boss_template");
 
 	public TemplateCommand(String command, int permissionLevel, boolean enabled) {
 		super(command, permissionLevel, enabled);
@@ -34,8 +35,12 @@ public class TemplateCommand extends BaseCommand {
 								.executes((context) -> execute(context.getSource(), BlockPosArgument.getLoadedBlockPos(context, "blockPos"),
 										TUNNEL_TEMPLATE))))
 				.then(Commands.literal("start")
+						.then(Commands.argument("blockPos", BlockPosArgument.blockPos())
+								.executes((context) -> execute(context.getSource(), BlockPosArgument.getLoadedBlockPos(context, "blockPos"),
+										START_TEMPLATE))))
+				.then(Commands.literal("boss")
 						.then(Commands.argument("blockPos", BlockPosArgument.blockPos()).executes((context) -> execute(context.getSource(),
-								BlockPosArgument.getLoadedBlockPos(context, "blockPos"), START_TEMPLATE))));
+								BlockPosArgument.getLoadedBlockPos(context, "blockPos"), BOSS_TEMPLATE))));
 	}
 
 	private int execute(CommandSource source, BlockPos pos, ResourceLocation loc) throws CommandSyntaxException {

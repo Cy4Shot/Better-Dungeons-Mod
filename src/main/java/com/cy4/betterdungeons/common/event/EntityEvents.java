@@ -11,6 +11,7 @@ import com.cy4.betterdungeons.core.network.data.DungeonRunData;
 import com.cy4.betterdungeons.core.network.stats.DungeonRun;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
@@ -56,6 +57,16 @@ public class EntityEvents {
 		EntityScaler.scaleDungeon(entity, raid.level, new Random(), EntityScaler.Type.MOB);
 		entity.getTags().add("DungeonScaled");
 		entity.enablePersistence();
+	}
+
+	@SubscribeEvent
+	public static void onEntityTick2(LivingEvent.LivingUpdateEvent event) {
+		if (event.getEntity().world.isRemote || event.getEntity().world.getDimensionKey() != DimensionInit.DUNGEON_WORLD
+				|| !(event.getEntity() instanceof ArmorStandEntity))
+			return;
+
+		event.getEntityLiving().world.setBlockState(event.getEntityLiving().getPosition(), BlockInit.BOSS_BLOCK.get().getDefaultState());
+		event.getEntityLiving().remove();
 	}
 
 	@SubscribeEvent

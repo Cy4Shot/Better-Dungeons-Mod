@@ -22,8 +22,6 @@ import com.cy4.betterdungeons.core.network.data.PlayerDungeonData;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -79,9 +77,7 @@ public class BetterDungeons {
 
 	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
-		ServerWorld serverWorld = player.getServerWorld();
-		MinecraftServer server = player.getServer();
-		PlayerDungeonData.get(serverWorld).getDungeonStats(player).sync(server);
+		PlayerDungeonData.get(player.getServerWorld()).getDungeonStats(player).sync(player.getServer());
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {

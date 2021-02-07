@@ -14,14 +14,11 @@ import com.cy4.betterdungeons.core.init.ItemInit;
 import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
 import com.cy4.betterdungeons.core.network.data.PlayerKeyCreationTableData;
 import com.cy4.betterdungeons.core.network.data.PlayerKeyCreationTablePlacingData;
-import com.cy4.betterdungeons.core.network.stats.PlayerPlacingStats;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
@@ -130,21 +127,6 @@ public class KeyCreationTable extends Block {
 		heldItem.setCount(heldItem.getCount() - 1);
 		table.sendUpdates();
 		return ActionResultType.SUCCESS;
-	}
-
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		if (!worldIn.isRemote()) {
-			PlayerKeyCreationTablePlacingData data = PlayerKeyCreationTablePlacingData.get((ServerWorld) worldIn);
-			PlayerPlacingStats stats = data.getPlaceStats((PlayerEntity) placer);
-			if (stats.canPlace()) {
-				data.setCanPlace((PlayerEntity) placer, false);
-			} else {
-				worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
-				((PlayerEntity) placer).addItemStackToInventory(stack);
-			}
-		}
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
 	@Override

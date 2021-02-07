@@ -27,9 +27,6 @@ public class TileEntityTypesInit {
 			.register("dungeon_crate",
 					() -> TileEntityType.Builder.create(DungeonCrateTileEntity::new, BlockInit.DUNGEON_CRATE.get()).build(null));
 
-	public static final RegistryObject<TileEntityType<KeyGeneratorTileEntity>> KEY_GENERATOR_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register(
-			"key_generator", () -> TileEntityType.Builder.create(KeyGeneratorTileEntity::new, BlockInit.KEY_GENERATOR.get()).build(null));
-
 	public static final RegistryObject<TileEntityType<DungeonMerchantTileEntity>> DUNGEON_MERCHANT_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
 			.register("dungeon_merchant",
 					() -> TileEntityType.Builder.create(DungeonMerchantTileEntity::new, BlockInit.DUNGEON_MERCHANT.get()).build(null));
@@ -39,6 +36,9 @@ public class TileEntityTypesInit {
 	
 	public static final RegistryObject<TileEntityType<BossBlockTileEntity>> BOSS_BLOCK_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
 			.register("boss_block", () -> TileEntityType.Builder.create(BossBlockTileEntity::new, BlockInit.BOSS_BLOCK.get()).build(null));
+	
+	public static final RegistryObject<TileEntityType<KeyGeneratorTileEntity>> KEY_GENERATOR_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
+			.register("key_generator", () -> TileEntityType.Builder.create(KeyGeneratorTileEntity::new, BlockInit.KEY_GENERATOR.get()).build(null));
 
 	public static final RegistryObject<TileEntityType<HoppingBonsaiPotTileEntity>> HOPPING_BONSAI_POT_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES
 			.register("hopping_bonsai_pot",

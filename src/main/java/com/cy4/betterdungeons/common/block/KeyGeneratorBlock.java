@@ -1,21 +1,21 @@
 package com.cy4.betterdungeons.common.block;
 
+import com.cy4.betterdungeons.common.container.KeyGeneratorContainer;
 import com.cy4.betterdungeons.common.te.KeyGeneratorTileEntity;
 import com.cy4.betterdungeons.core.init.TileEntityTypesInit;
 import com.cy4.betterdungeons.core.network.data.PlayerKeyGeneratorPlacingData;
-import com.cy4.betterdungeons.core.network.stats.PlayerPlacingStats;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
@@ -27,6 +27,8 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -38,10 +40,8 @@ public class KeyGeneratorBlock extends Block {
 	public static BooleanProperty READY = BooleanProperty.create("ready");
 
 	public KeyGeneratorBlock() {
-		super(Properties.create(Material.ROCK, MaterialColor.DIAMOND).setRequiresTool().hardnessAndResistance(3f,
-				3600000.0F));
-		this.setDefaultState(
-				this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(READY, Boolean.valueOf(true)));
+		super(Properties.create(Material.ROCK, MaterialColor.DIAMOND).setRequiresTool().hardnessAndResistance(3f, 3600000.0F));
+		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(READY, Boolean.valueOf(true)));
 	}
 
 	@Override
@@ -59,6 +59,25 @@ public class KeyGeneratorBlock extends Block {
 		return state.with(FACING, mirrorIn.mirror(state.get(FACING)));
 	}
 
+	@Override
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+
+	public static KeyGeneratorTileEntity getTile(World world, BlockPos pos, BlockState state) {
+		TileEntity tileEntity = world.getTileEntity(pos);
+
+		if ((!(tileEntity instanceof KeyGeneratorTileEntity)))
+			return null;
+
+		return (KeyGeneratorTileEntity) tileEntity;
+	}
+
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		return TileEntityTypesInit.KEY_GENERATOR_TILE_ENTITY_TYPE.get().create();
+	}
+
 	public void ready(boolean e, BlockState state, World worldIn, BlockPos pos) {
 		if (!worldIn.isRemote) {
 			BlockState blockstateCycled = state.with(READY, Boolean.valueOf(e));
@@ -73,42 +92,28 @@ public class KeyGeneratorBlock extends Block {
 	}
 
 	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
-	}
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn,
+			BlockRayTraceResult hit) {
+		if (!world.isRemote) {
+			TileEntity tileEntity = world.getTileEntity(pos);
+			if (tileEntity instanceof KeyGeneratorTileEntity) {
+				INamedContainerProvider containerProvider = new INamedContainerProvider() {
+					@Override
+					public ITextComponent getDisplayName() {
+						return new TranslationTextComponent("container.betterdungeons.key_generator");
+					}
 
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return TileEntityTypesInit.KEY_GENERATOR_TILE_ENTITY_TYPE.get().create();
-	}
-
-	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		if (!worldIn.isRemote) {
-			TileEntity tile = worldIn.getTileEntity(pos);
-			if (tile instanceof KeyGeneratorTileEntity) {
-				NetworkHooks.openGui((ServerPlayerEntity) player, (KeyGeneratorTileEntity) tile, pos);
-				return ActionResultType.SUCCESS;
-			}
-
-		}
-		return ActionResultType.FAIL;
-	}
-
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		if (!worldIn.isRemote()) {
-			PlayerKeyGeneratorPlacingData data = PlayerKeyGeneratorPlacingData.get((ServerWorld) worldIn);
-			PlayerPlacingStats stats = data.getPlaceStats((PlayerEntity) placer);
-			if (stats.canPlace()) {
-				data.setCanPlace((PlayerEntity) placer, false);
+					@Override
+					public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+						return new KeyGeneratorContainer(i, world, pos, playerInventory, playerEntity);
+					}
+				};
+				NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider, tileEntity.getPos());
 			} else {
-				worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
-				((PlayerEntity) placer).addItemStackToInventory(stack);
+				throw new IllegalStateException("Our named container provider is missing!");
 			}
 		}
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		return ActionResultType.SUCCESS;
 	}
 
 	@Override

@@ -57,6 +57,7 @@ public class ClientEventBusSubscriber {
 		// Render Layers
 		RenderTypeLookup.setRenderLayer(BlockInit.DUNGEON_PORTAL.get(), RenderType.getTranslucent());
 		RenderTypeLookup.setRenderLayer(BlockInit.KEY_CREATION_TABLE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.BOSS_BLOCK.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.KEY_GENERATOR.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.NIAZITE_SHARD.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.IDLITE_SHARD.get(), RenderType.getCutout());

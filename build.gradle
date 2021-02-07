@@ -120,6 +120,7 @@ dependencies {
   runtimeOnly fg.deobf("curse.maven:ya-421850:3171935") // Yungs API
   runtimeOnly fg.deobf("curse.maven:ds-335673:3161863") // Dank Storage
   runtimeOnly fg.deobf("curse.maven:rs-243076:3157354") // Refined Storafe
+  runtimeOnly fg.deobf("curse.maven:eb-302113:3191546") // Effortless Building
 }
 
 jar {

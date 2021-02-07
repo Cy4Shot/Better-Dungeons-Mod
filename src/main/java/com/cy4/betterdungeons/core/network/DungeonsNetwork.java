@@ -6,6 +6,7 @@ import com.cy4.betterdungeons.core.network.message.AbilityFocusedMessage;
 import com.cy4.betterdungeons.core.network.message.AbilityKnownMessage;
 import com.cy4.betterdungeons.core.network.message.DungeonRunTickMessage;
 import com.cy4.betterdungeons.core.network.message.DungeonsLevelMessage;
+import com.cy4.betterdungeons.core.network.message.KeyGeneratorRewardMessage;
 import com.cy4.betterdungeons.core.network.message.MerchantUIMessage;
 import com.cy4.betterdungeons.core.network.message.OpenUpgradeMenuMessage;
 import com.cy4.betterdungeons.core.network.message.OpenUpgradeTreeMessage;
@@ -61,15 +62,17 @@ public class DungeonsNetwork {
 
 		CHANNEL.registerMessage(10, AbilityKnownMessage.class, AbilityKnownMessage::encode, AbilityKnownMessage::decode,
 				AbilityKnownMessage::handle);
-		
+
 		CHANNEL.registerMessage(11, UpgradeTreeMessage.class, UpgradeTreeMessage::encode, UpgradeTreeMessage::decode,
 				UpgradeTreeMessage::handle);
-		
+
 		CHANNEL.registerMessage(12, StepHeightMessage.class, StepHeightMessage::encode, StepHeightMessage::decode,
 				StepHeightMessage::handle);
-		
-		CHANNEL.registerMessage(13, SyncTreeMessage.class, SyncTreeMessage::encode, SyncTreeMessage::decode,
-				SyncTreeMessage::handle);
+
+		CHANNEL.registerMessage(13, SyncTreeMessage.class, SyncTreeMessage::encode, SyncTreeMessage::decode, SyncTreeMessage::handle);
+
+		CHANNEL.registerMessage(14, KeyGeneratorRewardMessage.class, KeyGeneratorRewardMessage::encode, KeyGeneratorRewardMessage::decode,
+				KeyGeneratorRewardMessage::handle);
 	}
 
 }
