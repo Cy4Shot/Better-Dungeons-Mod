@@ -8,15 +8,18 @@ import com.cy4.betterdungeons.common.item.DungeonFoodItem;
 import com.cy4.betterdungeons.common.item.DungeonKeyItem;
 import com.cy4.betterdungeons.common.item.GuideBookItem;
 import com.cy4.betterdungeons.common.item.MerchantItem;
+import com.cy4.betterdungeons.common.item.MysterySoupItem;
 import com.cy4.betterdungeons.common.item.PhatDinnerItem;
 import com.cy4.betterdungeons.core.itemgroup.BetterDungeonsItemGroup;
 
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemInit {
+	public static Food FOOD = new Food.Builder().saturation(0).hunger(0).fastToEat().setAlwaysEdible().build();
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BetterDungeons.MOD_ID);
 
 	// Dungeon Stuffs
@@ -31,9 +34,11 @@ public class ItemInit {
 	public static final RegistryObject<Item> PHAT_ORB = ITEMS.register("phat_orb", () -> new Item(basicItem()));
 	public static final RegistryObject<Item> EMPTY_ORB = ITEMS.register("empty_orb", () -> new Item(basicItem()));
 	public static final RegistryObject<Item> GUIDE_BOOK = ITEMS.register("guide_book", () -> new GuideBookItem());
+	public static final RegistryObject<Item> RELIC = ITEMS.register("relic", () -> new Item(basicItem().maxStackSize(1)));
 
 	// Dungeon Foods
 	public static final RegistryObject<Item> PHAT_DINNER = ITEMS.register("phat_dinner", () -> new PhatDinnerItem());
+	public static final RegistryObject<Item> MYSTERY_SOUP = ITEMS.register("mystery_soup", () -> new MysterySoupItem());
 	public static final RegistryObject<Item> DUNGEON_CABBAGE = ITEMS.register("dungeon_cabbage",
 			() -> new DungeonFoodItem(10, DungeonFoodItem.REDUCE_HEARTS));
 	public static final RegistryObject<Item> DUNGEON_BURGER = ITEMS.register("dungeon_burger",

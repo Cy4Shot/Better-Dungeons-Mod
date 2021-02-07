@@ -68,8 +68,48 @@
 				},
 				{
 					"type": "minecraft:item",
+					"weight": 2,
+					"name": "betterdungeons:phat_orb",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1,
+								"max": 1
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.7
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 3,
+					"name": "betterdungeons:empty_orb",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1,
+								"max": 2
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.9
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
 					"weight": 5,
-					"name": "betterdungeons:common_treasure",
+					"name": "betterdungeons:legendary_treasure",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -123,26 +163,6 @@
 						{
 							"condition": "minecraft:random_chance",
 							"chance": 0.9
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 13,
-					"name": "betterdungeons:dungeon_coin",
-					"functions": [
-						{
-							"function": "minecraft:set_count",
-							"count": {
-								"min": 64,
-								"max": 32
-							}
-						}
-					],
-					"conditions": [
-						{
-							"condition": "minecraft:random_chance",
-							"chance": 0.7
 						}
 					]
 				},
@@ -209,7 +229,7 @@
 				{
 					"type": "minecraft:item",
 					"weight": 3,
-					"name": "betterdungeons:dungeon_bacon",
+					"name": "betterdungeons:dungeon_cabbage",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -291,6 +311,34 @@
 		{
 			"rolls": {
 				"min": 1,
+				"max": 1
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"weight": 1,
+					"name": "betterdungeons:relic",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1,
+								"max": 1
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.3
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": {
+				"min": 1,
 				"max": 3
 			},
 			"entries": [
@@ -357,26 +405,6 @@
 				{
 					"type": "minecraft:item",
 					"weight": 1,
-					"name": "betterdungeons:blocite_shard",
-					"functions": [
-						{
-							"function": "minecraft:set_count",
-							"count": {
-								"min": 1,
-								"max": 1
-							}
-						}
-					],
-					"conditions": [
-						{
-							"condition": "minecraft:random_chance",
-							"chance": 0.5
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 1,
 					"name": "betterdungeons:diginite_shard",
 					"functions": [
 						{
@@ -397,7 +425,7 @@
 				{
 					"type": "minecraft:item",
 					"weight": 1,
-					"name": "betterdungeons:soulite_shard",
+					"name": "betterdungeons:blocite_shard",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -438,6 +466,26 @@
 					"type": "minecraft:item",
 					"weight": 1,
 					"name": "betterdungeons:grindite_shard",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1,
+								"max": 1
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.5
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 1,
+					"name": "betterdungeons:soulite_shard",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -517,26 +565,6 @@
 				{
 					"type": "minecraft:item",
 					"weight": 3,
-					"name": "betterdungeons:blocite_piece",
-					"functions": [
-						{
-							"function": "minecraft:set_count",
-							"count": {
-								"min": 1,
-								"max": 3
-							}
-						}
-					],
-					"conditions": [
-						{
-							"condition": "minecraft:random_chance",
-							"chance": 0.5
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
 					"name": "betterdungeons:diginite_piece",
 					"functions": [
 						{
@@ -557,7 +585,7 @@
 				{
 					"type": "minecraft:item",
 					"weight": 3,
-					"name": "betterdungeons:soulite_piece",
+					"name": "betterdungeons:blocite_piece",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -616,14 +644,114 @@
 				},
 				{
 					"type": "minecraft:item",
+					"weight": 3,
+					"name": "betterdungeons:soulite_piece",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 1,
+								"max": 3
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.5
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
 					"weight": 4,
-					"name": "betterdungeons:dungeon_burger",
+					"name": "betterdungeons:phat_piece",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 3,
+								"max": 6
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.8
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 4,
+					"name": "betterdungeons:phat_dinner",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
 								"min": 3,
 								"max": 7
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.8
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 6,
+					"name": "betterdungeons:phat_dust",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 10,
+								"max": 20
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.8
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 7,
+					"name": "betterdungeons:phat_dinner",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 4,
+								"max": 5
+							}
+						}
+					],
+					"conditions": [
+						{
+							"condition": "minecraft:random_chance",
+							"chance": 0.8
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 5,
+					"name": "betterdungeons:mystery_soup",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"min": 2,
+								"max": 3
 							}
 						}
 					],
@@ -657,7 +785,7 @@
 				{
 					"type": "minecraft:item",
 					"weight": 7,
-					"name": "the_vault:vault_diamond",
+					"name": "betterdungeons:dungeon_star",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
